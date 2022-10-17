@@ -8,22 +8,22 @@ def main(argv):
     fileR = "file.txt"
     key = os.urandom(32)
     fileKeyW = "key.txt"
-    encAlgo = "AES"
-    #encAlgo = "ChaCha20"
+    #encAlgo = "AES"
+    encAlgo = "ChaCha20"
     fileW = "encrypted.txt"
 
-    if len(argv) >= 1:
-        fileR = argv[0]
-
     if len(argv) >= 2:
-        key = bytes(argv[1])
-    
-    if len(argv) >= 3:
-        fileKeyW = argv[2]
+        fileR = argv[1]
 
+    if len(argv) >= 3:
+        key = bytes(argv[2])
+    
     if len(argv) >= 4:
+        fileKeyW = argv[3]
+
+    if len(argv) >= 5:
         if encAlgo == "AES" or encAlgo == "ChaCha20":
-            encAlgo = argv[3]
+            encAlgo = argv[4]
         else:
             raise ValueError("Encryption algorythm only AES or ChaCha20, switching to AES")
 
@@ -34,17 +34,16 @@ def main(argv):
     else:
         cipher = Cipher(algorithms.ChaCha20(key, nonce=iv), mode=None)
 
-    rData = []
-    with open(fileR, "r") as f:
-        rData.append(f.read(16))
+    rData = b''
+    with open(fileR, "rb") as f:
+        rData += f.read()
 
     with open(fileW, "wb") as f:
-        data = bytes(''.join(rData), 'utf-8')
-        padder = padding.PKCS7(16).padder()
-        padded_data = padder.update(data)
+        padder = padding.PKCS7(16*8).padder() # 16 bytes by 8 bits
+        padded_data = padder.update(rData)
         padded_data += padder.finalize()
         encryptor = cipher.encryptor()
-        f.write(encryptor.update(data) + encryptor.finalize())
+        f.write(encryptor.update(padded_data) + encryptor.finalize())
 
     with open(fileKeyW, "wb") as f:
         f.write(key)

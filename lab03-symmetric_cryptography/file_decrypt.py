@@ -7,18 +7,19 @@ def main(argv):
 
     fileR = "encrypted.txt"
     fileKeyW = "key.txt"
-    encAlgo = "AES"
+    #encAlgo = "AES"
+    encAlgo = "ChaCha20"
     fileW = "decrypted.txt"
 
-    if len(argv) >= 1:
-        fileR = argv[0]
-    
     if len(argv) >= 2:
-        fileKeyW = argv[1]
-
+        fileR = argv[1]
+    
     if len(argv) >= 3:
+        fileKeyW = argv[2]
+
+    if len(argv) >= 4:
         if encAlgo == "AES" or encAlgo == "ChaCha20":
-            encAlgo = argv[2]
+            encAlgo = argv[3]
         else:
             raise ValueError("Encryption algorythm only AES or ChaCha20, switching to AES")
 
@@ -31,18 +32,19 @@ def main(argv):
     else:
         cipher = Cipher(algorithms.ChaCha20(key, nonce=iv), mode=None)
 
-    rData = []
+    rData = b''
     with open(fileR, "rb") as f:
-        rData.append(f.read(16))
+        rData += f.read()
 
-    with open(fileW, "w") as f:
-        padded_data = bytes(''.join(rData), 'utf-8')
-        unpadder = padding.PKCS7(16).unpadder()
-        data = unpadder.update(padded_data)
-        data += unpadder.finalize()
+    with open(fileW, "wb") as f:
         decryptor = cipher.decryptor()
-        f.write(str(decryptor.update(data) + decryptor.finalize()))
+        data = decryptor.update(rData) + decryptor.finalize()
+        unpadder = padding.PKCS7(16*8).unpadder()
+        data = unpadder.update(data)
+        data += unpadder.finalize()
+        f.write(data)
 
+        
 
 if __name__ == "__main__":
 	main(sys.argv)
