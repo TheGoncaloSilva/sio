@@ -8,7 +8,8 @@ def main(argv):
     fileR = "encrypted.txt"
     fileKeyW = "key.txt"
     #encAlgo = "AES"
-    encAlgo = "ChaCha20"
+    encAlgo = "AES-ECB"
+    #encAlgo = "ChaCha20"
     fileW = "decrypted.txt"
 
     if len(argv) >= 2:
@@ -29,6 +30,8 @@ def main(argv):
     
     if encAlgo == "AES":
         cipher = Cipher(algorithms.AES(key), modes.CBC(iv))
+    elif encAlgo == "AES-ECB":
+        cipher = Cipher(algorithms.AES(key), modes.ECB())
     else:
         cipher = Cipher(algorithms.ChaCha20(key, nonce=iv), mode=None)
 
