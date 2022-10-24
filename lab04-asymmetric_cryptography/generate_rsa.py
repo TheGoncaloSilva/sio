@@ -12,9 +12,9 @@ def save_to_file(file_name, key):
         f.write(key)
 
 def main(argv):
-    key = 2048
-    privateFile = "keys/private_key.pem"
-    publicFile = "keys/public_key.pem"
+    key = 1024
+    privateFile = "keys/private_key"
+    publicFile = "keys/public_key"
 
     if len(argv) > 1: 
         if len(argv) >= 2 and check_key_size(argv[1]):
@@ -34,7 +34,7 @@ def main(argv):
         else:
             raise ValueError("Argument <key, private_file, public_file> not present or of wrong size")
             exit(3)
-    
+
     # Generate keys
     private_key = rsa.generate_private_key(
         public_exponent=65537, 
@@ -45,7 +45,7 @@ def main(argv):
     # Convert private to PEM format
     private_pem = private_key.private_bytes(
         encoding=serialization.Encoding.PEM,
-        format=serialization.PrivateFormat.PKCS8,
+        format=serialization.PrivateFormat.TraditionalOpenSSL,
         encryption_algorithm=serialization.NoEncryption()
     )
     # Write to file

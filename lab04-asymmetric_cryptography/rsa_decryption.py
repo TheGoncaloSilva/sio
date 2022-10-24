@@ -5,12 +5,13 @@ import generate_rsa as KEYS
 from cryptography.hazmat.primitives.asymmetric import rsa, padding
 from cryptography.hazmat.primitives import serialization, hashes
 
-def read_public_key(fileName):
+def read_private_key(fileName):
     with open(fileName, "rb") as f:
-        public_key = serialization.load_pem_public_key(
+        private_key = serialization.load_pem_private_key(
             f.read(),
+            password=None
         )
-        return public_key
+        return private_key
 
 def read_file(fileName):
     with open(fileName, "rb") as f:
@@ -21,13 +22,14 @@ def write_to_file(fileName, data):
         f.write(data)
 
 def main(argv):
-    readFileName = "text.txt"
-    encryptedFileName = "encrypted"
+    readEncrypted = "encrypted"
+    encryptedFileName = "decrypted"
     privateFeyFile = "keys/private_key"
     publicKeyFile = "keys/public_key"
     keySize = 1024
+
     if len(argv) >= 2:
-        readFileName = argv[1]
+        readEncrypted = argv[1]
     if len(argv) >= 3:
         encryptedFileName = argv[2]
     if len(argv) >= 4:
@@ -36,18 +38,19 @@ def main(argv):
         except:
             raise ValueError("Wrong key format")
             exit(1)
+    if len(argv) >= 5:
+        privateFeyFile = argv[4]
 
-    #KEYS.main([None, keySize, privateFeyFile, publicKeyFile])
-    # Read the public key from the file (in PEM format)
-    publicKey = read_public_key(publicKeyFile)
+    private_key = read_private_key(privateFeyFile)
     
     # Read the data of file in bytes format
-    fileData = read_file(readFileName)
+    fileData = read_file(readEncrypted)
 
-    encrypted = publicKey.encrypt(
+    decrypted = private_key.decrypt(
         fileData,
         padding.PKCS1v15()
     )
-    write_to_file(encryptedFileName, encrypted)
+
+    write_to_file(encryptedFileName, decrypted)
 
 main(sys.argv)
