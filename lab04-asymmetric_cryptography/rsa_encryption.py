@@ -23,8 +23,8 @@ def write_to_file(fileName, data):
 def main(argv):
     readFileName = "text.txt"
     encryptedFileName = "encrypted"
-    privateFeyFile = "keys/private_key"
-    publicKeyFile = "keys/public_key"
+    privateFeyFile = "keys/private_key.pem"
+    publicKeyFile = "keys/public_key.pem"
     keySize = 1024
     if len(argv) >= 2:
         readFileName = argv[1]

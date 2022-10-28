@@ -13,8 +13,8 @@ def save_to_file(file_name, key):
 
 def main(argv):
     key = 1024
-    privateFile = "keys/private_key"
-    publicFile = "keys/public_key"
+    privateFile = "keys/private_key.pem"
+    publicFile = "keys/public_key.pem"
 
     if len(argv) > 1: 
         if len(argv) >= 2 and check_key_size(argv[1]):
