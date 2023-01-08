@@ -32,6 +32,7 @@ for i, slot in enumerate(slots):
 
     session = pkcs11.openSession(slot)
     session.login(pins[i])
+
     # session.login('1111') # DANGER!!! USE YOUR PINCODE!!
 
     #### Search for objects and extract reference to private key and certificate
@@ -54,28 +55,44 @@ for i, slot in enumerate(slots):
         print("Issuer: ", cert.issuer)
         print("Subject: ", cert.subject)
 
-    if slot == 1:
         """ Encrypting and decrypting """
 
         # get first public and private keys
 
         #private_key = session.findObjects([(PyKCS11.CKA_CLASS, PyKCS11.CKO_PRIVATE_KEY)])[0]
         private_key = session.findObjects([(PyKCS11.CKA_CLASS, PyKCS11.CKO_PRIVATE_KEY),
-                (PyKCS11.CKA_LABEL, "CITIZEN SIGNATURE KEY")
+                (PyKCS11.CKA_LABEL, "CITIZEN AUTHENTICATION KEY")
                 ])[0]
 
 
         data_to_sign = b'text to sign'
 
         mechanism = PyKCS11.Mechanism(PyKCS11.CKM_SHA1_RSA_PKCS, None)
-        signature = session.sign(private_key, data_to_sign, mechanism)
-        print(f"signature: {binascii.hexlify(bytearray(signature))}")
-        
+        signature = bytes(session.sign(private_key, data_to_sign, mechanism))
+        print(f"signature: {signature}")
+        """
         public_key = session.findObjects([(PyKCS11.CKA_CLASS, PyKCS11.CKO_PUBLIC_KEY),
-                (PyKCS11.CKA_LABEL, "CITIZEN SIGNATURE CERTIFICATE")
+                (PyKCS11.CKA_LABEL, "CITIZEN AUTHENTICATION CERTIFICATE")
                 ])[0]
+        print(type(public_key))
         result = session.verify(public_key, data_to_sign, signature, mechanism)
         print("\nVerified: ", result)
+        """
+
+        md = Hash(SHA1(), backend=db())
+        md.update(data_to_sign)
+        digest = md.finalize()
+
+        publicKey = cert.public_key()
+
+        result = publicKey.verify(
+            signature,
+            digest,
+            PKCS1v15(),
+            SHA1()
+        )
+        print("status: ", result)
+
         
 
 # logout
