@@ -1,3 +1,4 @@
+import base64
 import PyKCS11
 from datetime import datetime as datetime
 import binascii
@@ -15,14 +16,14 @@ def check_certificate(cert):
     else:
         return True
 
-lib = '/usr/lib/x86_64-linux-gnu/pkcs11/opensc-pkcs11.so'
+lib = '/usr/lib/x86_64-linux-gnu/pkcs11/opensc-pkcs11.so' # Citizen card library
+#lib = '/usr/lib/pcsc/drivers/serial/libifdvpcd.so'
 
 pkcs11 = PyKCS11.PyKCS11Lib()
 pkcs11.load(lib)
 slots = pkcs11.getSlotList(tokenPresent=True)
-pins = ['1111', '2222', '3333']
+pins = ['1111', '1111', '1111']
 for i, slot in enumerate(slots):
-    
     print("slot: ", slot)
     all_attr = list(PyKCS11.CKA.keys())
 
@@ -52,29 +53,31 @@ for i, slot in enumerate(slots):
         print("Valid: ", check_certificate(cert))
         print("Issuer: ", cert.issuer)
         print("Subject: ", cert.subject)
-        """
+
+    if slot == 1:
+        """ Encrypting and decrypting """
+
+        # get first public and private keys
+
+        #private_key = session.findObjects([(PyKCS11.CKA_CLASS, PyKCS11.CKO_PRIVATE_KEY)])[0]
+        private_key = session.findObjects([(PyKCS11.CKA_CLASS, PyKCS11.CKO_PRIVATE_KEY),
+                (PyKCS11.CKA_LABEL, "CITIZEN SIGNATURE KEY")
+                ])[0]
+
+
+        data_to_sign = b'text to sign'
+
         mechanism = PyKCS11.Mechanism(PyKCS11.CKM_SHA1_RSA_PKCS, None)
+        signature = session.sign(private_key, data_to_sign, mechanism)
+        print(f"signature: {binascii.hexlify(bytearray(signature))}")
+        
+        public_key = session.findObjects([(PyKCS11.CKA_CLASS, PyKCS11.CKO_PUBLIC_KEY),
+                (PyKCS11.CKA_LABEL, "CITIZEN SIGNATURE CERTIFICATE")
+                ])[0]
+        result = session.verify(public_key, data_to_sign, signature, mechanism)
+        print("\nVerified: ", result)
+        
 
-        text = b'frango com batatas e arroz'
-
-        signature = bytes(session.sign(private_key, text, mechanism)) # type: ignore
-
-        signature = binascii.hexlify(signature)
-        print("signature", signature)
-        """
-        """
-        md = Hash(SHA1(), backend=db())
-        md.update(text)
-        digest = md.finalize()
-
-        public_key = cert.public_key()
-
-        public_key.verify(
-            signature,
-            digest,
-            PKCS1v15(),
-            SHA1()
-        )
-        """
-
-
+# logout
+session.logout()
+session.closeSession()
