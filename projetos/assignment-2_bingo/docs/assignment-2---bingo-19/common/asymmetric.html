@@ -1,0 +1,1266 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>assignment-2---bingo-19.common.asymmetric API documentation</title>
+<meta name="description" content="`asymmetric` module, focused on asymmetric encryption handling" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>assignment-2---bingo-19.common.asymmetric</code></h1>
+</header>
+<section id="section-intro">
+<p><code>asymmetric</code> module, focused on asymmetric encryption handling</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+    `asymmetric` module, focused on asymmetric encryption handling
+&#34;&#34;&#34;
+import base64
+import cryptography
+import PyKCS11
+from datetime import datetime as datetime
+from cryptography import x509
+from cryptography.hazmat.primitives.asymmetric import rsa , padding
+from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.asymmetric import padding
+from cryptography.hazmat.primitives.asymmetric.rsa import RSAPrivateKey, RSAPublicKey
+from cryptography.hazmat.backends import default_backend as db
+from cryptography.hazmat.primitives.asymmetric import utils
+from cryptography.exceptions import InvalidSignature
+from cryptography.exceptions import UnsupportedAlgorithm
+from cryptography.hazmat.primitives.asymmetric.padding import PKCS1v15
+from cryptography.hazmat.backends.openssl import backend
+from cryptography.hazmat.primitives.hashes import SHA1, Hash
+from cryptography import x509
+
+def save_key(fileName: str, key: rsa.RSAPrivateKeyWithSerialization | RSAPublicKey) -&gt; None:
+    &#34;&#34;&#34;
+    Write key into a file
+
+    Args:
+        - fileName: a string representing the file where the key will be saved. 
+        - key: An rsa.RSAPrivateKeyWithSerialization or RSAPublicKey object.
+    Returns:
+        Nothing (None)
+
+    Raises:
+        - TypeError: If any of the parameters don&#39;t match their expected instance
+    &#34;&#34;&#34;
+
+    if not isinstance(fileName , str):
+        raise TypeError(&#39;fileName argument must be string&#39;)
+
+
+    if isinstance(key, rsa.RSAPrivateKeyWithSerialization):
+        pem_bytes = key.private_bytes(
+            encoding = serialization.Encoding.PEM,
+            format = serialization.PrivateFormat.PKCS8,
+            encryption_algorithm = serialization.NoEncryption()
+        )
+    elif isinstance(key, RSAPublicKey):
+        pem_bytes = key.public_bytes(
+            encoding = serialization.Encoding.PEM,
+            format = serialization.PublicFormat.SubjectPublicKeyInfo
+        )
+    else:
+        raise TypeError(&#34;provided key is not an rsa.RSAPrivateKeyWithSerialization or RSAPublicKey object&#34;)
+    
+    with open(fileName, &#34;wb&#34;) as f:
+        f.write(pem_bytes)
+
+def public_key_to_string(key: rsa.RSAPublicKey) -&gt; str:
+    &#34;&#34;&#34;
+    Transform an rsa.RSAPublicKey object into a str object (format: utf-8)
+
+    Args:
+        - key: the key is an rsa.RSAPublicKey object.
+    Returns:
+        - string: String representation of the key (PEM format)
+
+    Raises:
+        - TypeError: If any of the parameters don&#39;t match their expected instance
+    &#34;&#34;&#34;
+
+    if not isinstance(key,rsa.RSAPublicKey):
+        raise TypeError(&#34;key should be a rsa.RSAPublicKey object&#34;)
+
+    sendKey : bytes = key.public_bytes(encoding = serialization.Encoding.PEM,
+            format = serialization.PublicFormat.SubjectPublicKeyInfo)
+    return sendKey.decode(&#34;utf-8&#34;)
+
+
+def public_key_from_string(key: str) -&gt; rsa.RSAPublicKey:
+        &#34;&#34;&#34;
+        Transform a string representation of an rsa.RSAPublicKey (PEM format) into a rsa.RSAPublicKey object.
+
+        Args:
+            - key: the key is the string representing the public key.
+        Returns:
+            rsa.RSAPublicKey object.
+
+        Raises:
+            - TypeError: If key argument is not a string
+            - ValueError: If the conversion failed
+        &#34;&#34;&#34;
+
+        if not isinstance(key,str):
+            raise TypeError(f&#34;key argument must be a string, received {type(key)}&#34;)
+
+        keyBytes : bytes = key.encode(&#39;utf-8&#39;)
+        try:
+            public_key = serialization.load_pem_public_key(keyBytes)
+        except TypeError as e:
+            raise ValueError(&#34;Invalid Format: &#34; + str(e))
+        except UnsupportedAlgorithm as e:
+            raise ValueError(&#34;Serialized key is not supported: &#34; + str(e))
+
+        if isinstance(public_key , rsa.RSAPublicKey):
+            return public_key
+        else:
+            raise ValueError(&#34;key should be a RSAPublicKey object&#34;)
+
+
+def generate_private_key(keySize: int) -&gt; rsa.RSAPrivateKeyWithSerialization:
+    &#34;&#34;&#34;
+    Generate a private key given her size.
+
+    Args:
+        - keySize: Size of the key produced.
+    Returns:
+        rsa.RSAPublicKey object.
+
+    Raises:
+        - TypeError: If keySize is not an integer
+        - ValueError: If key generation fails.
+    &#34;&#34;&#34;
+    if not isinstance(keySize , int):
+        raise TypeError(&#34;keySize argument should be of type &#39;int&#39;&#34;)
+
+    try:
+        private_key = rsa.generate_private_key(
+            public_exponent = 65537,
+            key_size = keySize
+        )
+    
+    except Exception as e:
+        raise ValueError(&#34;Error ocurred while generating key: &#34; + e.__str__())
+
+    return private_key
+
+def generate_public_key(private_key: rsa.RSAPrivateKeyWithSerialization) -&gt; rsa.RSAPublicKey:
+    &#34;&#34;&#34;
+    Generate a public key based on a private key
+    &#34;&#34;&#34;
+    return private_key.public_key()
+
+def encrypt_values(values: bytes, key: rsa.RSAPublicKey) -&gt; bytes:
+    &#34;&#34;&#34;
+    Encrypt a message given a public key
+
+    Args:
+        - values: The Values to be encrypted
+        - key: The rsa.RSAPublicKey to encrypt the values
+    Returns:
+        The encrypted values, in bytes
+
+    Raises:
+        TypeError: If the values are not in bytes format or if the key is not a rsa.RSAPublicKey object
+    &#34;&#34;&#34;
+    if not isinstance(values , bytes):
+        raise TypeError(&#34;values argument should be of type &#39;bytes&#39;&#34;)
+    if not isinstance(key, rsa.RSAPublicKey):
+        raise TypeError(&#34;key argument should be of type &#39;rsa.RSAPublicKey&#39;&#34;)
+    
+    return key.encrypt(
+        values,padding.OAEP(
+        mgf = padding.MGF1(algorithm=hashes.SHA256()),
+        algorithm=hashes.SHA256(),
+        label = None
+        ))
+
+def decrypt_values(values: bytes, key: rsa.RSAPrivateKeyWithSerialization) -&gt; bytes:
+    &#34;&#34;&#34;
+        Decrypt a message given a private key
+
+        Args:
+            - values: The values to be encrypted
+            - key: The rsa.RSAPrivateKeyWithSerialization to decrypt the values
+        Returns:
+            The decrypted values, in bytes
+        Raises:
+            TypeError: If the values are not in bytes format or if the key is not a rsa.RSAPrivateKeyWithSerialization object
+    &#34;&#34;&#34;
+    if not isinstance(values , bytes):
+        raise TypeError(&#34;values argument should be of type &#39;bytes&#39;&#34;)
+    if not isinstance(key, rsa.RSAPrivateKeyWithSerialization):
+        raise TypeError(&#34;key argument should be of type &#39;rsa.RSAPrivateKeyWithSerialization&#39;&#34;)
+
+    data: bytes = key.decrypt(values , padding.OAEP(
+        mgf = padding.MGF1(algorithm=hashes.SHA256()),
+        algorithm=hashes.SHA256(),
+        label = None
+    ))
+    
+    return data
+    
+
+def sign_message(message: bytes , key: rsa.RSAPrivateKeyWithSerialization) -&gt; bytes:
+    &#34;&#34;&#34;
+        Generate a signature of a message given a private key
+
+        Args:
+            - message: The message to be signed
+            - key: The rsa.RSAPrivateKeyWithSerialization to sign the message
+
+        Returns: 
+            The message encrypted, in bytes
+    &#34;&#34;&#34;
+    return key.sign(message , padding=padding.PKCS1v15(),
+        algorithm=hashes.SHA256())
+
+
+def verify_signature(message: bytes, signature: bytes, key: rsa.RSAPublicKey) -&gt; bool:
+    &#34;&#34;&#34;
+        Check if a signature is valid
+
+        Args:
+            - message: The original message
+            - signature: The signature of the original message
+            - key: the rsa.RSAPublicKey to verify the signature
+
+        Returns:
+            A boolean that is False if the signature is invalid, otherwise True
+
+    &#34;&#34;&#34;
+    try:
+        key.verify(
+            signature,
+            message,
+            padding=padding.PKCS1v15()
+            , algorithm=hashes.SHA256())
+    except InvalidSignature:
+        return False
+    return True
+
+
+def sign_message_cc(cardPin: str, dataToSign: bytes, label: str = &#39;CITIZEN AUTHENTICATION KEY&#39;) -&gt; bytes:
+    &#34;&#34;&#34;
+    Creates a digital signature using a Portuguese Citizen Card
+
+    Args:
+        - cardPin: Pin of the card given the associated slot
+        - dataToSign: The values to be signed
+        - label: Corresponding label of the key (optional)
+    Returns:
+        - The signature in a bytes object
+    Raises:
+        - ValueError: The connection to the card couldn&#39;t be established
+        - PyKCS11.PyKCS11Error: Errors deriving from the card signing
+    &#34;&#34;&#34;
+    session = create_connection(cardPin, 0)
+
+    privateKey = session.findObjects([(PyKCS11.CKA_CLASS, PyKCS11.CKO_PRIVATE_KEY), #type: ignore
+                (PyKCS11.CKA_LABEL, label) #type: ignore
+                ])[0]
+
+    mechanism = PyKCS11.Mechanism(PyKCS11.CKM_SHA1_RSA_PKCS, None) #type: ignore
+    signature = bytes(session.sign(privateKey, dataToSign, mechanism))
+    
+    close_connection(session)
+    return signature
+
+
+def verify_signature_cc(certificate: x509.Certificate, 
+        text: bytes, signature: bytes) -&gt; bool:
+    &#34;&#34;&#34;
+    Validates a digital signature from a Portuguese Citizen Card
+
+    Args:
+        - certificate: The certificate of the associated with the 
+            RSA key pair used to sign
+        - text: The original values
+        - signature: The received signature to compare
+
+    Returns:
+        - True if the signature is valid, False otherwise
+    &#34;&#34;&#34;
+
+    md = Hash(SHA1(), backend=db())
+    md.update(text)
+    digest = md.finalize()
+
+    publicKey = get_public_key(certificate)
+
+    try:
+        publicKey.verify(
+            signature,
+            digest,
+            PKCS1v15(),
+            SHA1()
+        )
+    except cryptography.exceptions.InvalidSignature: #type: ignore
+        return False
+
+    return True
+
+def get_public_key(certificate: x509.Certificate) -&gt; rsa.RSAPublicKey: 
+    &#34;&#34;&#34;
+    Get a public key from a certificate
+    Args:
+        - certificate: Certificate to retrieve the public key
+    Returns:
+        - The public key in rsa._RSAPublicKey format
+    &#34;&#34;&#34;
+
+    publicKey = certificate.public_key()
+    
+    return publicKey # type: ignore
+
+
+def export_certificate(cert: x509.Certificate) -&gt; str:
+    &#34;&#34;&#34;
+    Function to convert the certificate into str, in order fort
+        it to be sent
+    Args:
+        - cert: Certificate in x509.Certificate format
+    Returns:
+        - The certificate in string format
+    &#34;&#34;&#34;
+    certBytes : bytes = cert.public_bytes(encoding = serialization.Encoding.DER)
+    return base64.b64encode(certBytes).decode(&#34;utf-8&#34;)
+
+
+def import_certificate(certStr: str) -&gt; x509.Certificate:
+    &#34;&#34;&#34;
+    Function to transform the certificate in str format
+        to a usable format
+    Args:
+        - certStr: Certificate in string format
+    Returns:
+        - The certificate in x509.Certificate format
+    &#34;&#34;&#34;
+
+    certBytes : bytes = base64.b64decode(certStr)
+    try:
+        cert = x509.load_der_x509_certificate(certBytes, backend=db())
+    except TypeError as e:
+        raise ValueError(&#34;Invalid Format: &#34; + str(e))
+    except UnsupportedAlgorithm as e:
+        raise ValueError(&#34;Serialized key is not supported: &#34; + str(e))
+
+    return cert
+
+
+def get_certificate(cardPin: str, label: str = &#39;CITIZEN AUTHENTICATION CERTIFICATE&#39;) -&gt; x509.Certificate: 
+    &#34;&#34;&#34;
+    Returns a certificate for a Citizen Card key pair
+
+    Args:
+        - cardPin: Pin of the card given the associated slot
+        - label: Corresponding label of the certificate (optional)
+    Returns:
+        The certificate of the given
+    Raises:
+        - ValueError: The connection to the card couldn&#39;t be established
+        - PyKCS11.PyKCS11Error: Errors deriving from the card
+    &#34;&#34;&#34; 
+
+    session = create_connection(cardPin, 0)
+
+    cert_obj = session.findObjects([
+                (PyKCS11.CKA_CLASS, PyKCS11.CKO_CERTIFICATE), #type: ignore
+                (PyKCS11.CKA_LABEL, label) #type: ignore
+                ])[0]
+
+    cert_der_data = bytes(cert_obj.to_dict()[&#39;CKA_VALUE&#39;])
+    certificate = x509.load_der_x509_certificate(cert_der_data, backend=db())
+    
+    close_connection(session)
+    return certificate
+
+
+def validate_certificate(cert: x509.Certificate) -&gt; bool: 
+    &#34;&#34;&#34;
+    Function to validate a certificate
+    Args:
+        - cert: The certificate to be checked
+    Returns:
+        - True if the certificate is valid, False otherwise
+    &#34;&#34;&#34;
+    if datetime.now() &lt; cert.not_valid_before:
+        return False
+
+    if datetime.now() &gt; cert.not_valid_after:
+        return False
+    
+    # Maybe improve this
+    if cert.issuer == None:
+        return False
+
+    if cert.subject == None:
+        return False
+
+    return True
+
+
+def create_connection(cardPin: str, slot: int = 0) -&gt; PyKCS11.Session:
+    &#34;&#34;&#34;
+    Function to create a connection with the card
+    Args:
+        - cardPin: Pin of the card given the associated slot
+        - slot: Desired slot to establish the session (default=0)
+    Returns:
+        - Session of the slot
+    Raises:
+        - ValueError: The connection couldn&#39;t be established
+    &#34;&#34;&#34;
+
+    lib = &#39;/usr/lib/x86_64-linux-gnu/pkcs11/opensc-pkcs11.so&#39;
+    
+    try:
+        pkcs11 = PyKCS11.PyKCS11Lib()
+        pkcs11.load(lib)
+    except PyKCS11.PyKCS11Error:
+        raise ValueError(&#34;Error while loading the library&#34;)
+
+    try:
+        #slot = pkcs11.getSlotList(tokenPresent=True)[1]
+        session = pkcs11.openSession(slot)
+        session.login(cardPin)
+    except PyKCS11.PyKCS11Error:
+        raise ValueError(&#34;Couldn&#39;t open the session&#34;)
+
+    return session
+
+
+def close_connection(session: PyKCS11.Session) -&gt; None:
+    &#34;&#34;&#34;
+    Function to close a PyKCS11 session
+    Args:
+        - session: PyKCS11 session
+    &#34;&#34;&#34;
+    session.logout()
+    session.closeSession()
+        
+    </code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="assignment-2---bingo-19.common.asymmetric.close_connection"><code class="name flex">
+<span>def <span class="ident">close_connection</span></span>(<span>session: PyKCS11.Session) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function to close a PyKCS11 session</p>
+<h2 id="args">Args</h2>
+<ul>
+<li>session: PyKCS11 session</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close_connection(session: PyKCS11.Session) -&gt; None:
+    &#34;&#34;&#34;
+    Function to close a PyKCS11 session
+    Args:
+        - session: PyKCS11 session
+    &#34;&#34;&#34;
+    session.logout()
+    session.closeSession()</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.common.asymmetric.create_connection"><code class="name flex">
+<span>def <span class="ident">create_connection</span></span>(<span>cardPin: str, slot: int = 0) ‑> PyKCS11.Session</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function to create a connection with the card</p>
+<h2 id="args">Args</h2>
+<ul>
+<li>cardPin: Pin of the card given the associated slot</li>
+<li>slot: Desired slot to establish the session (default=0)</li>
+</ul>
+<h2 id="returns">Returns</h2>
+<ul>
+<li>Session of the slot</li>
+</ul>
+<h2 id="raises">Raises</h2>
+<ul>
+<li>ValueError: The connection couldn't be established</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def create_connection(cardPin: str, slot: int = 0) -&gt; PyKCS11.Session:
+    &#34;&#34;&#34;
+    Function to create a connection with the card
+    Args:
+        - cardPin: Pin of the card given the associated slot
+        - slot: Desired slot to establish the session (default=0)
+    Returns:
+        - Session of the slot
+    Raises:
+        - ValueError: The connection couldn&#39;t be established
+    &#34;&#34;&#34;
+
+    lib = &#39;/usr/lib/x86_64-linux-gnu/pkcs11/opensc-pkcs11.so&#39;
+    
+    try:
+        pkcs11 = PyKCS11.PyKCS11Lib()
+        pkcs11.load(lib)
+    except PyKCS11.PyKCS11Error:
+        raise ValueError(&#34;Error while loading the library&#34;)
+
+    try:
+        #slot = pkcs11.getSlotList(tokenPresent=True)[1]
+        session = pkcs11.openSession(slot)
+        session.login(cardPin)
+    except PyKCS11.PyKCS11Error:
+        raise ValueError(&#34;Couldn&#39;t open the session&#34;)
+
+    return session</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.common.asymmetric.decrypt_values"><code class="name flex">
+<span>def <span class="ident">decrypt_values</span></span>(<span>values: bytes, key: cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKey) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Decrypt a message given a private key</p>
+<h2 id="args">Args</h2>
+<ul>
+<li>values: The values to be encrypted</li>
+<li>key: The rsa.RSAPrivateKeyWithSerialization to decrypt the values</li>
+</ul>
+<h2 id="returns">Returns</h2>
+<p>The decrypted values, in bytes</p>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>TypeError</code></dt>
+<dd>If the values are not in bytes format or if the key is not a rsa.RSAPrivateKeyWithSerialization object</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def decrypt_values(values: bytes, key: rsa.RSAPrivateKeyWithSerialization) -&gt; bytes:
+    &#34;&#34;&#34;
+        Decrypt a message given a private key
+
+        Args:
+            - values: The values to be encrypted
+            - key: The rsa.RSAPrivateKeyWithSerialization to decrypt the values
+        Returns:
+            The decrypted values, in bytes
+        Raises:
+            TypeError: If the values are not in bytes format or if the key is not a rsa.RSAPrivateKeyWithSerialization object
+    &#34;&#34;&#34;
+    if not isinstance(values , bytes):
+        raise TypeError(&#34;values argument should be of type &#39;bytes&#39;&#34;)
+    if not isinstance(key, rsa.RSAPrivateKeyWithSerialization):
+        raise TypeError(&#34;key argument should be of type &#39;rsa.RSAPrivateKeyWithSerialization&#39;&#34;)
+
+    data: bytes = key.decrypt(values , padding.OAEP(
+        mgf = padding.MGF1(algorithm=hashes.SHA256()),
+        algorithm=hashes.SHA256(),
+        label = None
+    ))
+    
+    return data</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.common.asymmetric.encrypt_values"><code class="name flex">
+<span>def <span class="ident">encrypt_values</span></span>(<span>values: bytes, key: cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKey) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Encrypt a message given a public key</p>
+<h2 id="args">Args</h2>
+<ul>
+<li>values: The Values to be encrypted</li>
+<li>key: The rsa.RSAPublicKey to encrypt the values</li>
+</ul>
+<h2 id="returns">Returns</h2>
+<p>The encrypted values, in bytes</p>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>TypeError</code></dt>
+<dd>If the values are not in bytes format or if the key is not a rsa.RSAPublicKey object</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def encrypt_values(values: bytes, key: rsa.RSAPublicKey) -&gt; bytes:
+    &#34;&#34;&#34;
+    Encrypt a message given a public key
+
+    Args:
+        - values: The Values to be encrypted
+        - key: The rsa.RSAPublicKey to encrypt the values
+    Returns:
+        The encrypted values, in bytes
+
+    Raises:
+        TypeError: If the values are not in bytes format or if the key is not a rsa.RSAPublicKey object
+    &#34;&#34;&#34;
+    if not isinstance(values , bytes):
+        raise TypeError(&#34;values argument should be of type &#39;bytes&#39;&#34;)
+    if not isinstance(key, rsa.RSAPublicKey):
+        raise TypeError(&#34;key argument should be of type &#39;rsa.RSAPublicKey&#39;&#34;)
+    
+    return key.encrypt(
+        values,padding.OAEP(
+        mgf = padding.MGF1(algorithm=hashes.SHA256()),
+        algorithm=hashes.SHA256(),
+        label = None
+        ))</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.common.asymmetric.export_certificate"><code class="name flex">
+<span>def <span class="ident">export_certificate</span></span>(<span>cert: cryptography.x509.base.Certificate) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function to convert the certificate into str, in order fort
+it to be sent</p>
+<h2 id="args">Args</h2>
+<ul>
+<li>cert: Certificate in x509.Certificate format</li>
+</ul>
+<h2 id="returns">Returns</h2>
+<ul>
+<li>The certificate in string format</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def export_certificate(cert: x509.Certificate) -&gt; str:
+    &#34;&#34;&#34;
+    Function to convert the certificate into str, in order fort
+        it to be sent
+    Args:
+        - cert: Certificate in x509.Certificate format
+    Returns:
+        - The certificate in string format
+    &#34;&#34;&#34;
+    certBytes : bytes = cert.public_bytes(encoding = serialization.Encoding.DER)
+    return base64.b64encode(certBytes).decode(&#34;utf-8&#34;)</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.common.asymmetric.generate_private_key"><code class="name flex">
+<span>def <span class="ident">generate_private_key</span></span>(<span>keySize: int) ‑> cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKey</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generate a private key given her size.</p>
+<h2 id="args">Args</h2>
+<ul>
+<li>keySize: Size of the key produced.</li>
+</ul>
+<h2 id="returns">Returns</h2>
+<p>rsa.RSAPublicKey object.</p>
+<h2 id="raises">Raises</h2>
+<ul>
+<li>TypeError: If keySize is not an integer</li>
+<li>ValueError: If key generation fails.</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate_private_key(keySize: int) -&gt; rsa.RSAPrivateKeyWithSerialization:
+    &#34;&#34;&#34;
+    Generate a private key given her size.
+
+    Args:
+        - keySize: Size of the key produced.
+    Returns:
+        rsa.RSAPublicKey object.
+
+    Raises:
+        - TypeError: If keySize is not an integer
+        - ValueError: If key generation fails.
+    &#34;&#34;&#34;
+    if not isinstance(keySize , int):
+        raise TypeError(&#34;keySize argument should be of type &#39;int&#39;&#34;)
+
+    try:
+        private_key = rsa.generate_private_key(
+            public_exponent = 65537,
+            key_size = keySize
+        )
+    
+    except Exception as e:
+        raise ValueError(&#34;Error ocurred while generating key: &#34; + e.__str__())
+
+    return private_key</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.common.asymmetric.generate_public_key"><code class="name flex">
+<span>def <span class="ident">generate_public_key</span></span>(<span>private_key: cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKey) ‑> cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKey</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generate a public key based on a private key</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate_public_key(private_key: rsa.RSAPrivateKeyWithSerialization) -&gt; rsa.RSAPublicKey:
+    &#34;&#34;&#34;
+    Generate a public key based on a private key
+    &#34;&#34;&#34;
+    return private_key.public_key()</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.common.asymmetric.get_certificate"><code class="name flex">
+<span>def <span class="ident">get_certificate</span></span>(<span>cardPin: str, label: str = 'CITIZEN AUTHENTICATION CERTIFICATE') ‑> cryptography.x509.base.Certificate</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a certificate for a Citizen Card key pair</p>
+<h2 id="args">Args</h2>
+<ul>
+<li>cardPin: Pin of the card given the associated slot</li>
+<li>label: Corresponding label of the certificate (optional)</li>
+</ul>
+<h2 id="returns">Returns</h2>
+<p>The certificate of the given</p>
+<h2 id="raises">Raises</h2>
+<ul>
+<li>ValueError: The connection to the card couldn't be established</li>
+<li>PyKCS11.PyKCS11Error: Errors deriving from the card</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_certificate(cardPin: str, label: str = &#39;CITIZEN AUTHENTICATION CERTIFICATE&#39;) -&gt; x509.Certificate: 
+    &#34;&#34;&#34;
+    Returns a certificate for a Citizen Card key pair
+
+    Args:
+        - cardPin: Pin of the card given the associated slot
+        - label: Corresponding label of the certificate (optional)
+    Returns:
+        The certificate of the given
+    Raises:
+        - ValueError: The connection to the card couldn&#39;t be established
+        - PyKCS11.PyKCS11Error: Errors deriving from the card
+    &#34;&#34;&#34; 
+
+    session = create_connection(cardPin, 0)
+
+    cert_obj = session.findObjects([
+                (PyKCS11.CKA_CLASS, PyKCS11.CKO_CERTIFICATE), #type: ignore
+                (PyKCS11.CKA_LABEL, label) #type: ignore
+                ])[0]
+
+    cert_der_data = bytes(cert_obj.to_dict()[&#39;CKA_VALUE&#39;])
+    certificate = x509.load_der_x509_certificate(cert_der_data, backend=db())
+    
+    close_connection(session)
+    return certificate</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.common.asymmetric.get_public_key"><code class="name flex">
+<span>def <span class="ident">get_public_key</span></span>(<span>certificate: cryptography.x509.base.Certificate) ‑> cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKey</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get a public key from a certificate</p>
+<h2 id="args">Args</h2>
+<ul>
+<li>certificate: Certificate to retrieve the public key</li>
+</ul>
+<h2 id="returns">Returns</h2>
+<ul>
+<li>The public key in rsa._RSAPublicKey format</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_public_key(certificate: x509.Certificate) -&gt; rsa.RSAPublicKey: 
+    &#34;&#34;&#34;
+    Get a public key from a certificate
+    Args:
+        - certificate: Certificate to retrieve the public key
+    Returns:
+        - The public key in rsa._RSAPublicKey format
+    &#34;&#34;&#34;
+
+    publicKey = certificate.public_key()
+    
+    return publicKey # type: ignore</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.common.asymmetric.import_certificate"><code class="name flex">
+<span>def <span class="ident">import_certificate</span></span>(<span>certStr: str) ‑> cryptography.x509.base.Certificate</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function to transform the certificate in str format
+to a usable format</p>
+<h2 id="args">Args</h2>
+<ul>
+<li>certStr: Certificate in string format</li>
+</ul>
+<h2 id="returns">Returns</h2>
+<ul>
+<li>The certificate in x509.Certificate format</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def import_certificate(certStr: str) -&gt; x509.Certificate:
+    &#34;&#34;&#34;
+    Function to transform the certificate in str format
+        to a usable format
+    Args:
+        - certStr: Certificate in string format
+    Returns:
+        - The certificate in x509.Certificate format
+    &#34;&#34;&#34;
+
+    certBytes : bytes = base64.b64decode(certStr)
+    try:
+        cert = x509.load_der_x509_certificate(certBytes, backend=db())
+    except TypeError as e:
+        raise ValueError(&#34;Invalid Format: &#34; + str(e))
+    except UnsupportedAlgorithm as e:
+        raise ValueError(&#34;Serialized key is not supported: &#34; + str(e))
+
+    return cert</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.common.asymmetric.public_key_from_string"><code class="name flex">
+<span>def <span class="ident">public_key_from_string</span></span>(<span>key: str) ‑> cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKey</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Transform a string representation of an rsa.RSAPublicKey (PEM format) into a rsa.RSAPublicKey object.</p>
+<h2 id="args">Args</h2>
+<ul>
+<li>key: the key is the string representing the public key.</li>
+</ul>
+<h2 id="returns">Returns</h2>
+<p>rsa.RSAPublicKey object.</p>
+<h2 id="raises">Raises</h2>
+<ul>
+<li>TypeError: If key argument is not a string</li>
+<li>ValueError: If the conversion failed</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def public_key_from_string(key: str) -&gt; rsa.RSAPublicKey:
+        &#34;&#34;&#34;
+        Transform a string representation of an rsa.RSAPublicKey (PEM format) into a rsa.RSAPublicKey object.
+
+        Args:
+            - key: the key is the string representing the public key.
+        Returns:
+            rsa.RSAPublicKey object.
+
+        Raises:
+            - TypeError: If key argument is not a string
+            - ValueError: If the conversion failed
+        &#34;&#34;&#34;
+
+        if not isinstance(key,str):
+            raise TypeError(f&#34;key argument must be a string, received {type(key)}&#34;)
+
+        keyBytes : bytes = key.encode(&#39;utf-8&#39;)
+        try:
+            public_key = serialization.load_pem_public_key(keyBytes)
+        except TypeError as e:
+            raise ValueError(&#34;Invalid Format: &#34; + str(e))
+        except UnsupportedAlgorithm as e:
+            raise ValueError(&#34;Serialized key is not supported: &#34; + str(e))
+
+        if isinstance(public_key , rsa.RSAPublicKey):
+            return public_key
+        else:
+            raise ValueError(&#34;key should be a RSAPublicKey object&#34;)</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.common.asymmetric.public_key_to_string"><code class="name flex">
+<span>def <span class="ident">public_key_to_string</span></span>(<span>key: cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKey) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Transform an rsa.RSAPublicKey object into a str object (format: utf-8)</p>
+<h2 id="args">Args</h2>
+<ul>
+<li>key: the key is an rsa.RSAPublicKey object.</li>
+</ul>
+<h2 id="returns">Returns</h2>
+<ul>
+<li>string: String representation of the key (PEM format)</li>
+</ul>
+<h2 id="raises">Raises</h2>
+<ul>
+<li>TypeError: If any of the parameters don't match their expected instance</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def public_key_to_string(key: rsa.RSAPublicKey) -&gt; str:
+    &#34;&#34;&#34;
+    Transform an rsa.RSAPublicKey object into a str object (format: utf-8)
+
+    Args:
+        - key: the key is an rsa.RSAPublicKey object.
+    Returns:
+        - string: String representation of the key (PEM format)
+
+    Raises:
+        - TypeError: If any of the parameters don&#39;t match their expected instance
+    &#34;&#34;&#34;
+
+    if not isinstance(key,rsa.RSAPublicKey):
+        raise TypeError(&#34;key should be a rsa.RSAPublicKey object&#34;)
+
+    sendKey : bytes = key.public_bytes(encoding = serialization.Encoding.PEM,
+            format = serialization.PublicFormat.SubjectPublicKeyInfo)
+    return sendKey.decode(&#34;utf-8&#34;)</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.common.asymmetric.save_key"><code class="name flex">
+<span>def <span class="ident">save_key</span></span>(<span>fileName: str, key: cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKey | cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKey) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Write key into a file</p>
+<h2 id="args">Args</h2>
+<ul>
+<li>fileName: a string representing the file where the key will be saved. </li>
+<li>key: An rsa.RSAPrivateKeyWithSerialization or RSAPublicKey object.</li>
+</ul>
+<h2 id="returns">Returns</h2>
+<p>Nothing (None)</p>
+<h2 id="raises">Raises</h2>
+<ul>
+<li>TypeError: If any of the parameters don't match their expected instance</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_key(fileName: str, key: rsa.RSAPrivateKeyWithSerialization | RSAPublicKey) -&gt; None:
+    &#34;&#34;&#34;
+    Write key into a file
+
+    Args:
+        - fileName: a string representing the file where the key will be saved. 
+        - key: An rsa.RSAPrivateKeyWithSerialization or RSAPublicKey object.
+    Returns:
+        Nothing (None)
+
+    Raises:
+        - TypeError: If any of the parameters don&#39;t match their expected instance
+    &#34;&#34;&#34;
+
+    if not isinstance(fileName , str):
+        raise TypeError(&#39;fileName argument must be string&#39;)
+
+
+    if isinstance(key, rsa.RSAPrivateKeyWithSerialization):
+        pem_bytes = key.private_bytes(
+            encoding = serialization.Encoding.PEM,
+            format = serialization.PrivateFormat.PKCS8,
+            encryption_algorithm = serialization.NoEncryption()
+        )
+    elif isinstance(key, RSAPublicKey):
+        pem_bytes = key.public_bytes(
+            encoding = serialization.Encoding.PEM,
+            format = serialization.PublicFormat.SubjectPublicKeyInfo
+        )
+    else:
+        raise TypeError(&#34;provided key is not an rsa.RSAPrivateKeyWithSerialization or RSAPublicKey object&#34;)
+    
+    with open(fileName, &#34;wb&#34;) as f:
+        f.write(pem_bytes)</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.common.asymmetric.sign_message"><code class="name flex">
+<span>def <span class="ident">sign_message</span></span>(<span>message: bytes, key: cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKey) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generate a signature of a message given a private key</p>
+<h2 id="args">Args</h2>
+<ul>
+<li>message: The message to be signed</li>
+<li>key: The rsa.RSAPrivateKeyWithSerialization to sign the message
+Returns:
+The message encrypted, in bytes</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sign_message(message: bytes , key: rsa.RSAPrivateKeyWithSerialization) -&gt; bytes:
+    &#34;&#34;&#34;
+        Generate a signature of a message given a private key
+
+        Args:
+            - message: The message to be signed
+            - key: The rsa.RSAPrivateKeyWithSerialization to sign the message
+
+        Returns: 
+            The message encrypted, in bytes
+    &#34;&#34;&#34;
+    return key.sign(message , padding=padding.PKCS1v15(),
+        algorithm=hashes.SHA256())</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.common.asymmetric.sign_message_cc"><code class="name flex">
+<span>def <span class="ident">sign_message_cc</span></span>(<span>cardPin: str, dataToSign: bytes, label: str = 'CITIZEN AUTHENTICATION KEY') ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a digital signature using a Portuguese Citizen Card</p>
+<h2 id="args">Args</h2>
+<ul>
+<li>cardPin: Pin of the card given the associated slot</li>
+<li>dataToSign: The values to be signed</li>
+<li>label: Corresponding label of the key (optional)</li>
+</ul>
+<h2 id="returns">Returns</h2>
+<ul>
+<li>The signature in a bytes object</li>
+</ul>
+<h2 id="raises">Raises</h2>
+<ul>
+<li>ValueError: The connection to the card couldn't be established</li>
+<li>PyKCS11.PyKCS11Error: Errors deriving from the card signing</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sign_message_cc(cardPin: str, dataToSign: bytes, label: str = &#39;CITIZEN AUTHENTICATION KEY&#39;) -&gt; bytes:
+    &#34;&#34;&#34;
+    Creates a digital signature using a Portuguese Citizen Card
+
+    Args:
+        - cardPin: Pin of the card given the associated slot
+        - dataToSign: The values to be signed
+        - label: Corresponding label of the key (optional)
+    Returns:
+        - The signature in a bytes object
+    Raises:
+        - ValueError: The connection to the card couldn&#39;t be established
+        - PyKCS11.PyKCS11Error: Errors deriving from the card signing
+    &#34;&#34;&#34;
+    session = create_connection(cardPin, 0)
+
+    privateKey = session.findObjects([(PyKCS11.CKA_CLASS, PyKCS11.CKO_PRIVATE_KEY), #type: ignore
+                (PyKCS11.CKA_LABEL, label) #type: ignore
+                ])[0]
+
+    mechanism = PyKCS11.Mechanism(PyKCS11.CKM_SHA1_RSA_PKCS, None) #type: ignore
+    signature = bytes(session.sign(privateKey, dataToSign, mechanism))
+    
+    close_connection(session)
+    return signature</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.common.asymmetric.validate_certificate"><code class="name flex">
+<span>def <span class="ident">validate_certificate</span></span>(<span>cert: cryptography.x509.base.Certificate) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function to validate a certificate</p>
+<h2 id="args">Args</h2>
+<ul>
+<li>cert: The certificate to be checked</li>
+</ul>
+<h2 id="returns">Returns</h2>
+<ul>
+<li>True if the certificate is valid, False otherwise</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validate_certificate(cert: x509.Certificate) -&gt; bool: 
+    &#34;&#34;&#34;
+    Function to validate a certificate
+    Args:
+        - cert: The certificate to be checked
+    Returns:
+        - True if the certificate is valid, False otherwise
+    &#34;&#34;&#34;
+    if datetime.now() &lt; cert.not_valid_before:
+        return False
+
+    if datetime.now() &gt; cert.not_valid_after:
+        return False
+    
+    # Maybe improve this
+    if cert.issuer == None:
+        return False
+
+    if cert.subject == None:
+        return False
+
+    return True</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.common.asymmetric.verify_signature"><code class="name flex">
+<span>def <span class="ident">verify_signature</span></span>(<span>message: bytes, signature: bytes, key: cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKey) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check if a signature is valid</p>
+<h2 id="args">Args</h2>
+<ul>
+<li>message: The original message</li>
+<li>signature: The signature of the original message</li>
+<li>key: the rsa.RSAPublicKey to verify the signature</li>
+</ul>
+<h2 id="returns">Returns</h2>
+<p>A boolean that is False if the signature is invalid, otherwise True</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def verify_signature(message: bytes, signature: bytes, key: rsa.RSAPublicKey) -&gt; bool:
+    &#34;&#34;&#34;
+        Check if a signature is valid
+
+        Args:
+            - message: The original message
+            - signature: The signature of the original message
+            - key: the rsa.RSAPublicKey to verify the signature
+
+        Returns:
+            A boolean that is False if the signature is invalid, otherwise True
+
+    &#34;&#34;&#34;
+    try:
+        key.verify(
+            signature,
+            message,
+            padding=padding.PKCS1v15()
+            , algorithm=hashes.SHA256())
+    except InvalidSignature:
+        return False
+    return True</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.common.asymmetric.verify_signature_cc"><code class="name flex">
+<span>def <span class="ident">verify_signature_cc</span></span>(<span>certificate: cryptography.x509.base.Certificate, text: bytes, signature: bytes) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Validates a digital signature from a Portuguese Citizen Card</p>
+<h2 id="args">Args</h2>
+<ul>
+<li>certificate: The certificate of the associated with the
+RSA key pair used to sign</li>
+<li>text: The original values</li>
+<li>signature: The received signature to compare</li>
+</ul>
+<h2 id="returns">Returns</h2>
+<ul>
+<li>True if the signature is valid, False otherwise</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def verify_signature_cc(certificate: x509.Certificate, 
+        text: bytes, signature: bytes) -&gt; bool:
+    &#34;&#34;&#34;
+    Validates a digital signature from a Portuguese Citizen Card
+
+    Args:
+        - certificate: The certificate of the associated with the 
+            RSA key pair used to sign
+        - text: The original values
+        - signature: The received signature to compare
+
+    Returns:
+        - True if the signature is valid, False otherwise
+    &#34;&#34;&#34;
+
+    md = Hash(SHA1(), backend=db())
+    md.update(text)
+    digest = md.finalize()
+
+    publicKey = get_public_key(certificate)
+
+    try:
+        publicKey.verify(
+            signature,
+            digest,
+            PKCS1v15(),
+            SHA1()
+        )
+    except cryptography.exceptions.InvalidSignature: #type: ignore
+        return False
+
+    return True</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="assignment-2---bingo-19.common" href="index.html">assignment-2---bingo-19.common</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="assignment-2---bingo-19.common.asymmetric.close_connection" href="#assignment-2---bingo-19.common.asymmetric.close_connection">close_connection</a></code></li>
+<li><code><a title="assignment-2---bingo-19.common.asymmetric.create_connection" href="#assignment-2---bingo-19.common.asymmetric.create_connection">create_connection</a></code></li>
+<li><code><a title="assignment-2---bingo-19.common.asymmetric.decrypt_values" href="#assignment-2---bingo-19.common.asymmetric.decrypt_values">decrypt_values</a></code></li>
+<li><code><a title="assignment-2---bingo-19.common.asymmetric.encrypt_values" href="#assignment-2---bingo-19.common.asymmetric.encrypt_values">encrypt_values</a></code></li>
+<li><code><a title="assignment-2---bingo-19.common.asymmetric.export_certificate" href="#assignment-2---bingo-19.common.asymmetric.export_certificate">export_certificate</a></code></li>
+<li><code><a title="assignment-2---bingo-19.common.asymmetric.generate_private_key" href="#assignment-2---bingo-19.common.asymmetric.generate_private_key">generate_private_key</a></code></li>
+<li><code><a title="assignment-2---bingo-19.common.asymmetric.generate_public_key" href="#assignment-2---bingo-19.common.asymmetric.generate_public_key">generate_public_key</a></code></li>
+<li><code><a title="assignment-2---bingo-19.common.asymmetric.get_certificate" href="#assignment-2---bingo-19.common.asymmetric.get_certificate">get_certificate</a></code></li>
+<li><code><a title="assignment-2---bingo-19.common.asymmetric.get_public_key" href="#assignment-2---bingo-19.common.asymmetric.get_public_key">get_public_key</a></code></li>
+<li><code><a title="assignment-2---bingo-19.common.asymmetric.import_certificate" href="#assignment-2---bingo-19.common.asymmetric.import_certificate">import_certificate</a></code></li>
+<li><code><a title="assignment-2---bingo-19.common.asymmetric.public_key_from_string" href="#assignment-2---bingo-19.common.asymmetric.public_key_from_string">public_key_from_string</a></code></li>
+<li><code><a title="assignment-2---bingo-19.common.asymmetric.public_key_to_string" href="#assignment-2---bingo-19.common.asymmetric.public_key_to_string">public_key_to_string</a></code></li>
+<li><code><a title="assignment-2---bingo-19.common.asymmetric.save_key" href="#assignment-2---bingo-19.common.asymmetric.save_key">save_key</a></code></li>
+<li><code><a title="assignment-2---bingo-19.common.asymmetric.sign_message" href="#assignment-2---bingo-19.common.asymmetric.sign_message">sign_message</a></code></li>
+<li><code><a title="assignment-2---bingo-19.common.asymmetric.sign_message_cc" href="#assignment-2---bingo-19.common.asymmetric.sign_message_cc">sign_message_cc</a></code></li>
+<li><code><a title="assignment-2---bingo-19.common.asymmetric.validate_certificate" href="#assignment-2---bingo-19.common.asymmetric.validate_certificate">validate_certificate</a></code></li>
+<li><code><a title="assignment-2---bingo-19.common.asymmetric.verify_signature" href="#assignment-2---bingo-19.common.asymmetric.verify_signature">verify_signature</a></code></li>
+<li><code><a title="assignment-2---bingo-19.common.asymmetric.verify_signature_cc" href="#assignment-2---bingo-19.common.asymmetric.verify_signature_cc">verify_signature_cc</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

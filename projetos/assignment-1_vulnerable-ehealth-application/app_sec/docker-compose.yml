@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  php-env-secure:
+    depends_on:
+      - mysql_db
+    build: .
+    volumes:
+      - ./certs/cert.pem:/etc/ssl/certs/cert.pem
+      - ./certs/cert-key.pem:/etc/ssl/private/cert-key.pem
+      - ./src:/var/www/html:rw
+    ports:
+      - 9008:80
+      - 9443:443
+
+  mysql_db:
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: easyPass123
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    restart: always
+    ports:
+      - 9009:80
+    environment:
+      - PMA_ARBITRARY=1

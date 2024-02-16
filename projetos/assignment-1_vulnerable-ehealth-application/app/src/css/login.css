@@ -1,0 +1,51 @@
+html {
+    height: 100%;
+    overflow-y: hidden;
+}
+body {
+    background-image: linear-gradient(to right, rgba(86, 188, 164, 0.55), rgba(86, 188, 164, 0.55)), url(../images/healthcare.jpg);
+    background-repeat: no-repeat;
+    font-family: Tahoma, sans-serif;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    overflow-y: hidden;
+    height: 100%;
+}
+
+.card-positioning{
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    height: 50vh;
+}
+
+.form-display{
+    background-color: rgba(10, 10, 10, 0.6); 
+    min-height: 200px; 
+    min-width: 200px;
+    width: 280px;
+    height: 280px;
+}
+
+.dot{
+    display: inline-block;
+    background-color: #4bc5b8;
+    border-radius: 100%;
+    width: 15px;
+    height: 15px;
+}
+
+.buttons{
+    background-color: #35806e; 
+    color: white;
+}
+
+#error {
+    display: none;
+} 
+
+.error-display {
+    width: 350px;
+    height: 60px;
+}

@@ -1,0 +1,1164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>assignment-2---bingo-19.playing_area.call API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>assignment-2---bingo-19.playing_area.call</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#handle playing area calls
+import asyncio
+import sys
+import os
+from typing import Callable, Optional, Any, Type, Union
+import threading
+import uuid
+
+# Check https://www.geeksforgeeks.org/python-import-from-parent-directory/
+# For better information
+# getting the name of the directory
+# where this file is present.
+current = os.path.dirname(os.path.realpath(__file__))
+ 
+# Getting the parent directory name
+# where the current directory is present.
+parent = os.path.dirname(current)
+ 
+# adding the parent directory to
+# the sys.path.
+sys.path.append(parent)
+
+from common.communication import *
+from common.state import State
+from common.entity import Entity, INVALID_SEQ_NUMBER, find_seq_number_by_stream , Bans , Banned_Reason
+from cryptography.hazmat.primitives.asymmetric import rsa# type: ignore
+import common.asymmetric as asymmetric
+from common.logger import Logger
+from typing import NamedTuple
+import termcolor
+from random import random
+
+class AuthInfo(NamedTuple):
+    &#34;&#34;&#34;
+    Holds information used in authentication process
+    &#34;&#34;&#34;
+    method: str     # &#39;certificate&#39; or &#39;pubkey&#39;
+    auth_data: str  # associated data (public key or certificate)
+    nonce: str      # associated nonce
+
+class CallAction:
+    &#34;&#34;&#34;
+    This class is used to handle requests redirection
+    &#34;&#34;&#34;
+    def __init__(self , broadcast_rule: str , awnser: dict , change_state : Optional[str] = None , reawnser: Optional[dict] = None):
+        &#34;&#34;&#34;
+        @param broadcast_rule: Broadcast rule defined (view README.md for more detail)
+        @param awnser: Awnser forwarded according to broadcast rule
+        @param (optional) change_state: Used if the action produces a state transition
+        @param (optional) reawnser: optional &#39;dict&#39; sent to everyone except sender (useful when awnser and reawnser are different)
+        &#34;&#34;&#34;
+        if broadcast_rule not in [&#39;none&#39; , &#39;sender&#39; , &#39;all_except_sender&#39; , &#39;all&#39;]:
+            raise ValueError(f&#34;Invalid broadcast rule ({broadcast_rule})&#34;)
+        self.broadcast_rule = broadcast_rule
+        self.awnser = awnser
+        self.change_state = change_state
+        self.reawnser = reawnser
+    
+
+    __color_counter: int = 0
+    __info_colors: list[str] = [&#34;blue&#34;] #add more colors if necessary
+
+    &#34;&#34;&#34;
+    Returns a brief string representation of the call action
+    &#34;&#34;&#34;
+    def brief_as_str(self) -&gt; str:
+        brief: str = CallAction.__brief_dict_as_str(self.awnser , self.broadcast_rule)
+        if self.reawnser != None:
+            brief += &#34;\n&#34; + CallAction.__brief_dict_as_str(self.reawnser , &#39;all_except_sender&#39;) + &#34;\n&#34;
+        return brief
+    
+    @staticmethod
+    def __brief_dict_as_str(dict: dict , broascast_rule: str) -&gt; str:
+        message_color: str = CallAction.__info_colors[CallAction.__color_counter]
+        CallAction.__color_counter = (CallAction.__color_counter + 1) % len(CallAction.__info_colors) 
+
+        brief: str = &#34;Sending message &#34;
+        if &#39;code&#39; in dict and dict[&#39;code&#39;] != 0:
+            message_color = &#34;red&#34;
+            if &#39;info&#39; in dict:
+                brief += &#34;with the following error &#34; + dict[&#39;info&#39;]
+        else:
+            if &#39;type&#39; in dict:
+                brief += &#34;of type &#34; + dict[&#39;type&#39;]
+
+        brief += &#34; to &#34; + broascast_rule
+        return termcolor.colored(brief , message_color)
+
+
+
+class Call:
+    def __init__(self , state : State, players : dict[int,Entity] , logger : Logger , pubkey : str, bans: Bans , max_players: int , N: int):
+
+        self.__calls : dict[str , Callable[[dict,asyncio.StreamWriter,asyncio.StreamReader],CallAction]]  = {
+        &#34;get_nonce&#34;         : self.__getNonce,
+        &#34;login&#34;             : self.__handleLogin,
+        &#34;get_users_list&#34;    : self.__handleGetUsersList,
+        &#34;get_audit_log&#34;     : self.__getAuditLog,
+        &#34;start_game&#34;        : self.__startGame,
+        &#34;submit_card&#34;       : self.__submitCard,
+        &#34;submit_deck&#34;       : self.__submitDeck,
+        &#34;start_send_keys&#34;   : self.__startSendKeys,
+        &#34;send_keys&#34;         : self.__sendKeys,
+        &#34;ban_player&#34;        : self.banPlayer,
+        &#34;share_winner&#34;      : self.__shareWinner,
+        &#34;abort_game&#34;        : self.__abortGame,
+        }
+
+        self.state = state
+        self.players = players
+        self.logger = logger
+        self.pubkey = pubkey
+        self.bans = bans
+
+        self.MAX_PLAYERS = max_players
+        self.N = N
+
+        self.received_cards: dict[int,list[bytes]] = {}
+        self.received_decks: list[list[bytes]] = []
+        self.received_keys: dict[int,bytes] = {}
+        self.received_outcomes: dict[int, list[int]] = {}
+
+        # associate stream reader to a tuple containing pubkey and his associated nonce
+        self.nonce_cache : dict[asyncio.streams.StreamReader,AuthInfo] = {}
+        
+    def reload(self):
+        self.received_cards = {}
+        self.received_decks = []
+        self.received_keys = {}
+        self.received_outcomes = {}
+        self.players = {}
+        self.nonce_cache = {}
+        self.bans = Bans()
+
+
+
+
+    def removeClient(self, seq_number: int , allow_remove: bool = True) -&gt; CallAction | None:
+        if seq_number not in self.players.keys():
+            raise ValueError(&#34;Invalid seq_number provided&#34;)
+        else:
+            cstate: str = self.state.getState()
+            self.players[seq_number].writer.close()
+            del self.players[seq_number]
+            if seq_number == 0:
+                if allow_remove:
+                    for player in self.players.values():
+                        player.writer.close()
+                return None
+            else:
+                if cstate == &#34;WAITING&#34;:
+                    for i in range(seq_number, len(self.players)):
+                        self.players[i] = self.players[i+1]
+                        del self.players[i+1]
+                    return CallAction(&#34;all&#34;,{&#39;type&#39;:&#39;disconnect&#39;,&#39;seq&#39;:seq_number})
+                elif cstate != &#34;IDLE&#34;:
+                    self.bans.add_ban(seq_number , Banned_Reason.DISCONNECTED)
+                    return CallAction(&#34;all&#34;,{&#39;type&#39;:&#39;ban_player&#39;,&#39;info&#39;:&#34;DISCONNECTED&#34;,&#39;seq&#39;:seq_number})
+
+
+
+    def __getNonce(self, call : dict , writer: asyncio.StreamWriter , reader: asyncio.StreamReader) -&gt; CallAction:
+        has_cert: bool = &#39;certificate&#39; in call
+        has_pubkey: bool = &#39;pubkey&#39; in call
+
+        if has_cert and has_pubkey:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 1 , &#39;type&#39; : &#39;get_nonce&#39; , &#39;info&#39; : &#39;Received both &#34;certificate&#34; and &#34;pubkey&#34; fields, only one of them is expected&#39;})
+
+        if not has_cert and not has_pubkey:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 1 , &#39;type&#39; : &#39;get_nonce&#39;, &#39;info&#39; : &#39;Expected &#34;certificate&#34; or &#34;pubkey&#34; field&#39;})
+
+        if self.state.getState() not in [&#39;IDLE&#39; , &#39;WAITING&#39;]:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 4 ,&#39;type&#39; : &#39;get_nonce&#39; , &#39;info&#39; : &#39;This call only works in &#34;IDLE&#34; or &#34;WAITING&#34; states&#39;})
+
+        if has_cert and not asymmetric.validate_certificate(asymmetric.import_certificate(call[&#39;certificate&#39;])):
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 2 , &#39;type&#39; : &#39;get_nonce&#39; , &#39;info&#39; : &#39;Invalid certificate&#39;})
+
+        auth_method: str = &#39;certificate&#39; if has_cert else &#39;pubkey&#39;
+        auth_data:   str = call[&#39;certificate&#39;] if has_cert else call[&#39;pubkey&#39;]
+        auth_nonce:  str = uuid.uuid4().hex
+
+        self.nonce_cache[reader] = AuthInfo(auth_method, auth_data, auth_nonce)
+        
+        return CallAction(&#39;sender&#39; , {&#39;code&#39; : 0 , &#39;nonce&#39; : auth_nonce , &#39;type&#39; : &#39;get_nonce&#39;})
+
+
+
+    def validCallType(self,type : str) -&gt; bool:
+        return type in self.__calls.keys()
+            
+
+    def handleCall(self, call : dict , writer: asyncio.StreamWriter , reader: asyncio.StreamReader) -&gt; CallAction:
+        return self.__calls[call[&#34;type&#34;]](call,writer,reader)
+
+    def __checkPAfields(self, call : dict , expected_fields : list[str]) -&gt; None:
+        &#34;&#34;&#34;
+        Raise ValueError iff expected_fields argument is not a subset of call.keys()
+        &#34;&#34;&#34;
+        for f in expected_fields:
+            if f not in call:
+                raise ValueError(f&#34;Missing argument {(f)}&#34;)
+
+    def __handleLogin(self,call: dict , writer: asyncio.StreamWriter , reader: asyncio.StreamReader) -&gt; CallAction:
+        if reader not in self.nonce_cache:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 2 , &#39;type&#39; : &#39;login&#39; , &#39;info&#39; : &#39;You must request nonce before login&#39;})
+
+        using_cc: bool = self.nonce_cache[reader].method == &#39;certificate&#39;
+
+        try:
+            if using_cc:
+                self.__checkPAfields(call , [&#39;type&#39; , &#39;role&#39; , &#39;nick&#39; , &#39;nonce&#39; , &#39;pubkey&#39;])
+            else:
+                self.__checkPAfields(call , [&#39;type&#39; , &#39;role&#39; , &#39;nick&#39; , &#39;nonce&#39;])
+
+        except ValueError as e:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 1 , &#39;info&#39; : str(e)})
+
+        if self.nonce_cache[reader].nonce != call[&#39;nonce&#39;]:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 2 , &#39;type&#39; : &#39;login&#39; , &#39;info&#39; : &#39;The nonce provided is wrong&#39;})
+
+        if call[&#39;role&#39;] not in [&#39;caller&#39; , &#39;player&#39;]:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 2 , &#39;info&#39; : &#34;&#39;role&#39; field is invalid&#34; , &#39;type&#39; : &#39;login&#39;})
+
+        nick : str = call[&#39;nick&#39;]
+        role : str = call[&#39;role&#39;]
+
+        pkey: rsa.RSAPublicKey = asymmetric.public_key_from_string(self.nonce_cache[reader].auth_data if not using_cc else call[&#39;pubkey&#39;])
+        
+        cstate : str = self.state.getState()
+
+        if cstate != &#39;IDLE&#39; and cstate != &#39;WAITING&#39;:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 4 , &#39;type&#39; : &#39;login&#39; , &#39;info&#39; : &#34;Login only works in &#39;IDLE&#39; or &#39;WAITING&#39; state&#34;})
+        
+        if cstate == &#39;IDLE&#39; and role != &#39;caller&#39;:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 4 , &#39;type&#39; : &#39;login&#39; , &#39;info&#39; : &#39;the first user must be a &#34;caller&#34;&#39;})
+        
+        if (cstate == &#39;WAITING&#39; and role == &#39;caller&#39;):
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 4 , &#39;info&#39; : &#39;Caller has aldready been registered&#39;,&#39;type&#39; : &#39;login&#39;})
+
+        if (cstate == &#39;IDLE&#39; and role == &#39;caller&#39;) or (cstate == &#39;WAITING&#39; and role == &#39;player&#39;):
+            if len(self.players) &gt;= self.MAX_PLAYERS + 1:
+                return CallAction(&#39;sender&#39; , {&#39;code&#39; : 4 , &#39;info&#39; : &#34;Playing area is full&#34;,&#39;type&#39; : &#39;login&#39;})
+
+            entity: Entity = Entity(len(self.players.keys()) , nick , pkey , writer , reader)
+            self.players[len(self.players.keys())] = entity
+
+            if len(self.players.keys()) == 1:
+                return CallAction(&#39;sender&#39; ,
+                 {&#39;code&#39; : 0 , &#39;seq&#39; : entity.seq , &#39;N&#39; : self.N , &#39;pubkey&#39; : self.pubkey , &#39;max_players&#39;: self.MAX_PLAYERS , &#39;type&#39; : &#39;login&#39;} , 
+                 change_state=&#39;WAITING&#39;,
+                 reawnser={&#39;type&#39; : &#39;new_client&#39; , &#39;seq&#39;: entity.seq, &#39;nick&#39;: entity.nick , &#39;pubkey&#39; : asymmetric.public_key_to_string(entity.publicKey)}
+                 )
+            else:
+                return CallAction(&#39;sender&#39; , {&#39;code&#39; : 0 ,  &#39;N&#39; : self.N  ,  &#39;type&#39; : &#39;login&#39; , &#39;seq&#39; : len(self.players.keys()) - 1, &#39;pubkey&#39; :  self.pubkey , &#39;max_players&#39;: self.MAX_PLAYERS},
+                reawnser={&#39;type&#39; : &#39;new_client&#39; , &#39;seq&#39;: entity.seq, &#39;nick&#39;: entity.nick , &#39;pubkey&#39; : asymmetric.public_key_to_string(entity.publicKey)})
+
+        return CallAction(&#39;sender&#39;,{&#39;code&#39; : 4, &#39;info&#39; : &#39;PA is occupied&#39;})
+
+
+
+    def __handleGetUsersList(self,call: dict , writer: asyncio.StreamWriter , reader: asyncio.StreamReader) -&gt; CallAction:
+        try:
+            self.__checkPAfields(call , [&#39;type&#39;])
+        except ValueError as e:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 1 , &#39;info&#39; : str(e)})
+
+        user_arr : list = [{&#39;seq&#39;: player.seq , &#39;nick&#39;: player.nick, &#39;pubkey&#39;: asymmetric.public_key_to_string(player.publicKey)} for player in self.players.values()]
+        return CallAction(&#39;sender&#39;, {&#39;code&#39; : 0 , &#39;type&#39; : &#39;get_users_list&#39; , &#39;users&#39; : user_arr})
+
+
+    def __getAuditLog(self,call: dict , writer: asyncio.StreamWriter , reader: asyncio.StreamReader) -&gt; CallAction:
+
+        return CallAction(&#39;sender&#39;, {&#39;code&#39; : 0 , &#39;type&#39; : &#39;get_audit_log&#39; , &#39;log&#39; : self.logger.getLog()})
+
+    def __startGame(self, call: dict , writer: asyncio.StreamWriter, reader: asyncio.StreamReader) -&gt; CallAction:
+        try:
+            self.__checkPAfields(call , [&#39;type&#39;])
+        except ValueError as e:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 1 , &#39;info&#39; : str(e)})
+
+        if self.state.getState() != &#34;WAITING&#34;:
+            return CallAction(&#39;sender&#39;, {&#39;code&#39; : 4, &#39;info&#39;: &#39;Start game call only works in &#34;WAITING&#34; state&#39; , &#39;type&#39; : &#39;start_game&#39;})
+        else:
+            if self.players[0].reader == reader:
+                return CallAction(&#39;all&#39;, {&#39;code&#39; : 0 , &#39;type&#39; : &#39;game_started&#39;}, &#34;SUBMIT_CARD&#34;)
+            else:
+                return CallAction(&#39;sender&#39;,{&#39;code&#39;: 5 , &#39;info&#39;: &#39;A player cannot start a game&#39; , &#39;type&#39; : &#39;start_game&#39;})
+
+    def __submitCard(self, call: dict , writer: asyncio.StreamWriter, reader: asyncio.StreamReader) -&gt; CallAction:
+        try:
+            self.__checkPAfields(call , [&#39;type&#39;,&#39;card&#39;])
+        except ValueError as e:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 1 , &#39;info&#39; : str(e)})
+
+        state: str = self.state.getState()
+
+        if state != &#39;SUBMIT_CARD&#39;:
+            return CallAction(&#39;sender&#39;, {&#39;code&#39;: 4 ,&#39;info&#39; : &#39;This call is restricted to &#34;SUBMIT_CARD&#34; state&#39; , &#39;type&#39; : &#39;submit_card&#39;})
+        else:
+            seq_n: int = find_seq_number_by_stream(reader , self.players)
+            if seq_n == 0:
+                return CallAction(&#39;sender&#39;, {&#39;code&#39;: 5 , &#39;info&#39; : &#39;Only players can submit cards&#39; , &#39;type&#39; : &#39;submit_card&#39;})
+
+            else:
+                if seq_n in self.received_cards:
+                    return CallAction(&#39;sender&#39; , {&#39;code&#39; : 3 , &#39;info&#39; : &#39;You aldready submitted your card&#39;})
+                else:
+                    self.received_cards[seq_n] = call[&#39;type&#39;]
+                    if len(self.received_cards) == len(self.players) - 1:
+                        return CallAction(&#39;all&#39; , {&#39;type&#39; : &#39;submit_card&#39; , &#39;code&#39;: 0 , &#39;type&#39; : &#39;submit_card&#39; , &#39;info&#39; : &#39;Player sucessfully sent his card&#39; , &#39;seq&#39;: seq_n , &#39;card&#39; : call[&#39;card&#39;]},change_state=&#39;SUBMIT_DECK&#39;)
+                    else:
+                        return CallAction(&#39;all&#39; , {&#39;type&#39; : &#39;submit_card&#39; , &#39;code&#39;: 0 , &#39;type&#39; : &#39;submit_card&#39; , &#39;info&#39; : &#39;Player sucessfully sent his card&#39; , &#39;seq&#39;: seq_n , &#39;card&#39; : call[&#39;card&#39;]})
+
+    def __submitDeck(self, call: dict , writer: asyncio.StreamWriter, reader: asyncio.StreamReader) -&gt; CallAction:
+        try:
+            self.__checkPAfields(call , [&#39;type&#39;,&#39;deck&#39;])
+        except ValueError as e:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 1 , &#39;info&#39; : str(e)})
+
+        state: str = self.state.getState()
+
+        if state != &#39;SUBMIT_DECK&#39;:
+            return CallAction(&#39;sender&#39; ,{&#39;code&#39; : 5 , &#39;info&#39; : &#39;This call is restricted to &#34;SUBMIT_DECK&#34; state&#39; , &#39;type&#39; : &#39;submit_deck&#39;})
+
+        else:
+            seq_n: int = find_seq_number_by_stream(reader , self.players)
+            if seq_n != len(self.received_decks):
+                return CallAction(&#39;sender&#39;, {&#39;code&#39;: 5 , &#39;info&#39; : &#39;Wait for your turn to send the deck&#39; , &#39;type&#39; : &#39;submit_deck&#39;})
+            else:
+                self.received_decks.append(call[&#39;deck&#39;])
+                return CallAction(&#39;all&#39; , {&#39;code&#39;: 0 , &#39;type&#39; : &#39;submit_deck&#39; , &#39;info&#39; : &#39;Player sucessfully shuffled the deck&#39; , &#39;seq&#39;: seq_n , &#39;deck&#39; : call[&#39;deck&#39;]})
+
+    def __startSendKeys(self, call: dict , writer: asyncio.StreamWriter, reader: asyncio.StreamReader) -&gt; CallAction:
+        try:
+            self.__checkPAfields(call , [&#39;type&#39;])
+        except ValueError as e:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39;: 1 , &#39;info&#39; : str(e)})
+
+        state: str = self.state.getState()
+
+        seq: int = find_seq_number_by_stream(reader, self.players)
+
+        if seq != 0:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 5 , &#39;info&#39; : &#34;sendKeys can only be sent by the caller&#34;})
+
+        if state != &#34;SUBMIT_DECK&#34;:
+            return CallAction(&#39;sender&#39;, {&#39;code&#39; : 4 , &#39;info&#39; : &#34;Send keys only works in &#39;SUBMIT_DECK&#39; state&#34;})
+
+        if len(self.received_decks) != len(self.players):
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 4 , &#39;info&#39; : &#34;Wait for all users send their shuffled decks&#34;})
+
+        return CallAction(&#39;all&#39; , {&#39;code&#39;: 0 , &#39;type&#39; : &#39;start_send_keys&#39;} , change_state=&#34;SUBMIT_KEYS&#34;)
+
+    def __sendKeys(self, call: dict, writer: asyncio.StreamWriter, reader:asyncio.StreamReader) -&gt; CallAction:
+        try:
+            self.__checkPAfields(call , [&#39;type&#39; , &#39;key&#39;])
+        except ValueError as e:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39;: 1 , &#39;info&#39; : str(e)})
+        
+        state: str = self.state.getState()
+        seq: int = find_seq_number_by_stream(reader, self.players)
+
+        if state != &#34;SUBMIT_KEYS&#34;:
+            return CallAction(&#39;sender&#39;, {&#39;code&#39; : 4 , &#39;info&#39; : &#34;the caller didn&#39;t called &#39;start_send_keys&#39; yet&#34;})
+        else:
+            if seq in self.received_keys:
+                return CallAction(&#39;sender&#39; , {&#39;code&#39; : 3 , &#39;info&#39; : &#39;You aldready broadcasted your key&#39;})
+            else:
+                self.received_keys[seq] = call[&#39;key&#39;]
+                if len(self.received_keys.keys()) == len(self.players):
+                    return CallAction(&#39;all&#39; , {&#39;code&#39;: 0, &#39;type&#39; : &#39;send_keys&#39; , &#39;info&#39; : &#34;Sucessfully received key&#34; , &#39;key&#39; : call[&#39;key&#39;] , &#39;seq&#39; : seq},
+                    change_state=&#34;SHARE_WINNERS&#34;)
+                else:
+                    return CallAction(&#39;all&#39; , {&#39;code&#39;: 0, &#39;type&#39; : &#39;send_keys&#39; , &#39;info&#39; : &#34;Sucessfully received key&#34; , &#39;key&#39; : call[&#39;key&#39;] , &#39;seq&#39; : seq})
+
+        
+    def banPlayer(self, call: dict, writer: asyncio.StreamWriter, reader: asyncio.StreamReader , local: bool = False) -&gt; CallAction:
+        
+        try:
+            self.__checkPAfields(call , [&#39;type&#39;,&#39;seq&#39;,&#39;info&#39;])
+        except ValueError as e:
+            return CallAction(&#39;sender&#39;, {&#39;code&#39; : 1 , &#39;info&#39; : str(e)})
+    
+        seq: int = find_seq_number_by_stream(reader,self.players)
+
+        if seq != 0 and not local:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 5 , &#39;info&#39; : &#39;This call is restricted to the caller&#39;})
+
+        if call[&#39;seq&#39;] not in self.players:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 4 , &#39;info&#39; : &#39;Invalid sequence number&#39;})
+
+        if call[&#39;seq&#39;] == 0 and not local:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 4 , &#39;info&#39; : &#34;You can&#39;t ban yourself&#34;})
+
+        if call[&#39;seq&#39;] == 0 and local:
+            return CallAction(&#39;all&#39; , {&#39;code&#39; : 0 , &#39;type&#39; : &#39;abort_game&#39; , &#39;info&#39; : &#34;Caller cheated signature&#34;} , change_state=&#34;IDLE&#34;)
+
+        state: str = self.state.getState()
+
+
+        self.bans.add_ban(call[&#39;seq&#39;] , Banned_Reason(call[&#39;info&#39;]))
+        self.players[call[&#39;seq&#39;]].writer.close()
+
+        return CallAction(&#39;all&#39;,{&#39;code&#39; : 0 , &#39;type&#39; : call[&#39;type&#39;] , &#39;seq&#39;: call[&#39;seq&#39;] , &#39;info&#39; : call[&#39;info&#39;]})
+
+    def __shareWinner(self, call: dict, writer: asyncio.StreamWriter, reader: asyncio.StreamReader) -&gt; CallAction:
+        try:
+            self.__checkPAfields(call, [&#39;type&#39;,&#39;winner&#39;])
+        except ValueError as e:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 1, &#39;info&#39; : str(e)})
+
+        seq: int = find_seq_number_by_stream(reader,self.players)
+
+        state: str = self.state.getState()
+
+        if state != &#34;SHARE_WINNERS&#34;:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 4 , &#39;type&#39; : &#39;share_winner&#39; , &#39;info&#39; : &#39;This call is restricted to &#34;SHARE_WINNERS&#34; state&#39;})
+
+        if seq in self.received_outcomes:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 3 , &#39;type&#39; : &#39;share_winner&#39; , &#39;info&#39; : &#39;You aldready submitted your outcome.&#39;})
+
+        if seq == 0:
+            if any([k not in self.received_outcomes for k in range(1, len(self.players))]):
+                return CallAction(&#39;sender&#39; , {&#39;code&#39; : 6 , &#39;type&#39; : &#39;share_winner&#39; , &#39;info&#39; : &#39;The caller must wait for all players send their outcome&#39;})
+
+            else:
+                self.received_outcomes[0] = call[&#39;winner&#39;]
+                return CallAction(&#39;all&#39; , {&#39;code&#39; : 0 , &#39;type&#39; : &#39;share_winner&#39; , &#39;seq&#39; : 0 , &#39;winner&#39; : call[&#39;winner&#39;]},change_state=&#34;AUDIT&#34;)
+
+        else:
+            self.received_outcomes[seq] = call[&#39;winner&#39;]
+            return CallAction(&#39;all&#39; , {&#39;code&#39; : 0 , &#39;type&#39; : &#39;share_winner&#39; , &#39;seq&#39; : seq , &#39;winner&#39; : call[&#39;winner&#39;]})
+        
+    def __abortGame(self, call: dict, writer: asyncio.StreamWriter, reader: asyncio.StreamReader) -&gt; CallAction:
+        try:
+            self.__checkPAfields(call, [&#39;type&#39;,&#39;info&#39;])
+        except ValueError as e:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 1, &#39;info&#39; : str(e)})
+
+        seq: int = find_seq_number_by_stream(reader,self.players)
+
+        state: str = self.state.getState()
+
+        if seq != 0:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 5 , &#39;type&#39; : &#39;abort_game&#39; , &#39;info&#39; : &#39;This call is restricted to the caller&#39;})
+
+        if state == &#39;IDLE&#39; or state == &#39;WAITING&#39;:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 4 , &#39;type&#39; : &#39;abort_game&#39; , &#39;info&#39; : &#34;This call doesn&#39;t work in &#39;IDLE&#39; or &#39;WAITING&#39; states&#34;})
+
+        return CallAction(&#39;all&#39; , {&#39;code&#39; : 0 , &#39;type&#39; : &#39;abort_game&#39; , &#39;info&#39; : call[&#39;info&#39;]} , change_state=&#39;IDLE&#39;)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="assignment-2---bingo-19.playing_area.call.random"><code class="name flex">
+<span>def <span class="ident">random</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>random() -&gt; x in the interval [0, 1).</p></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="assignment-2---bingo-19.playing_area.call.AuthInfo"><code class="flex name class">
+<span>class <span class="ident">AuthInfo</span></span>
+<span>(</span><span>method: str, auth_data: str, nonce: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Holds information used in authentication process</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class AuthInfo(NamedTuple):
+    &#34;&#34;&#34;
+    Holds information used in authentication process
+    &#34;&#34;&#34;
+    method: str     # &#39;certificate&#39; or &#39;pubkey&#39;
+    auth_data: str  # associated data (public key or certificate)
+    nonce: str      # associated nonce</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.tuple</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="assignment-2---bingo-19.playing_area.call.AuthInfo.auth_data"><code class="name">var <span class="ident">auth_data</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 1</p></div>
+</dd>
+<dt id="assignment-2---bingo-19.playing_area.call.AuthInfo.method"><code class="name">var <span class="ident">method</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 0</p></div>
+</dd>
+<dt id="assignment-2---bingo-19.playing_area.call.AuthInfo.nonce"><code class="name">var <span class="ident">nonce</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 2</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="assignment-2---bingo-19.playing_area.call.Call"><code class="flex name class">
+<span>class <span class="ident">Call</span></span>
+<span>(</span><span>state: common.state.State, players: dict[int, common.entity.Entity], logger: common.logger.Logger, pubkey: str, bans: common.entity.Bans, max_players: int, N: int)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Call:
+    def __init__(self , state : State, players : dict[int,Entity] , logger : Logger , pubkey : str, bans: Bans , max_players: int , N: int):
+
+        self.__calls : dict[str , Callable[[dict,asyncio.StreamWriter,asyncio.StreamReader],CallAction]]  = {
+        &#34;get_nonce&#34;         : self.__getNonce,
+        &#34;login&#34;             : self.__handleLogin,
+        &#34;get_users_list&#34;    : self.__handleGetUsersList,
+        &#34;get_audit_log&#34;     : self.__getAuditLog,
+        &#34;start_game&#34;        : self.__startGame,
+        &#34;submit_card&#34;       : self.__submitCard,
+        &#34;submit_deck&#34;       : self.__submitDeck,
+        &#34;start_send_keys&#34;   : self.__startSendKeys,
+        &#34;send_keys&#34;         : self.__sendKeys,
+        &#34;ban_player&#34;        : self.banPlayer,
+        &#34;share_winner&#34;      : self.__shareWinner,
+        &#34;abort_game&#34;        : self.__abortGame,
+        }
+
+        self.state = state
+        self.players = players
+        self.logger = logger
+        self.pubkey = pubkey
+        self.bans = bans
+
+        self.MAX_PLAYERS = max_players
+        self.N = N
+
+        self.received_cards: dict[int,list[bytes]] = {}
+        self.received_decks: list[list[bytes]] = []
+        self.received_keys: dict[int,bytes] = {}
+        self.received_outcomes: dict[int, list[int]] = {}
+
+        # associate stream reader to a tuple containing pubkey and his associated nonce
+        self.nonce_cache : dict[asyncio.streams.StreamReader,AuthInfo] = {}
+        
+    def reload(self):
+        self.received_cards = {}
+        self.received_decks = []
+        self.received_keys = {}
+        self.received_outcomes = {}
+        self.players = {}
+        self.nonce_cache = {}
+        self.bans = Bans()
+
+
+
+
+    def removeClient(self, seq_number: int , allow_remove: bool = True) -&gt; CallAction | None:
+        if seq_number not in self.players.keys():
+            raise ValueError(&#34;Invalid seq_number provided&#34;)
+        else:
+            cstate: str = self.state.getState()
+            self.players[seq_number].writer.close()
+            del self.players[seq_number]
+            if seq_number == 0:
+                if allow_remove:
+                    for player in self.players.values():
+                        player.writer.close()
+                return None
+            else:
+                if cstate == &#34;WAITING&#34;:
+                    for i in range(seq_number, len(self.players)):
+                        self.players[i] = self.players[i+1]
+                        del self.players[i+1]
+                    return CallAction(&#34;all&#34;,{&#39;type&#39;:&#39;disconnect&#39;,&#39;seq&#39;:seq_number})
+                elif cstate != &#34;IDLE&#34;:
+                    self.bans.add_ban(seq_number , Banned_Reason.DISCONNECTED)
+                    return CallAction(&#34;all&#34;,{&#39;type&#39;:&#39;ban_player&#39;,&#39;info&#39;:&#34;DISCONNECTED&#34;,&#39;seq&#39;:seq_number})
+
+
+
+    def __getNonce(self, call : dict , writer: asyncio.StreamWriter , reader: asyncio.StreamReader) -&gt; CallAction:
+        has_cert: bool = &#39;certificate&#39; in call
+        has_pubkey: bool = &#39;pubkey&#39; in call
+
+        if has_cert and has_pubkey:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 1 , &#39;type&#39; : &#39;get_nonce&#39; , &#39;info&#39; : &#39;Received both &#34;certificate&#34; and &#34;pubkey&#34; fields, only one of them is expected&#39;})
+
+        if not has_cert and not has_pubkey:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 1 , &#39;type&#39; : &#39;get_nonce&#39;, &#39;info&#39; : &#39;Expected &#34;certificate&#34; or &#34;pubkey&#34; field&#39;})
+
+        if self.state.getState() not in [&#39;IDLE&#39; , &#39;WAITING&#39;]:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 4 ,&#39;type&#39; : &#39;get_nonce&#39; , &#39;info&#39; : &#39;This call only works in &#34;IDLE&#34; or &#34;WAITING&#34; states&#39;})
+
+        if has_cert and not asymmetric.validate_certificate(asymmetric.import_certificate(call[&#39;certificate&#39;])):
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 2 , &#39;type&#39; : &#39;get_nonce&#39; , &#39;info&#39; : &#39;Invalid certificate&#39;})
+
+        auth_method: str = &#39;certificate&#39; if has_cert else &#39;pubkey&#39;
+        auth_data:   str = call[&#39;certificate&#39;] if has_cert else call[&#39;pubkey&#39;]
+        auth_nonce:  str = uuid.uuid4().hex
+
+        self.nonce_cache[reader] = AuthInfo(auth_method, auth_data, auth_nonce)
+        
+        return CallAction(&#39;sender&#39; , {&#39;code&#39; : 0 , &#39;nonce&#39; : auth_nonce , &#39;type&#39; : &#39;get_nonce&#39;})
+
+
+
+    def validCallType(self,type : str) -&gt; bool:
+        return type in self.__calls.keys()
+            
+
+    def handleCall(self, call : dict , writer: asyncio.StreamWriter , reader: asyncio.StreamReader) -&gt; CallAction:
+        return self.__calls[call[&#34;type&#34;]](call,writer,reader)
+
+    def __checkPAfields(self, call : dict , expected_fields : list[str]) -&gt; None:
+        &#34;&#34;&#34;
+        Raise ValueError iff expected_fields argument is not a subset of call.keys()
+        &#34;&#34;&#34;
+        for f in expected_fields:
+            if f not in call:
+                raise ValueError(f&#34;Missing argument {(f)}&#34;)
+
+    def __handleLogin(self,call: dict , writer: asyncio.StreamWriter , reader: asyncio.StreamReader) -&gt; CallAction:
+        if reader not in self.nonce_cache:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 2 , &#39;type&#39; : &#39;login&#39; , &#39;info&#39; : &#39;You must request nonce before login&#39;})
+
+        using_cc: bool = self.nonce_cache[reader].method == &#39;certificate&#39;
+
+        try:
+            if using_cc:
+                self.__checkPAfields(call , [&#39;type&#39; , &#39;role&#39; , &#39;nick&#39; , &#39;nonce&#39; , &#39;pubkey&#39;])
+            else:
+                self.__checkPAfields(call , [&#39;type&#39; , &#39;role&#39; , &#39;nick&#39; , &#39;nonce&#39;])
+
+        except ValueError as e:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 1 , &#39;info&#39; : str(e)})
+
+        if self.nonce_cache[reader].nonce != call[&#39;nonce&#39;]:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 2 , &#39;type&#39; : &#39;login&#39; , &#39;info&#39; : &#39;The nonce provided is wrong&#39;})
+
+        if call[&#39;role&#39;] not in [&#39;caller&#39; , &#39;player&#39;]:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 2 , &#39;info&#39; : &#34;&#39;role&#39; field is invalid&#34; , &#39;type&#39; : &#39;login&#39;})
+
+        nick : str = call[&#39;nick&#39;]
+        role : str = call[&#39;role&#39;]
+
+        pkey: rsa.RSAPublicKey = asymmetric.public_key_from_string(self.nonce_cache[reader].auth_data if not using_cc else call[&#39;pubkey&#39;])
+        
+        cstate : str = self.state.getState()
+
+        if cstate != &#39;IDLE&#39; and cstate != &#39;WAITING&#39;:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 4 , &#39;type&#39; : &#39;login&#39; , &#39;info&#39; : &#34;Login only works in &#39;IDLE&#39; or &#39;WAITING&#39; state&#34;})
+        
+        if cstate == &#39;IDLE&#39; and role != &#39;caller&#39;:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 4 , &#39;type&#39; : &#39;login&#39; , &#39;info&#39; : &#39;the first user must be a &#34;caller&#34;&#39;})
+        
+        if (cstate == &#39;WAITING&#39; and role == &#39;caller&#39;):
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 4 , &#39;info&#39; : &#39;Caller has aldready been registered&#39;,&#39;type&#39; : &#39;login&#39;})
+
+        if (cstate == &#39;IDLE&#39; and role == &#39;caller&#39;) or (cstate == &#39;WAITING&#39; and role == &#39;player&#39;):
+            if len(self.players) &gt;= self.MAX_PLAYERS + 1:
+                return CallAction(&#39;sender&#39; , {&#39;code&#39; : 4 , &#39;info&#39; : &#34;Playing area is full&#34;,&#39;type&#39; : &#39;login&#39;})
+
+            entity: Entity = Entity(len(self.players.keys()) , nick , pkey , writer , reader)
+            self.players[len(self.players.keys())] = entity
+
+            if len(self.players.keys()) == 1:
+                return CallAction(&#39;sender&#39; ,
+                 {&#39;code&#39; : 0 , &#39;seq&#39; : entity.seq , &#39;N&#39; : self.N , &#39;pubkey&#39; : self.pubkey , &#39;max_players&#39;: self.MAX_PLAYERS , &#39;type&#39; : &#39;login&#39;} , 
+                 change_state=&#39;WAITING&#39;,
+                 reawnser={&#39;type&#39; : &#39;new_client&#39; , &#39;seq&#39;: entity.seq, &#39;nick&#39;: entity.nick , &#39;pubkey&#39; : asymmetric.public_key_to_string(entity.publicKey)}
+                 )
+            else:
+                return CallAction(&#39;sender&#39; , {&#39;code&#39; : 0 ,  &#39;N&#39; : self.N  ,  &#39;type&#39; : &#39;login&#39; , &#39;seq&#39; : len(self.players.keys()) - 1, &#39;pubkey&#39; :  self.pubkey , &#39;max_players&#39;: self.MAX_PLAYERS},
+                reawnser={&#39;type&#39; : &#39;new_client&#39; , &#39;seq&#39;: entity.seq, &#39;nick&#39;: entity.nick , &#39;pubkey&#39; : asymmetric.public_key_to_string(entity.publicKey)})
+
+        return CallAction(&#39;sender&#39;,{&#39;code&#39; : 4, &#39;info&#39; : &#39;PA is occupied&#39;})
+
+
+
+    def __handleGetUsersList(self,call: dict , writer: asyncio.StreamWriter , reader: asyncio.StreamReader) -&gt; CallAction:
+        try:
+            self.__checkPAfields(call , [&#39;type&#39;])
+        except ValueError as e:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 1 , &#39;info&#39; : str(e)})
+
+        user_arr : list = [{&#39;seq&#39;: player.seq , &#39;nick&#39;: player.nick, &#39;pubkey&#39;: asymmetric.public_key_to_string(player.publicKey)} for player in self.players.values()]
+        return CallAction(&#39;sender&#39;, {&#39;code&#39; : 0 , &#39;type&#39; : &#39;get_users_list&#39; , &#39;users&#39; : user_arr})
+
+
+    def __getAuditLog(self,call: dict , writer: asyncio.StreamWriter , reader: asyncio.StreamReader) -&gt; CallAction:
+
+        return CallAction(&#39;sender&#39;, {&#39;code&#39; : 0 , &#39;type&#39; : &#39;get_audit_log&#39; , &#39;log&#39; : self.logger.getLog()})
+
+    def __startGame(self, call: dict , writer: asyncio.StreamWriter, reader: asyncio.StreamReader) -&gt; CallAction:
+        try:
+            self.__checkPAfields(call , [&#39;type&#39;])
+        except ValueError as e:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 1 , &#39;info&#39; : str(e)})
+
+        if self.state.getState() != &#34;WAITING&#34;:
+            return CallAction(&#39;sender&#39;, {&#39;code&#39; : 4, &#39;info&#39;: &#39;Start game call only works in &#34;WAITING&#34; state&#39; , &#39;type&#39; : &#39;start_game&#39;})
+        else:
+            if self.players[0].reader == reader:
+                return CallAction(&#39;all&#39;, {&#39;code&#39; : 0 , &#39;type&#39; : &#39;game_started&#39;}, &#34;SUBMIT_CARD&#34;)
+            else:
+                return CallAction(&#39;sender&#39;,{&#39;code&#39;: 5 , &#39;info&#39;: &#39;A player cannot start a game&#39; , &#39;type&#39; : &#39;start_game&#39;})
+
+    def __submitCard(self, call: dict , writer: asyncio.StreamWriter, reader: asyncio.StreamReader) -&gt; CallAction:
+        try:
+            self.__checkPAfields(call , [&#39;type&#39;,&#39;card&#39;])
+        except ValueError as e:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 1 , &#39;info&#39; : str(e)})
+
+        state: str = self.state.getState()
+
+        if state != &#39;SUBMIT_CARD&#39;:
+            return CallAction(&#39;sender&#39;, {&#39;code&#39;: 4 ,&#39;info&#39; : &#39;This call is restricted to &#34;SUBMIT_CARD&#34; state&#39; , &#39;type&#39; : &#39;submit_card&#39;})
+        else:
+            seq_n: int = find_seq_number_by_stream(reader , self.players)
+            if seq_n == 0:
+                return CallAction(&#39;sender&#39;, {&#39;code&#39;: 5 , &#39;info&#39; : &#39;Only players can submit cards&#39; , &#39;type&#39; : &#39;submit_card&#39;})
+
+            else:
+                if seq_n in self.received_cards:
+                    return CallAction(&#39;sender&#39; , {&#39;code&#39; : 3 , &#39;info&#39; : &#39;You aldready submitted your card&#39;})
+                else:
+                    self.received_cards[seq_n] = call[&#39;type&#39;]
+                    if len(self.received_cards) == len(self.players) - 1:
+                        return CallAction(&#39;all&#39; , {&#39;type&#39; : &#39;submit_card&#39; , &#39;code&#39;: 0 , &#39;type&#39; : &#39;submit_card&#39; , &#39;info&#39; : &#39;Player sucessfully sent his card&#39; , &#39;seq&#39;: seq_n , &#39;card&#39; : call[&#39;card&#39;]},change_state=&#39;SUBMIT_DECK&#39;)
+                    else:
+                        return CallAction(&#39;all&#39; , {&#39;type&#39; : &#39;submit_card&#39; , &#39;code&#39;: 0 , &#39;type&#39; : &#39;submit_card&#39; , &#39;info&#39; : &#39;Player sucessfully sent his card&#39; , &#39;seq&#39;: seq_n , &#39;card&#39; : call[&#39;card&#39;]})
+
+    def __submitDeck(self, call: dict , writer: asyncio.StreamWriter, reader: asyncio.StreamReader) -&gt; CallAction:
+        try:
+            self.__checkPAfields(call , [&#39;type&#39;,&#39;deck&#39;])
+        except ValueError as e:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 1 , &#39;info&#39; : str(e)})
+
+        state: str = self.state.getState()
+
+        if state != &#39;SUBMIT_DECK&#39;:
+            return CallAction(&#39;sender&#39; ,{&#39;code&#39; : 5 , &#39;info&#39; : &#39;This call is restricted to &#34;SUBMIT_DECK&#34; state&#39; , &#39;type&#39; : &#39;submit_deck&#39;})
+
+        else:
+            seq_n: int = find_seq_number_by_stream(reader , self.players)
+            if seq_n != len(self.received_decks):
+                return CallAction(&#39;sender&#39;, {&#39;code&#39;: 5 , &#39;info&#39; : &#39;Wait for your turn to send the deck&#39; , &#39;type&#39; : &#39;submit_deck&#39;})
+            else:
+                self.received_decks.append(call[&#39;deck&#39;])
+                return CallAction(&#39;all&#39; , {&#39;code&#39;: 0 , &#39;type&#39; : &#39;submit_deck&#39; , &#39;info&#39; : &#39;Player sucessfully shuffled the deck&#39; , &#39;seq&#39;: seq_n , &#39;deck&#39; : call[&#39;deck&#39;]})
+
+    def __startSendKeys(self, call: dict , writer: asyncio.StreamWriter, reader: asyncio.StreamReader) -&gt; CallAction:
+        try:
+            self.__checkPAfields(call , [&#39;type&#39;])
+        except ValueError as e:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39;: 1 , &#39;info&#39; : str(e)})
+
+        state: str = self.state.getState()
+
+        seq: int = find_seq_number_by_stream(reader, self.players)
+
+        if seq != 0:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 5 , &#39;info&#39; : &#34;sendKeys can only be sent by the caller&#34;})
+
+        if state != &#34;SUBMIT_DECK&#34;:
+            return CallAction(&#39;sender&#39;, {&#39;code&#39; : 4 , &#39;info&#39; : &#34;Send keys only works in &#39;SUBMIT_DECK&#39; state&#34;})
+
+        if len(self.received_decks) != len(self.players):
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 4 , &#39;info&#39; : &#34;Wait for all users send their shuffled decks&#34;})
+
+        return CallAction(&#39;all&#39; , {&#39;code&#39;: 0 , &#39;type&#39; : &#39;start_send_keys&#39;} , change_state=&#34;SUBMIT_KEYS&#34;)
+
+    def __sendKeys(self, call: dict, writer: asyncio.StreamWriter, reader:asyncio.StreamReader) -&gt; CallAction:
+        try:
+            self.__checkPAfields(call , [&#39;type&#39; , &#39;key&#39;])
+        except ValueError as e:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39;: 1 , &#39;info&#39; : str(e)})
+        
+        state: str = self.state.getState()
+        seq: int = find_seq_number_by_stream(reader, self.players)
+
+        if state != &#34;SUBMIT_KEYS&#34;:
+            return CallAction(&#39;sender&#39;, {&#39;code&#39; : 4 , &#39;info&#39; : &#34;the caller didn&#39;t called &#39;start_send_keys&#39; yet&#34;})
+        else:
+            if seq in self.received_keys:
+                return CallAction(&#39;sender&#39; , {&#39;code&#39; : 3 , &#39;info&#39; : &#39;You aldready broadcasted your key&#39;})
+            else:
+                self.received_keys[seq] = call[&#39;key&#39;]
+                if len(self.received_keys.keys()) == len(self.players):
+                    return CallAction(&#39;all&#39; , {&#39;code&#39;: 0, &#39;type&#39; : &#39;send_keys&#39; , &#39;info&#39; : &#34;Sucessfully received key&#34; , &#39;key&#39; : call[&#39;key&#39;] , &#39;seq&#39; : seq},
+                    change_state=&#34;SHARE_WINNERS&#34;)
+                else:
+                    return CallAction(&#39;all&#39; , {&#39;code&#39;: 0, &#39;type&#39; : &#39;send_keys&#39; , &#39;info&#39; : &#34;Sucessfully received key&#34; , &#39;key&#39; : call[&#39;key&#39;] , &#39;seq&#39; : seq})
+
+        
+    def banPlayer(self, call: dict, writer: asyncio.StreamWriter, reader: asyncio.StreamReader , local: bool = False) -&gt; CallAction:
+        
+        try:
+            self.__checkPAfields(call , [&#39;type&#39;,&#39;seq&#39;,&#39;info&#39;])
+        except ValueError as e:
+            return CallAction(&#39;sender&#39;, {&#39;code&#39; : 1 , &#39;info&#39; : str(e)})
+    
+        seq: int = find_seq_number_by_stream(reader,self.players)
+
+        if seq != 0 and not local:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 5 , &#39;info&#39; : &#39;This call is restricted to the caller&#39;})
+
+        if call[&#39;seq&#39;] not in self.players:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 4 , &#39;info&#39; : &#39;Invalid sequence number&#39;})
+
+        if call[&#39;seq&#39;] == 0 and not local:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 4 , &#39;info&#39; : &#34;You can&#39;t ban yourself&#34;})
+
+        if call[&#39;seq&#39;] == 0 and local:
+            return CallAction(&#39;all&#39; , {&#39;code&#39; : 0 , &#39;type&#39; : &#39;abort_game&#39; , &#39;info&#39; : &#34;Caller cheated signature&#34;} , change_state=&#34;IDLE&#34;)
+
+        state: str = self.state.getState()
+
+
+        self.bans.add_ban(call[&#39;seq&#39;] , Banned_Reason(call[&#39;info&#39;]))
+        self.players[call[&#39;seq&#39;]].writer.close()
+
+        return CallAction(&#39;all&#39;,{&#39;code&#39; : 0 , &#39;type&#39; : call[&#39;type&#39;] , &#39;seq&#39;: call[&#39;seq&#39;] , &#39;info&#39; : call[&#39;info&#39;]})
+
+    def __shareWinner(self, call: dict, writer: asyncio.StreamWriter, reader: asyncio.StreamReader) -&gt; CallAction:
+        try:
+            self.__checkPAfields(call, [&#39;type&#39;,&#39;winner&#39;])
+        except ValueError as e:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 1, &#39;info&#39; : str(e)})
+
+        seq: int = find_seq_number_by_stream(reader,self.players)
+
+        state: str = self.state.getState()
+
+        if state != &#34;SHARE_WINNERS&#34;:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 4 , &#39;type&#39; : &#39;share_winner&#39; , &#39;info&#39; : &#39;This call is restricted to &#34;SHARE_WINNERS&#34; state&#39;})
+
+        if seq in self.received_outcomes:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 3 , &#39;type&#39; : &#39;share_winner&#39; , &#39;info&#39; : &#39;You aldready submitted your outcome.&#39;})
+
+        if seq == 0:
+            if any([k not in self.received_outcomes for k in range(1, len(self.players))]):
+                return CallAction(&#39;sender&#39; , {&#39;code&#39; : 6 , &#39;type&#39; : &#39;share_winner&#39; , &#39;info&#39; : &#39;The caller must wait for all players send their outcome&#39;})
+
+            else:
+                self.received_outcomes[0] = call[&#39;winner&#39;]
+                return CallAction(&#39;all&#39; , {&#39;code&#39; : 0 , &#39;type&#39; : &#39;share_winner&#39; , &#39;seq&#39; : 0 , &#39;winner&#39; : call[&#39;winner&#39;]},change_state=&#34;AUDIT&#34;)
+
+        else:
+            self.received_outcomes[seq] = call[&#39;winner&#39;]
+            return CallAction(&#39;all&#39; , {&#39;code&#39; : 0 , &#39;type&#39; : &#39;share_winner&#39; , &#39;seq&#39; : seq , &#39;winner&#39; : call[&#39;winner&#39;]})
+        
+    def __abortGame(self, call: dict, writer: asyncio.StreamWriter, reader: asyncio.StreamReader) -&gt; CallAction:
+        try:
+            self.__checkPAfields(call, [&#39;type&#39;,&#39;info&#39;])
+        except ValueError as e:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 1, &#39;info&#39; : str(e)})
+
+        seq: int = find_seq_number_by_stream(reader,self.players)
+
+        state: str = self.state.getState()
+
+        if seq != 0:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 5 , &#39;type&#39; : &#39;abort_game&#39; , &#39;info&#39; : &#39;This call is restricted to the caller&#39;})
+
+        if state == &#39;IDLE&#39; or state == &#39;WAITING&#39;:
+            return CallAction(&#39;sender&#39; , {&#39;code&#39; : 4 , &#39;type&#39; : &#39;abort_game&#39; , &#39;info&#39; : &#34;This call doesn&#39;t work in &#39;IDLE&#39; or &#39;WAITING&#39; states&#34;})
+
+        return CallAction(&#39;all&#39; , {&#39;code&#39; : 0 , &#39;type&#39; : &#39;abort_game&#39; , &#39;info&#39; : call[&#39;info&#39;]} , change_state=&#39;IDLE&#39;)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="assignment-2---bingo-19.playing_area.call.Call.banPlayer"><code class="name flex">
+<span>def <span class="ident">banPlayer</span></span>(<span>self, call: dict, writer: asyncio.streams.StreamWriter, reader: asyncio.streams.StreamReader, local: bool = False) ‑> assignment-2---bingo-19.playing_area.call.CallAction</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def banPlayer(self, call: dict, writer: asyncio.StreamWriter, reader: asyncio.StreamReader , local: bool = False) -&gt; CallAction:
+    
+    try:
+        self.__checkPAfields(call , [&#39;type&#39;,&#39;seq&#39;,&#39;info&#39;])
+    except ValueError as e:
+        return CallAction(&#39;sender&#39;, {&#39;code&#39; : 1 , &#39;info&#39; : str(e)})
+
+    seq: int = find_seq_number_by_stream(reader,self.players)
+
+    if seq != 0 and not local:
+        return CallAction(&#39;sender&#39; , {&#39;code&#39; : 5 , &#39;info&#39; : &#39;This call is restricted to the caller&#39;})
+
+    if call[&#39;seq&#39;] not in self.players:
+        return CallAction(&#39;sender&#39; , {&#39;code&#39; : 4 , &#39;info&#39; : &#39;Invalid sequence number&#39;})
+
+    if call[&#39;seq&#39;] == 0 and not local:
+        return CallAction(&#39;sender&#39; , {&#39;code&#39; : 4 , &#39;info&#39; : &#34;You can&#39;t ban yourself&#34;})
+
+    if call[&#39;seq&#39;] == 0 and local:
+        return CallAction(&#39;all&#39; , {&#39;code&#39; : 0 , &#39;type&#39; : &#39;abort_game&#39; , &#39;info&#39; : &#34;Caller cheated signature&#34;} , change_state=&#34;IDLE&#34;)
+
+    state: str = self.state.getState()
+
+
+    self.bans.add_ban(call[&#39;seq&#39;] , Banned_Reason(call[&#39;info&#39;]))
+    self.players[call[&#39;seq&#39;]].writer.close()
+
+    return CallAction(&#39;all&#39;,{&#39;code&#39; : 0 , &#39;type&#39; : call[&#39;type&#39;] , &#39;seq&#39;: call[&#39;seq&#39;] , &#39;info&#39; : call[&#39;info&#39;]})</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.playing_area.call.Call.handleCall"><code class="name flex">
+<span>def <span class="ident">handleCall</span></span>(<span>self, call: dict, writer: asyncio.streams.StreamWriter, reader: asyncio.streams.StreamReader) ‑> assignment-2---bingo-19.playing_area.call.CallAction</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def handleCall(self, call : dict , writer: asyncio.StreamWriter , reader: asyncio.StreamReader) -&gt; CallAction:
+    return self.__calls[call[&#34;type&#34;]](call,writer,reader)</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.playing_area.call.Call.reload"><code class="name flex">
+<span>def <span class="ident">reload</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reload(self):
+    self.received_cards = {}
+    self.received_decks = []
+    self.received_keys = {}
+    self.received_outcomes = {}
+    self.players = {}
+    self.nonce_cache = {}
+    self.bans = Bans()</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.playing_area.call.Call.removeClient"><code class="name flex">
+<span>def <span class="ident">removeClient</span></span>(<span>self, seq_number: int, allow_remove: bool = True) ‑> assignment-2---bingo-19.playing_area.call.CallAction | None</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def removeClient(self, seq_number: int , allow_remove: bool = True) -&gt; CallAction | None:
+    if seq_number not in self.players.keys():
+        raise ValueError(&#34;Invalid seq_number provided&#34;)
+    else:
+        cstate: str = self.state.getState()
+        self.players[seq_number].writer.close()
+        del self.players[seq_number]
+        if seq_number == 0:
+            if allow_remove:
+                for player in self.players.values():
+                    player.writer.close()
+            return None
+        else:
+            if cstate == &#34;WAITING&#34;:
+                for i in range(seq_number, len(self.players)):
+                    self.players[i] = self.players[i+1]
+                    del self.players[i+1]
+                return CallAction(&#34;all&#34;,{&#39;type&#39;:&#39;disconnect&#39;,&#39;seq&#39;:seq_number})
+            elif cstate != &#34;IDLE&#34;:
+                self.bans.add_ban(seq_number , Banned_Reason.DISCONNECTED)
+                return CallAction(&#34;all&#34;,{&#39;type&#39;:&#39;ban_player&#39;,&#39;info&#39;:&#34;DISCONNECTED&#34;,&#39;seq&#39;:seq_number})</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.playing_area.call.Call.validCallType"><code class="name flex">
+<span>def <span class="ident">validCallType</span></span>(<span>self, type: str) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validCallType(self,type : str) -&gt; bool:
+    return type in self.__calls.keys()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="assignment-2---bingo-19.playing_area.call.CallAction"><code class="flex name class">
+<span>class <span class="ident">CallAction</span></span>
+<span>(</span><span>broadcast_rule: str, awnser: dict, change_state: Optional[str] = None, reawnser: dict | None = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This class is used to handle requests redirection</p>
+<p>@param broadcast_rule: Broadcast rule defined (view README.md for more detail)
+@param awnser: Awnser forwarded according to broadcast rule
+@param (optional) change_state: Used if the action produces a state transition
+@param (optional) reawnser: optional 'dict' sent to everyone except sender (useful when awnser and reawnser are different)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CallAction:
+    &#34;&#34;&#34;
+    This class is used to handle requests redirection
+    &#34;&#34;&#34;
+    def __init__(self , broadcast_rule: str , awnser: dict , change_state : Optional[str] = None , reawnser: Optional[dict] = None):
+        &#34;&#34;&#34;
+        @param broadcast_rule: Broadcast rule defined (view README.md for more detail)
+        @param awnser: Awnser forwarded according to broadcast rule
+        @param (optional) change_state: Used if the action produces a state transition
+        @param (optional) reawnser: optional &#39;dict&#39; sent to everyone except sender (useful when awnser and reawnser are different)
+        &#34;&#34;&#34;
+        if broadcast_rule not in [&#39;none&#39; , &#39;sender&#39; , &#39;all_except_sender&#39; , &#39;all&#39;]:
+            raise ValueError(f&#34;Invalid broadcast rule ({broadcast_rule})&#34;)
+        self.broadcast_rule = broadcast_rule
+        self.awnser = awnser
+        self.change_state = change_state
+        self.reawnser = reawnser
+    
+
+    __color_counter: int = 0
+    __info_colors: list[str] = [&#34;blue&#34;] #add more colors if necessary
+
+    &#34;&#34;&#34;
+    Returns a brief string representation of the call action
+    &#34;&#34;&#34;
+    def brief_as_str(self) -&gt; str:
+        brief: str = CallAction.__brief_dict_as_str(self.awnser , self.broadcast_rule)
+        if self.reawnser != None:
+            brief += &#34;\n&#34; + CallAction.__brief_dict_as_str(self.reawnser , &#39;all_except_sender&#39;) + &#34;\n&#34;
+        return brief
+    
+    @staticmethod
+    def __brief_dict_as_str(dict: dict , broascast_rule: str) -&gt; str:
+        message_color: str = CallAction.__info_colors[CallAction.__color_counter]
+        CallAction.__color_counter = (CallAction.__color_counter + 1) % len(CallAction.__info_colors) 
+
+        brief: str = &#34;Sending message &#34;
+        if &#39;code&#39; in dict and dict[&#39;code&#39;] != 0:
+            message_color = &#34;red&#34;
+            if &#39;info&#39; in dict:
+                brief += &#34;with the following error &#34; + dict[&#39;info&#39;]
+        else:
+            if &#39;type&#39; in dict:
+                brief += &#34;of type &#34; + dict[&#39;type&#39;]
+
+        brief += &#34; to &#34; + broascast_rule
+        return termcolor.colored(brief , message_color)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="assignment-2---bingo-19.playing_area.call.CallAction.brief_as_str"><code class="name flex">
+<span>def <span class="ident">brief_as_str</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def brief_as_str(self) -&gt; str:
+    brief: str = CallAction.__brief_dict_as_str(self.awnser , self.broadcast_rule)
+    if self.reawnser != None:
+        brief += &#34;\n&#34; + CallAction.__brief_dict_as_str(self.reawnser , &#39;all_except_sender&#39;) + &#34;\n&#34;
+    return brief</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="assignment-2---bingo-19.playing_area" href="index.html">assignment-2---bingo-19.playing_area</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="assignment-2---bingo-19.playing_area.call.random" href="#assignment-2---bingo-19.playing_area.call.random">random</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="assignment-2---bingo-19.playing_area.call.AuthInfo" href="#assignment-2---bingo-19.playing_area.call.AuthInfo">AuthInfo</a></code></h4>
+<ul class="">
+<li><code><a title="assignment-2---bingo-19.playing_area.call.AuthInfo.auth_data" href="#assignment-2---bingo-19.playing_area.call.AuthInfo.auth_data">auth_data</a></code></li>
+<li><code><a title="assignment-2---bingo-19.playing_area.call.AuthInfo.method" href="#assignment-2---bingo-19.playing_area.call.AuthInfo.method">method</a></code></li>
+<li><code><a title="assignment-2---bingo-19.playing_area.call.AuthInfo.nonce" href="#assignment-2---bingo-19.playing_area.call.AuthInfo.nonce">nonce</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="assignment-2---bingo-19.playing_area.call.Call" href="#assignment-2---bingo-19.playing_area.call.Call">Call</a></code></h4>
+<ul class="">
+<li><code><a title="assignment-2---bingo-19.playing_area.call.Call.banPlayer" href="#assignment-2---bingo-19.playing_area.call.Call.banPlayer">banPlayer</a></code></li>
+<li><code><a title="assignment-2---bingo-19.playing_area.call.Call.handleCall" href="#assignment-2---bingo-19.playing_area.call.Call.handleCall">handleCall</a></code></li>
+<li><code><a title="assignment-2---bingo-19.playing_area.call.Call.reload" href="#assignment-2---bingo-19.playing_area.call.Call.reload">reload</a></code></li>
+<li><code><a title="assignment-2---bingo-19.playing_area.call.Call.removeClient" href="#assignment-2---bingo-19.playing_area.call.Call.removeClient">removeClient</a></code></li>
+<li><code><a title="assignment-2---bingo-19.playing_area.call.Call.validCallType" href="#assignment-2---bingo-19.playing_area.call.Call.validCallType">validCallType</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="assignment-2---bingo-19.playing_area.call.CallAction" href="#assignment-2---bingo-19.playing_area.call.CallAction">CallAction</a></code></h4>
+<ul class="">
+<li><code><a title="assignment-2---bingo-19.playing_area.call.CallAction.brief_as_str" href="#assignment-2---bingo-19.playing_area.call.CallAction.brief_as_str">brief_as_str</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,1288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>assignment-2---bingo-19.player.player API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>assignment-2---bingo-19.player.player</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Code gathered at https://docs.python.org/3/library/asyncio-stream.html
+import asyncio
+import argparse
+import sys
+import os
+import logging
+import time
+from random import randint
+
+import uuid
+
+# Check https://www.geeksforgeeks.org/python-import-from-parent-directory/
+# For better information
+# getting the name of the directory
+# where this file is present.
+current = os.path.dirname(os.path.realpath(__file__))
+ 
+# Getting the parent directory name
+# where the current directory is present.
+parent = os.path.dirname(current)
+ 
+# adding the parent directory to
+# the sys.path.
+sys.path.append(parent)
+
+from common.communication import *
+import common.asymmetric as asymmetric
+import common.symmetric as symmetric
+from common.state import State
+from common.bingo import Bingo
+from common.deck import Deck
+from common.entity import PlayerValues,CallerValues,print_players_cards_and_deck
+
+
+async def send(writer: asyncio.streams.StreamWriter,message: dict,cheat_signature : bool = True, useCard: bool = False):
+    global uuid_buffer
+    global cheat
+    try:
+        #insert UUID into the message
+        random_uuid: str = str(uuid.uuid4())
+        message[&#39;UUID&#39;] = random_uuid
+        # uuid_buffer.append(random_uuid)
+        logger.debug(&#34;Sending: &#34; + str(message))
+
+        
+
+        if cheat_signature == True:
+            rand = randint(0,100)
+            if rand &lt; cheat:
+                print(&#34;cheated signature&#34;)
+            else:
+                cheat_signature = False
+
+        if useCard:
+            await send_dict(
+                writer,
+                message,
+                asymmetric.sign_message_cc(cardPin, json_to_bytes(message)),
+                cheat_signature)
+        else:
+            await send_dict(
+                writer,
+                message,
+                asymmetric.sign_message(json_to_bytes(message),priv_key),
+                cheat_signature)
+
+
+    except Exception as e:
+        logger.error(&#34;Something went wrong while trying to send message: &#34; + str(e))
+        exit(1)
+
+async def receive(reader: asyncio.streams.StreamReader):
+    try:
+        if PA_pubkey == None:
+            data = await recv_dict(reader)
+        else:
+            data = await recv_dict(reader , PA_pubkey)
+        logger.debug(&#34;Received: &#34; + str(data))
+        return data
+    except SyntaxError as e:
+        logger.error(&#34;Playing signature is invalid, aborting client&#34;)
+        exit(1)
+    except Exception as e:
+        logger.error(&#34;Something went wrong while trying to receive a message: &#34; + str(e))
+        exit(1)
+
+async def get_nonce(writer: asyncio.streams.StreamWriter , pubkey: str):
+    &#34;&#34;&#34;
+    Get nonce from playing area
+    &#34;&#34;&#34;
+    # Not card auth
+    if cardPin == &#39;&#39;:
+        message = {&#39;type&#39;: &#34;get_nonce&#34; , &#39;pubkey&#39; : pubkey}
+    else: # Card auth
+        message = {
+            &#39;type&#39;: &#34;get_nonce&#34; , 
+            &#39;certificate&#39; : asymmetric.export_certificate(asymmetric.get_certificate(cardPin))
+            }
+
+    logger.debug(&#34;Sending: &#34; + str(message))
+    await send(writer,message,False)
+
+async def login(writer : asyncio.streams.StreamWriter,nonce: str,nick: str) -&gt; None:
+    &#34;&#34;&#34;
+    Send a login request to the playing area
+    &#34;&#34;&#34;
+    # Not card auth
+    if cardPin == &#39;&#39;:
+        message = {&#34;type&#34;: &#34;login&#34;, &#34;role&#34;: &#34;player&#34;, &#34;nick&#34;: nick,&#34;nonce&#34; : nonce}
+        await send(writer,message,False)
+    else: # Card auth
+        message = {
+            &#34;type&#34;: &#34;login&#34;,
+            &#34;role&#34;: &#34;player&#34;, 
+            &#34;nick&#34;: nick,
+            &#34;nonce&#34; : nonce,
+            &#34;pubkey&#34;: asymmetric.public_key_to_string(pub_key)
+            }
+        await send(writer,message,False,True)
+
+async def submit_card(writer : asyncio.streams.StreamWriter, card : list[str]) -&gt; None:
+    &#34;&#34;&#34;
+    @param writer : StreamWriter -&gt; the writer to send the message to
+    @param seq : int -&gt; the sequence number of the user
+    @param card : list[str] -&gt; the card (encrypted)
+    &#34;&#34;&#34;
+    message = {&#34;type&#34; : &#34;submit_card&#34; , &#34;card&#34; : card}
+    await send(writer,message)
+
+async def submit_deck(writer: asyncio.streams.StreamWriter, deck: list[str]) -&gt; None:
+    message = {&#39;type&#39; : &#39;submit_deck&#39; , &#39;deck&#39; : deck}
+    logger.debug(&#34;Sending: &#34; + str(message))
+    await send(writer,message)
+
+async def submit_keys(writer: asyncio.streams.StreamWriter, key: str) -&gt; None:
+    message = {&#39;type&#39; : &#39;send_keys&#39; , &#39;key&#39; : key}
+    logger.debug(&#34;Sending: &#34; + str(message))
+    await send(writer,message)
+
+async def share_winner(writer: asyncio.streams.StreamWriter , winner: list[int]) -&gt; None:
+    message = {&#39;type&#39; : &#39;share_winner&#39; , &#39;winner&#39; : winner}
+    logger.debug(&#34;Sending: &#34; + str(message))
+    await send(writer,message)
+
+def check_player_card(card : list):
+    # check for repeated numbers, signature not valid, invalid size
+    pass
+
+def encrypt_each(card: list,key : bytes) -&gt; list[str]:
+    new_list: list[str] = []
+
+    for element in card:
+        new_list.append(symmetric.bytes_to_string(symmetric.encrypt_values(str(element),key)))
+
+    return new_list
+
+async def process_msg(msg: dict, writer,reader):
+    global N
+    global M
+    global myseq
+    global PA_pubkey
+    global cards
+    global banned_players
+    global finalDeck
+    global winner_sent
+    global playerNicks
+    global uuid_buffer
+    global cheat
+    global nick
+    global nplayers
+
+    # if request_state.getState() == &#34;IDLE&#34; or &#34;UUID&#34; not in msg:
+    if main_state.getState() == &#34;WAITING&#34;:
+        if &#39;type&#39; in msg and msg[&#39;type&#39;] == &#39;game_started&#39;:
+            print(&#34;ANNNNNNNNDDDD THE PARTY STARTED!!!\nLET THE GAMES BEGIN!&#34;)
+            main_state.apply(&#39;SUBMIT_CARD&#39;)
+            bingo: Bingo = Bingo(N , M)
+            rand = randint(0,100)
+            if rand &lt; cheat:
+                print(&#34;cheated card&#34;)
+                newN = randint(0,N*2)
+                rand = randint(0,100) #50% chance to keep M or 50% chance to be random (1 .. M-1)
+                #smaller M means higher chance of winning
+                newM = M
+                if rand &lt; 50:
+                    newM = randint(1,M-1)
+
+                bingo = Bingo(newN,newM)
+            card: list[int] = bingo.getCard()
+            encrypted_card: list[str] = encrypt_each(card, SYM_KEY)
+            cards[myseq] = encrypted_card # type: ignore
+            await submit_card(writer , encrypted_card)
+            await send(writer,{&#34;type&#34;: &#34;get_users_list&#34;})
+            if request_state.getState() != &#34;WAITING_FOR_RESPONSE&#34;:
+                request_state.apply(&#34;WAITING_FOR_RESPONSE&#34;)
+
+        if &#39;type&#39; in msg and msg[&#39;type&#39;] == &#39;new_client&#39;:
+            print(f&#34;{msg[&#39;nick&#39;]} has entered the party!&#34;)
+            playerNicks[msg[&#34;seq&#34;]] = msg[&#34;nick&#34;]
+            logger.log(1,f&#34;New player{msg[&#39;seq&#39;]} named {msg[&#39;nick&#39;]} arrived&#34;)
+
+    if main_state.getState() == &#34;SUBMIT_CARD&#34;:
+        if &#39;type&#39; in msg and msg[&#39;type&#39;] == &#39;submit_card&#39;:
+            cards[msg[&#39;seq&#39;]] = msg[&#39;card&#39;]
+            logger.log(1,f&#34;Player with sequence number {msg[&#39;seq&#39;]} sucessfully sent his card&#34;)
+            if len(cards.keys()) == nplayers:
+                main_state.apply(&#39;SUBMIT_DECK&#39;)
+
+    if main_state.getState() == &#34;SUBMIT_DECK&#34;:
+        if &#39;type&#39; in msg and msg[&#39;type&#39;] == &#39;submit_deck&#39;:
+            decks.add_deck([symmetric.bytes_from_string(card) for card in msg[&#39;deck&#39;]], msg[&#39;seq&#39;])
+            logger.log(1,f&#39;Received deck from user with sequence number {msg[&#34;seq&#34;]}&#39;)
+
+            if myseq == msg[&#39;seq&#39;] + 1:
+                rand = randint(0,100)
+                if rand &lt; cheat:
+                    print(&#34;cheated deck&#34;)
+                    deck_length = len(msg[&#34;deck&#34;])
+                    msg[&#34;deck&#34;] = cards[myseq] #make the deck = to my card
+                    for i in range(len(msg[&#34;deck&#34;]),deck_length):
+                        msg[&#34;deck&#34;].append(randint(0,N)) # type: ignore
+
+                shuffled: list[str] = Bingo.shuffle(msg[&#39;deck&#39;])
+                encrypted_shuffled: list[str] = encrypt_each(shuffled , SYM_KEY)
+                await submit_deck(writer, encrypted_shuffled)
+                if request_state.getState() != &#34;WAITING_FOR_RESPONSE&#34;:
+                    request_state.apply(&#34;WAITING_FOR_RESPONSE&#34;)
+
+    if main_state.getState() == &#34;SUBMIT_DECK&#34; and &#39;type&#39; in msg and msg[&#39;type&#39;] == &#39;start_send_keys&#39;:
+        main_state.apply(&#39;SUBMIT_KEYS&#39;)
+        await submit_keys(writer, symmetric.bytes_to_string(keys[myseq]))
+        if request_state.getState() != &#34;WAITING_FOR_RESPONSE&#34;:
+            request_state.apply(&#39;WAITING_FOR_RESPONSE&#39;)
+
+    if main_state.getState() == &#34;SUBMIT_KEYS&#34; and &#39;type&#39; in msg and msg[&#39;type&#39;] == &#39;send_keys&#39;:
+        logger.log(1,f&#39;Received symmetric key from user with sequence number {msg[&#34;seq&#34;]}&#39;)
+        keys[msg[&#34;seq&#34;]] = symmetric.bytes_from_string(msg[&#34;key&#34;])
+        if(len(keys) == 5):
+            main_state.apply(&#34;END_GAME&#34;)
+
+    if &#39;type&#39; in msg and msg[&#39;type&#39;] == &#39;disconnect&#39;:
+        logger.log(1,f&#39;The player{msg[&#34;seq&#34;]} disconnected&#39;)
+        playerName = playerNicks.pop(msg[&#34;seq&#34;],&#34;Unknown&#34;)
+        print(f&#34;{playerName} drunk too much and left the party. (Don&#39;t worry, he is safe)&#34;)
+        banned_players.append(msg[&#34;seq&#34;])
+
+    if &#34;type&#34; in msg and msg[&#34;type&#34;] == &#34;abort_game&#34;:
+        info = msg[&#34;info&#34;]
+        logger.log(1,f&#34;game aborted:{info}&#34;)
+        print(&#34;Party was cancelled :(&#34;)
+        print(&#34;Let&#39;s see....&#34;)
+        print(&#34;AH!&#34;)
+        print(info)
+        sys.exit(0)
+
+    if  main_state.getState() == &#34;END_GAME&#34; and not winner_sent:
+        logger.log(1,f&#39;The game ended, outcome sharing process will start now&#39;)
+        print(&#34;Game has ended. Looking for the winner.... (hopefully not in the bathroom)&#34;)
+        _cards = {}
+        for key in cards.keys():
+            _cards[key] = Deck.decrypt_deck([symmetric.bytes_from_string(c) for c in cards[key]],keys[key]) # type: ignore
+
+        ks : list[tuple[int, bytes]] = [(key,keys[key]) for key in keys.keys()]
+        ks.sort(key= lambda x: x[0])
+
+        tempVal = decks.retrieve_decrypted_deck(ks)
+        finalDeck = tempVal[-1].deck # type: ignore
+        cheated = False
+        scores = []
+        for key in _cards.keys():
+            bingo = Bingo(N,M,_cards[key])
+            if key == myseq:            
+                rand = randint(0,100)
+                if cheated == False and rand &lt; cheat:
+                    scores.append((key,1)) # winner be meself :)
+                    print(&#34;cheated winner\nwinner be meself :)&#34;)
+                    cheated = True #can only cheat once
+                    continue
+            
+            scores.append((key,bingo.first_winning_position(finalDeck))) # type: ignore
+
+        scores.sort(key=lambda x: x[1])
+        winnerScore = scores[0][1]
+        winners = []
+
+        for score in scores:
+            if score[1] == winnerScore:
+                winners.append(score[0])
+
+        await share_winner(writer,winners)
+        winner_sent = True
+        if request_state.getState() != &#34;WAITING_FOR_RESPONSE&#34;:
+            request_state.apply(&#39;WAITING_FOR_RESPONSE&#39;)
+
+    if &#39;type&#39; in msg and msg[&#39;type&#39;] == &#39;ban_player&#39;:
+        playerName = playerNicks.pop(msg[&#34;seq&#34;],&#34;Unknown&#34;)
+        info = msg[&#34;info&#34;]
+        if msg[&#34;info&#34;] == &#34;DISCONNECTED&#34;:
+            print(f&#34;{playerName} drunk too much and left the party. (Don&#39;t worry, he is safe)&#34;)
+            for key in playerNicks.keys()[:]: # type: ignore
+                if key &gt; msg[&#34;seq&#34;]:
+                    playerNicks[key - 1] = playerNicks.pop(key)
+
+            if myseq &gt; msg[&#34;seq&#34;]:
+                myseq -= 1
+        else:
+            print(f&#34;Oh no, {playerName} was banned!\nA detective investigated and concluded: {info}&#34;)
+
+        print(&#34;Party ended. (Tip: invite better friends next time)&#34;)  
+        banned_players.append(msg[&#34;seq&#34;])
+        logger.log(1,f&#34;The user with sequence number {msg[&#39;seq&#39;]} was banned due the following reason: \n\t {msg[&#39;info&#39;]}&#34;)
+        sys.exit(0)
+
+    if &#39;type&#39; in msg and msg[&#39;type&#39;] == &#39;share_winner&#39; and msg[&#34;seq&#34;] == 0:
+        print(&#34;Looks like we have a winner(s)!!&#34;)    
+        player : dict[int,PlayerValues] = {}
+        for key in cards.keys():
+            #only seq and nick matter
+            #the others are dummy values to avoid the exception
+            p = PlayerValues(key,playerNicks[key],PA_pubkey,writer,reader) # type: ignore
+            p.set_cards(Deck.decrypt_deck([symmetric.bytes_from_string(c) for c in cards[key]],keys[key])) # type: ignore
+            player[key] = p
+
+        #only nick matters
+        #the others are dummy values to avoid the exception
+        caller : CallerValues = CallerValues(playerNicks[0],PA_pubkey,writer,reader) # type: ignore
+        caller.set_seq(0)
+
+        string = await print_players_cards_and_deck(player,caller,msg[&#34;winner&#34;],N,finalDeck) # type: ignore
+        print(f&#34;\t{string}&#34;)
+        logger.log(1,f&#39;User with sequence number {msg[&#34;seq&#34;]} stated that {str(msg[&#34;winner&#34;])} won&#39;)
+        await handle_player_inputs(writer)
+
+        #exit(0)
+    try:
+        # if request_state.getState() == &#34;WAITING_FOR_RESPONSE&#34; or uuid_buffer != []:
+
+        if main_state.getState() == &#34;IDLE&#34; and &#39;type&#39; in msg and msg[&#39;type&#39;] == &#34;get_nonce&#34;:
+            if msg[&#39;code&#39;] != 0:
+                logger.error(msg[&#39;info&#39;])
+                info = msg[&#34;info&#34;]
+                print(f&#34;Something bad happened, apparentely {info}&#34;)
+            else:
+                logger.log(1,&#39;Received nonce from the server&#39;)
+                nonce = msg[&#39;nonce&#39;]
+                await login(writer,nonce,nick)
+        if main_state.getState() == &#34;IDLE&#34; and &#39;type&#39; in msg and msg[&#39;type&#39;] == &#34;login&#34;:
+            if msg[&#39;code&#39;] != 0:
+                logger.error(msg[&#39;info&#39;])
+                info = msg[&#34;info&#34;]
+                print(f&#34;Ups, looks like you can&#39;t join the party.\nI contacted a friend and apparently {info}&#34;)
+                sys.exit(1)
+            else:
+                logger.log(1,&#39;login succeded&#39;)
+                print(&#34;You joined the party!!!!!!!!&#34;)
+                myseq = msg[&#39;seq&#39;]
+                PA_pubkey = asymmetric.public_key_from_string(msg[&#39;pubkey&#39;])
+                keys[myseq] = SYM_KEY
+                nplayers = msg[&#34;max_players&#34;]
+                N = msg[&#34;N&#34;]
+                M = int(N / 4)
+                await send(writer,{&#34;type&#34;: &#34;get_users_list&#34;})
+                main_state.apply(&#39;WAITING&#39;)
+
+        if &#34;users&#34; in msg:
+            logger.debug(f&#34;received user list: {msg}&#34;)
+            for user in msg[&#34;users&#34;]:
+                playerNicks[user[&#34;seq&#34;]] = user[&#34;nick&#34;]
+
+            if main_state.getState() == &#34;END_GAME&#34;:
+                for user in msg[&#34;users&#34;]:
+                    print(f&#34;\tSeq: %d, Nick: %s&#34;%(user[&#39;seq&#39;], user[&#39;nick&#39;]))
+                
+                await handle_player_inputs(writer)
+
+        if &#34;log&#34; in msg:
+            logger.debug(f&#34;received logs: {msg}&#34;)
+            if main_state.getState() == &#34;END_GAME&#34;:
+                if not os.path.exists(&#39;./audit_logs&#39;):
+                    os.mkdir(&#39;./audit_logs&#39;)
+                logName = r&#39;./audit_logs/&#39; + playerNicks[myseq] + &#34;_&#34; + str(time.time()) + &#39;.log&#39;
+                with open(logName, &#34;w&#34;) as f:
+                    f.write(str(msg))
+                print(f&#34;logs saved at {logName}&#34;)
+                await handle_player_inputs(writer)
+
+        if main_state.getState() == &#34;SUBMIT_CARD&#34; and &#39;type&#39; in msg and msg[&#39;type&#39;] == &#39;submit_card&#39;:
+            if msg[&#39;code&#39;] == 0:
+                cards[msg[&#39;seq&#39;]] = msg[&#39;card&#39;]
+                logger.log(1,&#39;sucessfully submitted my card!&#39;)
+                if len(cards.keys()) == nplayers:
+                    main_state.apply(&#39;SUBMIT_DECK&#39;)
+            else:
+                logger.error(msg[&#39;info&#39;])
+
+        if main_state.getState() == &#34;SUBMIT_DECK&#34; and &#39;type&#39; in msg and msg[&#39;type&#39;] == &#39;submit_deck&#39;:
+            if msg[&#39;code&#39;] != 0:
+                logger.error(msg[&#39;info&#39;])
+            else:
+                logger.log(1,msg[&#39;info&#39;])
+
+    
+        if main_state.getState() == &#34;SUBMIT_KEYS&#34; and &#39;type&#39; in msg and msg[&#39;type&#39;] == &#39;send_keys&#39;:
+            
+            if msg[&#39;code&#39;] != 0:
+                logger.error(msg[&#39;info&#39;])
+            else:
+                logger.log(1,msg[&#39;info&#39;])
+
+        if main_state.getState() == &#34;END_GAME&#34; and &#39;type&#39; in msg and msg[&#39;type&#39;] == &#39;share_winner&#39; and msg[&#34;seq&#34;] == 0 and &#34;info&#34; in msg:
+            if msg[&#39;code&#39;] != 0:
+                logger.error(msg[&#39;info&#39;])
+            else:
+                logger.log(1,msg[&#39;info&#39;])
+
+        # if &#34;UUID&#34; in msg[&#34;UUID&#34;] and msg[&#34;UUID&#34;] in uuid_buffer:
+        #     uuid_buffer.remove(msg[&#34;UUID&#34;])
+
+        if request_state.getState() != &#34;IDLE&#34;:
+            request_state.apply(&#39;IDLE&#39;)
+    except Exception as e:
+        logger.error(f&#34;error while processing a request: {str(e)}\nmessage: {msg}&#34;)
+
+
+async def client_life(ipAddr : str, port : int):
+    reader, writer = await asyncio.open_connection(
+        ipAddr, port)
+    await get_nonce(writer,asymmetric.public_key_to_string(pub_key))
+    request_state.apply(&#34;WAITING_FOR_RESPONSE&#34;)
+    
+    try:
+        while True:
+            data = await receive(reader)
+            logger.debug(data)
+
+            if data == None:
+                raise OSError()
+
+            await process_msg(data,writer,reader)
+            
+    except Exception as e:
+        print(&#34;No connection with the playing area.&#34;)
+        logger.debug(&#34;Something went wrong: &#34; + str(e))
+        writer.close()
+
+
+async def handle_player_inputs(writer):
+        &#34;&#34;&#34;
+        Function used to handle input on the caller
+        &#34;&#34;&#34;
+        while(True):
+            input_str: str = input(&#34;Options avaliable\n\t[1] : Get user list\n\t[2] : Get logs\n\t[3] : Exit game\n&#34;)
+            opt: int = int(input_str)
+            if opt not in [1,2,3]:
+                print(&#34;Invalid Input&#34;)
+            
+            if opt == 1:         
+                msg = {&#39;type&#39;: &#39;get_users_list&#39;}
+                await send(writer,msg,False)
+                return
+                
+            elif opt == 2:
+                msg = {&#39;type&#39;: &#39;get_audit_log&#39;}
+                await send(writer,msg,False)
+                return
+
+            elif opt == 3:
+                print(&#34;Party is over boys!!!\nLet&#39;s go home.&#34;)
+                logger.log(1,&#34;Game Over!&#34;)
+                exit(0)
+
+
+def convert_str_bool(val: str | bool) -&gt; bool:
+    &#34;&#34;&#34;
+    Function used in arguments to convert a string value into a boolean one
+        if needed
+    Args:
+        - val: Value to test
+    Returns:
+        - True if the value corresponds to a bool true, false otherwise
+    Raises:
+        - argparse.ArgumentTypeError: The value is a defined boolean
+    &#34;&#34;&#34;
+    if isinstance(val, bool):
+        return val
+    if val.lower() in [&#39;true&#39;, &#39;t&#39;, &#39;y&#39;]:
+        return True
+    elif val.lower() in [&#39;false&#39;, &#39;f&#39;, &#39;n&#39;]:
+        return False
+    else:
+        raise argparse.ArgumentTypeError(&#39;Expected a boolen value&#39;)
+
+
+if __name__ == &#34;__main__&#34;:
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument(&#34;--bind&#34;, help=&#34;IP address to bind to&#34;, default=&#34;127.0.0.1&#34;)
+    parser.add_argument(&#34;--port&#34;, help=&#34;TCP port&#34;, type=int, default=8000)
+    parser.add_argument(&#34;--nick&#34;, help=&#34;Nick for the player (Max 20 characters)&#34;, type=str, default=&#34;player&#34;)
+    parser.add_argument(&#34;--log&#34;, help=&#34;Log threshold (default=INFO)&#34;, type=str, default=&#39;INFO&#39;)
+    parser.add_argument(&#34;--cheat&#34;,help=&#34;chance (in %%) to cheat (default 10)&#34;,type=int,default=10)
+    parser.add_argument(&#34;--card&#34;,help=&#34;boolean to use card&#34;, type=convert_str_bool, default=False)
+    args = parser.parse_args()
+
+    # check Logger value
+    numericLogLeved = getattr(logging, args.log.upper(), None)
+    if not isinstance(numericLogLeved, int):
+        raise ValueError(&#39;Invalid log level: %s&#39; % numericLogLeved)
+
+    if args.cheat &gt; 100 or args.cheat &lt; 0:
+        print(f&#34;Invalid cheat value {args.cheat}\nMust be 0 to 100&#34;)
+        sys.exit(1)
+
+
+
+    # Max of 20 characters 
+    if len(args.nick) &gt; 20:
+        args.nick = args.nick[:20] 
+
+    nick = args.nick
+
+    main_state: State = State([&#39;IDLE&#39;,&#39;WAITING&#39;,&#39;SUBMIT_CARD&#39;,&#39;SUBMIT_DECK&#39;,&#39;SUBMIT_KEYS&#39;,&#39;END_GAME&#39;],
+        {
+            &#39;IDLE&#39; : [&#39;WAITING&#39;],
+            &#39;WAITING&#39; : [&#39;IDLE&#39;,&#39;SUBMIT_CARD&#39;],
+            &#39;SUBMIT_CARD&#39; : [&#39;IDLE&#39;,&#39;SUBMIT_DECK&#39;],
+            &#39;SUBMIT_DECK&#39; : [&#39;IDLE&#39;,&#39;SUBMIT_KEYS&#39;],
+            &#39;SUBMIT_KEYS&#39; : [&#39;IDLE&#39; , &#39;END_GAME&#39;],
+            &#39;END_GAME&#39; : [&#39;IDLE&#39;]
+        },
+     &#39;IDLE&#39;)
+
+    request_state: State = State([&#39;IDLE&#39;,&#39;WAITING_FOR_RESPONSE&#39;] ,
+        {
+            &#39;IDLE&#39; : [&#39;WAITING_FOR_RESPONSE&#39;],
+            &#39;WAITING_FOR_RESPONSE&#39; : [&#39;IDLE&#39;]
+        },
+        &#39;IDLE&#39;)
+
+    priv_key : rsa.RSAPrivateKeyWithSerialization = asymmetric.generate_private_key(2048)
+    pub_key  : rsa.RSAPublicKey = asymmetric.generate_public_key(priv_key)
+
+
+    # uuid_buffer: list[str] = []
+    myseq: int = -1
+    PA_pubkey: rsa.RSAPublicKey | None = None
+    N: int = 16
+    M: int = int(N / 4)
+    banned_players : list[int] = []
+    finalDeck = []
+    winner_sent = False
+    cheat = args.cheat
+
+    cards: dict[int, list[bytes]] = {}
+    decks: Deck = Deck()
+
+    nplayers: int = 4
+    playerNicks: dict[int,str] = {}
+
+    SYM_KEY: bytes = symmetric.generate_key(16)
+    keys: dict[int , bytes] = {}
+
+    # Creating an object
+    logger: logging.Logger= logging.getLogger(&#34;Monitor&#34;)
+    logger.setLevel(logging.DEBUG)
+
+    # create console handler and set level to log argument
+    ch = logging.StreamHandler()
+    ch.setLevel(numericLogLeved)
+    ch.setFormatter(logging.Formatter(&#39;%(levelname)s: %(message)s&#39;))
+
+    # create file handlet and set level to debug
+    if not os.path.exists(&#39;./logs&#39;):
+        os.mkdir(&#39;./logs&#39;)
+    logName = r&#39;./logs/player_&#39; + str(time.time()) + args.nick + &#39;.log&#39;
+    fh = logging.FileHandler(logName)
+    fh.setLevel(logging.DEBUG)
+    fh.setFormatter(logging.Formatter(&#39;%(asctime)s - [%(name)s, %(levelname)s]: %(message)s&#39;))
+
+    # add ch to logger
+    logger.addHandler(ch)
+
+    # add fh to logger
+    logger.addHandler(fh)
+
+    if args.card:
+        cardPin: str = input(&#34;Please input the authentication pin of the card: &#34;)
+        
+        asymmetric.close_connection(asymmetric.create_connection(cardPin))
+        logger.info(f&#39;Successfully authentication with card&#39;)
+    else:
+        cardPin: str = &#39;&#39;
+
+    try:
+        asyncio.run(client_life(args.bind, args.port))
+    except KeyboardInterrupt:
+        print(&#34;\nPlayer Terminated&#34;)
+    except OSError as e:
+        print(&#34;No Connection to playing area: &#34; + str(e))</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="assignment-2---bingo-19.player.player.check_player_card"><code class="name flex">
+<span>def <span class="ident">check_player_card</span></span>(<span>card: list)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def check_player_card(card : list):
+    # check for repeated numbers, signature not valid, invalid size
+    pass</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.player.player.client_life"><code class="name flex">
+<span>async def <span class="ident">client_life</span></span>(<span>ipAddr: str, port: int)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def client_life(ipAddr : str, port : int):
+    reader, writer = await asyncio.open_connection(
+        ipAddr, port)
+    await get_nonce(writer,asymmetric.public_key_to_string(pub_key))
+    request_state.apply(&#34;WAITING_FOR_RESPONSE&#34;)
+    
+    try:
+        while True:
+            data = await receive(reader)
+            logger.debug(data)
+
+            if data == None:
+                raise OSError()
+
+            await process_msg(data,writer,reader)
+            
+    except Exception as e:
+        print(&#34;No connection with the playing area.&#34;)
+        logger.debug(&#34;Something went wrong: &#34; + str(e))
+        writer.close()</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.player.player.convert_str_bool"><code class="name flex">
+<span>def <span class="ident">convert_str_bool</span></span>(<span>val: str | bool) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function used in arguments to convert a string value into a boolean one
+if needed</p>
+<h2 id="args">Args</h2>
+<ul>
+<li>val: Value to test</li>
+</ul>
+<h2 id="returns">Returns</h2>
+<ul>
+<li>True if the value corresponds to a bool true, false otherwise</li>
+</ul>
+<h2 id="raises">Raises</h2>
+<ul>
+<li>argparse.ArgumentTypeError: The value is a defined boolean</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def convert_str_bool(val: str | bool) -&gt; bool:
+    &#34;&#34;&#34;
+    Function used in arguments to convert a string value into a boolean one
+        if needed
+    Args:
+        - val: Value to test
+    Returns:
+        - True if the value corresponds to a bool true, false otherwise
+    Raises:
+        - argparse.ArgumentTypeError: The value is a defined boolean
+    &#34;&#34;&#34;
+    if isinstance(val, bool):
+        return val
+    if val.lower() in [&#39;true&#39;, &#39;t&#39;, &#39;y&#39;]:
+        return True
+    elif val.lower() in [&#39;false&#39;, &#39;f&#39;, &#39;n&#39;]:
+        return False
+    else:
+        raise argparse.ArgumentTypeError(&#39;Expected a boolen value&#39;)</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.player.player.encrypt_each"><code class="name flex">
+<span>def <span class="ident">encrypt_each</span></span>(<span>card: list, key: bytes) ‑> list[str]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def encrypt_each(card: list,key : bytes) -&gt; list[str]:
+    new_list: list[str] = []
+
+    for element in card:
+        new_list.append(symmetric.bytes_to_string(symmetric.encrypt_values(str(element),key)))
+
+    return new_list</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.player.player.get_nonce"><code class="name flex">
+<span>async def <span class="ident">get_nonce</span></span>(<span>writer: asyncio.streams.StreamWriter, pubkey: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get nonce from playing area</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def get_nonce(writer: asyncio.streams.StreamWriter , pubkey: str):
+    &#34;&#34;&#34;
+    Get nonce from playing area
+    &#34;&#34;&#34;
+    # Not card auth
+    if cardPin == &#39;&#39;:
+        message = {&#39;type&#39;: &#34;get_nonce&#34; , &#39;pubkey&#39; : pubkey}
+    else: # Card auth
+        message = {
+            &#39;type&#39;: &#34;get_nonce&#34; , 
+            &#39;certificate&#39; : asymmetric.export_certificate(asymmetric.get_certificate(cardPin))
+            }
+
+    logger.debug(&#34;Sending: &#34; + str(message))
+    await send(writer,message,False)</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.player.player.handle_player_inputs"><code class="name flex">
+<span>async def <span class="ident">handle_player_inputs</span></span>(<span>writer)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function used to handle input on the caller</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def handle_player_inputs(writer):
+        &#34;&#34;&#34;
+        Function used to handle input on the caller
+        &#34;&#34;&#34;
+        while(True):
+            input_str: str = input(&#34;Options avaliable\n\t[1] : Get user list\n\t[2] : Get logs\n\t[3] : Exit game\n&#34;)
+            opt: int = int(input_str)
+            if opt not in [1,2,3]:
+                print(&#34;Invalid Input&#34;)
+            
+            if opt == 1:         
+                msg = {&#39;type&#39;: &#39;get_users_list&#39;}
+                await send(writer,msg,False)
+                return
+                
+            elif opt == 2:
+                msg = {&#39;type&#39;: &#39;get_audit_log&#39;}
+                await send(writer,msg,False)
+                return
+
+            elif opt == 3:
+                print(&#34;Party is over boys!!!\nLet&#39;s go home.&#34;)
+                logger.log(1,&#34;Game Over!&#34;)
+                exit(0)</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.player.player.login"><code class="name flex">
+<span>async def <span class="ident">login</span></span>(<span>writer: asyncio.streams.StreamWriter, nonce: str, nick: str) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Send a login request to the playing area</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def login(writer : asyncio.streams.StreamWriter,nonce: str,nick: str) -&gt; None:
+    &#34;&#34;&#34;
+    Send a login request to the playing area
+    &#34;&#34;&#34;
+    # Not card auth
+    if cardPin == &#39;&#39;:
+        message = {&#34;type&#34;: &#34;login&#34;, &#34;role&#34;: &#34;player&#34;, &#34;nick&#34;: nick,&#34;nonce&#34; : nonce}
+        await send(writer,message,False)
+    else: # Card auth
+        message = {
+            &#34;type&#34;: &#34;login&#34;,
+            &#34;role&#34;: &#34;player&#34;, 
+            &#34;nick&#34;: nick,
+            &#34;nonce&#34; : nonce,
+            &#34;pubkey&#34;: asymmetric.public_key_to_string(pub_key)
+            }
+        await send(writer,message,False,True)</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.player.player.process_msg"><code class="name flex">
+<span>async def <span class="ident">process_msg</span></span>(<span>msg: dict, writer, reader)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def process_msg(msg: dict, writer,reader):
+    global N
+    global M
+    global myseq
+    global PA_pubkey
+    global cards
+    global banned_players
+    global finalDeck
+    global winner_sent
+    global playerNicks
+    global uuid_buffer
+    global cheat
+    global nick
+    global nplayers
+
+    # if request_state.getState() == &#34;IDLE&#34; or &#34;UUID&#34; not in msg:
+    if main_state.getState() == &#34;WAITING&#34;:
+        if &#39;type&#39; in msg and msg[&#39;type&#39;] == &#39;game_started&#39;:
+            print(&#34;ANNNNNNNNDDDD THE PARTY STARTED!!!\nLET THE GAMES BEGIN!&#34;)
+            main_state.apply(&#39;SUBMIT_CARD&#39;)
+            bingo: Bingo = Bingo(N , M)
+            rand = randint(0,100)
+            if rand &lt; cheat:
+                print(&#34;cheated card&#34;)
+                newN = randint(0,N*2)
+                rand = randint(0,100) #50% chance to keep M or 50% chance to be random (1 .. M-1)
+                #smaller M means higher chance of winning
+                newM = M
+                if rand &lt; 50:
+                    newM = randint(1,M-1)
+
+                bingo = Bingo(newN,newM)
+            card: list[int] = bingo.getCard()
+            encrypted_card: list[str] = encrypt_each(card, SYM_KEY)
+            cards[myseq] = encrypted_card # type: ignore
+            await submit_card(writer , encrypted_card)
+            await send(writer,{&#34;type&#34;: &#34;get_users_list&#34;})
+            if request_state.getState() != &#34;WAITING_FOR_RESPONSE&#34;:
+                request_state.apply(&#34;WAITING_FOR_RESPONSE&#34;)
+
+        if &#39;type&#39; in msg and msg[&#39;type&#39;] == &#39;new_client&#39;:
+            print(f&#34;{msg[&#39;nick&#39;]} has entered the party!&#34;)
+            playerNicks[msg[&#34;seq&#34;]] = msg[&#34;nick&#34;]
+            logger.log(1,f&#34;New player{msg[&#39;seq&#39;]} named {msg[&#39;nick&#39;]} arrived&#34;)
+
+    if main_state.getState() == &#34;SUBMIT_CARD&#34;:
+        if &#39;type&#39; in msg and msg[&#39;type&#39;] == &#39;submit_card&#39;:
+            cards[msg[&#39;seq&#39;]] = msg[&#39;card&#39;]
+            logger.log(1,f&#34;Player with sequence number {msg[&#39;seq&#39;]} sucessfully sent his card&#34;)
+            if len(cards.keys()) == nplayers:
+                main_state.apply(&#39;SUBMIT_DECK&#39;)
+
+    if main_state.getState() == &#34;SUBMIT_DECK&#34;:
+        if &#39;type&#39; in msg and msg[&#39;type&#39;] == &#39;submit_deck&#39;:
+            decks.add_deck([symmetric.bytes_from_string(card) for card in msg[&#39;deck&#39;]], msg[&#39;seq&#39;])
+            logger.log(1,f&#39;Received deck from user with sequence number {msg[&#34;seq&#34;]}&#39;)
+
+            if myseq == msg[&#39;seq&#39;] + 1:
+                rand = randint(0,100)
+                if rand &lt; cheat:
+                    print(&#34;cheated deck&#34;)
+                    deck_length = len(msg[&#34;deck&#34;])
+                    msg[&#34;deck&#34;] = cards[myseq] #make the deck = to my card
+                    for i in range(len(msg[&#34;deck&#34;]),deck_length):
+                        msg[&#34;deck&#34;].append(randint(0,N)) # type: ignore
+
+                shuffled: list[str] = Bingo.shuffle(msg[&#39;deck&#39;])
+                encrypted_shuffled: list[str] = encrypt_each(shuffled , SYM_KEY)
+                await submit_deck(writer, encrypted_shuffled)
+                if request_state.getState() != &#34;WAITING_FOR_RESPONSE&#34;:
+                    request_state.apply(&#34;WAITING_FOR_RESPONSE&#34;)
+
+    if main_state.getState() == &#34;SUBMIT_DECK&#34; and &#39;type&#39; in msg and msg[&#39;type&#39;] == &#39;start_send_keys&#39;:
+        main_state.apply(&#39;SUBMIT_KEYS&#39;)
+        await submit_keys(writer, symmetric.bytes_to_string(keys[myseq]))
+        if request_state.getState() != &#34;WAITING_FOR_RESPONSE&#34;:
+            request_state.apply(&#39;WAITING_FOR_RESPONSE&#39;)
+
+    if main_state.getState() == &#34;SUBMIT_KEYS&#34; and &#39;type&#39; in msg and msg[&#39;type&#39;] == &#39;send_keys&#39;:
+        logger.log(1,f&#39;Received symmetric key from user with sequence number {msg[&#34;seq&#34;]}&#39;)
+        keys[msg[&#34;seq&#34;]] = symmetric.bytes_from_string(msg[&#34;key&#34;])
+        if(len(keys) == 5):
+            main_state.apply(&#34;END_GAME&#34;)
+
+    if &#39;type&#39; in msg and msg[&#39;type&#39;] == &#39;disconnect&#39;:
+        logger.log(1,f&#39;The player{msg[&#34;seq&#34;]} disconnected&#39;)
+        playerName = playerNicks.pop(msg[&#34;seq&#34;],&#34;Unknown&#34;)
+        print(f&#34;{playerName} drunk too much and left the party. (Don&#39;t worry, he is safe)&#34;)
+        banned_players.append(msg[&#34;seq&#34;])
+
+    if &#34;type&#34; in msg and msg[&#34;type&#34;] == &#34;abort_game&#34;:
+        info = msg[&#34;info&#34;]
+        logger.log(1,f&#34;game aborted:{info}&#34;)
+        print(&#34;Party was cancelled :(&#34;)
+        print(&#34;Let&#39;s see....&#34;)
+        print(&#34;AH!&#34;)
+        print(info)
+        sys.exit(0)
+
+    if  main_state.getState() == &#34;END_GAME&#34; and not winner_sent:
+        logger.log(1,f&#39;The game ended, outcome sharing process will start now&#39;)
+        print(&#34;Game has ended. Looking for the winner.... (hopefully not in the bathroom)&#34;)
+        _cards = {}
+        for key in cards.keys():
+            _cards[key] = Deck.decrypt_deck([symmetric.bytes_from_string(c) for c in cards[key]],keys[key]) # type: ignore
+
+        ks : list[tuple[int, bytes]] = [(key,keys[key]) for key in keys.keys()]
+        ks.sort(key= lambda x: x[0])
+
+        tempVal = decks.retrieve_decrypted_deck(ks)
+        finalDeck = tempVal[-1].deck # type: ignore
+        cheated = False
+        scores = []
+        for key in _cards.keys():
+            bingo = Bingo(N,M,_cards[key])
+            if key == myseq:            
+                rand = randint(0,100)
+                if cheated == False and rand &lt; cheat:
+                    scores.append((key,1)) # winner be meself :)
+                    print(&#34;cheated winner\nwinner be meself :)&#34;)
+                    cheated = True #can only cheat once
+                    continue
+            
+            scores.append((key,bingo.first_winning_position(finalDeck))) # type: ignore
+
+        scores.sort(key=lambda x: x[1])
+        winnerScore = scores[0][1]
+        winners = []
+
+        for score in scores:
+            if score[1] == winnerScore:
+                winners.append(score[0])
+
+        await share_winner(writer,winners)
+        winner_sent = True
+        if request_state.getState() != &#34;WAITING_FOR_RESPONSE&#34;:
+            request_state.apply(&#39;WAITING_FOR_RESPONSE&#39;)
+
+    if &#39;type&#39; in msg and msg[&#39;type&#39;] == &#39;ban_player&#39;:
+        playerName = playerNicks.pop(msg[&#34;seq&#34;],&#34;Unknown&#34;)
+        info = msg[&#34;info&#34;]
+        if msg[&#34;info&#34;] == &#34;DISCONNECTED&#34;:
+            print(f&#34;{playerName} drunk too much and left the party. (Don&#39;t worry, he is safe)&#34;)
+            for key in playerNicks.keys()[:]: # type: ignore
+                if key &gt; msg[&#34;seq&#34;]:
+                    playerNicks[key - 1] = playerNicks.pop(key)
+
+            if myseq &gt; msg[&#34;seq&#34;]:
+                myseq -= 1
+        else:
+            print(f&#34;Oh no, {playerName} was banned!\nA detective investigated and concluded: {info}&#34;)
+
+        print(&#34;Party ended. (Tip: invite better friends next time)&#34;)  
+        banned_players.append(msg[&#34;seq&#34;])
+        logger.log(1,f&#34;The user with sequence number {msg[&#39;seq&#39;]} was banned due the following reason: \n\t {msg[&#39;info&#39;]}&#34;)
+        sys.exit(0)
+
+    if &#39;type&#39; in msg and msg[&#39;type&#39;] == &#39;share_winner&#39; and msg[&#34;seq&#34;] == 0:
+        print(&#34;Looks like we have a winner(s)!!&#34;)    
+        player : dict[int,PlayerValues] = {}
+        for key in cards.keys():
+            #only seq and nick matter
+            #the others are dummy values to avoid the exception
+            p = PlayerValues(key,playerNicks[key],PA_pubkey,writer,reader) # type: ignore
+            p.set_cards(Deck.decrypt_deck([symmetric.bytes_from_string(c) for c in cards[key]],keys[key])) # type: ignore
+            player[key] = p
+
+        #only nick matters
+        #the others are dummy values to avoid the exception
+        caller : CallerValues = CallerValues(playerNicks[0],PA_pubkey,writer,reader) # type: ignore
+        caller.set_seq(0)
+
+        string = await print_players_cards_and_deck(player,caller,msg[&#34;winner&#34;],N,finalDeck) # type: ignore
+        print(f&#34;\t{string}&#34;)
+        logger.log(1,f&#39;User with sequence number {msg[&#34;seq&#34;]} stated that {str(msg[&#34;winner&#34;])} won&#39;)
+        await handle_player_inputs(writer)
+
+        #exit(0)
+    try:
+        # if request_state.getState() == &#34;WAITING_FOR_RESPONSE&#34; or uuid_buffer != []:
+
+        if main_state.getState() == &#34;IDLE&#34; and &#39;type&#39; in msg and msg[&#39;type&#39;] == &#34;get_nonce&#34;:
+            if msg[&#39;code&#39;] != 0:
+                logger.error(msg[&#39;info&#39;])
+                info = msg[&#34;info&#34;]
+                print(f&#34;Something bad happened, apparentely {info}&#34;)
+            else:
+                logger.log(1,&#39;Received nonce from the server&#39;)
+                nonce = msg[&#39;nonce&#39;]
+                await login(writer,nonce,nick)
+        if main_state.getState() == &#34;IDLE&#34; and &#39;type&#39; in msg and msg[&#39;type&#39;] == &#34;login&#34;:
+            if msg[&#39;code&#39;] != 0:
+                logger.error(msg[&#39;info&#39;])
+                info = msg[&#34;info&#34;]
+                print(f&#34;Ups, looks like you can&#39;t join the party.\nI contacted a friend and apparently {info}&#34;)
+                sys.exit(1)
+            else:
+                logger.log(1,&#39;login succeded&#39;)
+                print(&#34;You joined the party!!!!!!!!&#34;)
+                myseq = msg[&#39;seq&#39;]
+                PA_pubkey = asymmetric.public_key_from_string(msg[&#39;pubkey&#39;])
+                keys[myseq] = SYM_KEY
+                nplayers = msg[&#34;max_players&#34;]
+                N = msg[&#34;N&#34;]
+                M = int(N / 4)
+                await send(writer,{&#34;type&#34;: &#34;get_users_list&#34;})
+                main_state.apply(&#39;WAITING&#39;)
+
+        if &#34;users&#34; in msg:
+            logger.debug(f&#34;received user list: {msg}&#34;)
+            for user in msg[&#34;users&#34;]:
+                playerNicks[user[&#34;seq&#34;]] = user[&#34;nick&#34;]
+
+            if main_state.getState() == &#34;END_GAME&#34;:
+                for user in msg[&#34;users&#34;]:
+                    print(f&#34;\tSeq: %d, Nick: %s&#34;%(user[&#39;seq&#39;], user[&#39;nick&#39;]))
+                
+                await handle_player_inputs(writer)
+
+        if &#34;log&#34; in msg:
+            logger.debug(f&#34;received logs: {msg}&#34;)
+            if main_state.getState() == &#34;END_GAME&#34;:
+                if not os.path.exists(&#39;./audit_logs&#39;):
+                    os.mkdir(&#39;./audit_logs&#39;)
+                logName = r&#39;./audit_logs/&#39; + playerNicks[myseq] + &#34;_&#34; + str(time.time()) + &#39;.log&#39;
+                with open(logName, &#34;w&#34;) as f:
+                    f.write(str(msg))
+                print(f&#34;logs saved at {logName}&#34;)
+                await handle_player_inputs(writer)
+
+        if main_state.getState() == &#34;SUBMIT_CARD&#34; and &#39;type&#39; in msg and msg[&#39;type&#39;] == &#39;submit_card&#39;:
+            if msg[&#39;code&#39;] == 0:
+                cards[msg[&#39;seq&#39;]] = msg[&#39;card&#39;]
+                logger.log(1,&#39;sucessfully submitted my card!&#39;)
+                if len(cards.keys()) == nplayers:
+                    main_state.apply(&#39;SUBMIT_DECK&#39;)
+            else:
+                logger.error(msg[&#39;info&#39;])
+
+        if main_state.getState() == &#34;SUBMIT_DECK&#34; and &#39;type&#39; in msg and msg[&#39;type&#39;] == &#39;submit_deck&#39;:
+            if msg[&#39;code&#39;] != 0:
+                logger.error(msg[&#39;info&#39;])
+            else:
+                logger.log(1,msg[&#39;info&#39;])
+
+    
+        if main_state.getState() == &#34;SUBMIT_KEYS&#34; and &#39;type&#39; in msg and msg[&#39;type&#39;] == &#39;send_keys&#39;:
+            
+            if msg[&#39;code&#39;] != 0:
+                logger.error(msg[&#39;info&#39;])
+            else:
+                logger.log(1,msg[&#39;info&#39;])
+
+        if main_state.getState() == &#34;END_GAME&#34; and &#39;type&#39; in msg and msg[&#39;type&#39;] == &#39;share_winner&#39; and msg[&#34;seq&#34;] == 0 and &#34;info&#34; in msg:
+            if msg[&#39;code&#39;] != 0:
+                logger.error(msg[&#39;info&#39;])
+            else:
+                logger.log(1,msg[&#39;info&#39;])
+
+        # if &#34;UUID&#34; in msg[&#34;UUID&#34;] and msg[&#34;UUID&#34;] in uuid_buffer:
+        #     uuid_buffer.remove(msg[&#34;UUID&#34;])
+
+        if request_state.getState() != &#34;IDLE&#34;:
+            request_state.apply(&#39;IDLE&#39;)
+    except Exception as e:
+        logger.error(f&#34;error while processing a request: {str(e)}\nmessage: {msg}&#34;)</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.player.player.receive"><code class="name flex">
+<span>async def <span class="ident">receive</span></span>(<span>reader: asyncio.streams.StreamReader)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def receive(reader: asyncio.streams.StreamReader):
+    try:
+        if PA_pubkey == None:
+            data = await recv_dict(reader)
+        else:
+            data = await recv_dict(reader , PA_pubkey)
+        logger.debug(&#34;Received: &#34; + str(data))
+        return data
+    except SyntaxError as e:
+        logger.error(&#34;Playing signature is invalid, aborting client&#34;)
+        exit(1)
+    except Exception as e:
+        logger.error(&#34;Something went wrong while trying to receive a message: &#34; + str(e))
+        exit(1)</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.player.player.send"><code class="name flex">
+<span>async def <span class="ident">send</span></span>(<span>writer: asyncio.streams.StreamWriter, message: dict, cheat_signature: bool = True, useCard: bool = False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def send(writer: asyncio.streams.StreamWriter,message: dict,cheat_signature : bool = True, useCard: bool = False):
+    global uuid_buffer
+    global cheat
+    try:
+        #insert UUID into the message
+        random_uuid: str = str(uuid.uuid4())
+        message[&#39;UUID&#39;] = random_uuid
+        # uuid_buffer.append(random_uuid)
+        logger.debug(&#34;Sending: &#34; + str(message))
+
+        
+
+        if cheat_signature == True:
+            rand = randint(0,100)
+            if rand &lt; cheat:
+                print(&#34;cheated signature&#34;)
+            else:
+                cheat_signature = False
+
+        if useCard:
+            await send_dict(
+                writer,
+                message,
+                asymmetric.sign_message_cc(cardPin, json_to_bytes(message)),
+                cheat_signature)
+        else:
+            await send_dict(
+                writer,
+                message,
+                asymmetric.sign_message(json_to_bytes(message),priv_key),
+                cheat_signature)
+
+
+    except Exception as e:
+        logger.error(&#34;Something went wrong while trying to send message: &#34; + str(e))
+        exit(1)</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.player.player.share_winner"><code class="name flex">
+<span>async def <span class="ident">share_winner</span></span>(<span>writer: asyncio.streams.StreamWriter, winner: list[int]) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def share_winner(writer: asyncio.streams.StreamWriter , winner: list[int]) -&gt; None:
+    message = {&#39;type&#39; : &#39;share_winner&#39; , &#39;winner&#39; : winner}
+    logger.debug(&#34;Sending: &#34; + str(message))
+    await send(writer,message)</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.player.player.submit_card"><code class="name flex">
+<span>async def <span class="ident">submit_card</span></span>(<span>writer: asyncio.streams.StreamWriter, card: list[str]) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>@param writer : StreamWriter -&gt; the writer to send the message to
+@param seq : int -&gt; the sequence number of the user
+@param card : list[str] -&gt; the card (encrypted)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def submit_card(writer : asyncio.streams.StreamWriter, card : list[str]) -&gt; None:
+    &#34;&#34;&#34;
+    @param writer : StreamWriter -&gt; the writer to send the message to
+    @param seq : int -&gt; the sequence number of the user
+    @param card : list[str] -&gt; the card (encrypted)
+    &#34;&#34;&#34;
+    message = {&#34;type&#34; : &#34;submit_card&#34; , &#34;card&#34; : card}
+    await send(writer,message)</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.player.player.submit_deck"><code class="name flex">
+<span>async def <span class="ident">submit_deck</span></span>(<span>writer: asyncio.streams.StreamWriter, deck: list[str]) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def submit_deck(writer: asyncio.streams.StreamWriter, deck: list[str]) -&gt; None:
+    message = {&#39;type&#39; : &#39;submit_deck&#39; , &#39;deck&#39; : deck}
+    logger.debug(&#34;Sending: &#34; + str(message))
+    await send(writer,message)</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.player.player.submit_keys"><code class="name flex">
+<span>async def <span class="ident">submit_keys</span></span>(<span>writer: asyncio.streams.StreamWriter, key: str) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def submit_keys(writer: asyncio.streams.StreamWriter, key: str) -&gt; None:
+    message = {&#39;type&#39; : &#39;send_keys&#39; , &#39;key&#39; : key}
+    logger.debug(&#34;Sending: &#34; + str(message))
+    await send(writer,message)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="assignment-2---bingo-19.player" href="index.html">assignment-2---bingo-19.player</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="assignment-2---bingo-19.player.player.check_player_card" href="#assignment-2---bingo-19.player.player.check_player_card">check_player_card</a></code></li>
+<li><code><a title="assignment-2---bingo-19.player.player.client_life" href="#assignment-2---bingo-19.player.player.client_life">client_life</a></code></li>
+<li><code><a title="assignment-2---bingo-19.player.player.convert_str_bool" href="#assignment-2---bingo-19.player.player.convert_str_bool">convert_str_bool</a></code></li>
+<li><code><a title="assignment-2---bingo-19.player.player.encrypt_each" href="#assignment-2---bingo-19.player.player.encrypt_each">encrypt_each</a></code></li>
+<li><code><a title="assignment-2---bingo-19.player.player.get_nonce" href="#assignment-2---bingo-19.player.player.get_nonce">get_nonce</a></code></li>
+<li><code><a title="assignment-2---bingo-19.player.player.handle_player_inputs" href="#assignment-2---bingo-19.player.player.handle_player_inputs">handle_player_inputs</a></code></li>
+<li><code><a title="assignment-2---bingo-19.player.player.login" href="#assignment-2---bingo-19.player.player.login">login</a></code></li>
+<li><code><a title="assignment-2---bingo-19.player.player.process_msg" href="#assignment-2---bingo-19.player.player.process_msg">process_msg</a></code></li>
+<li><code><a title="assignment-2---bingo-19.player.player.receive" href="#assignment-2---bingo-19.player.player.receive">receive</a></code></li>
+<li><code><a title="assignment-2---bingo-19.player.player.send" href="#assignment-2---bingo-19.player.player.send">send</a></code></li>
+<li><code><a title="assignment-2---bingo-19.player.player.share_winner" href="#assignment-2---bingo-19.player.player.share_winner">share_winner</a></code></li>
+<li><code><a title="assignment-2---bingo-19.player.player.submit_card" href="#assignment-2---bingo-19.player.player.submit_card">submit_card</a></code></li>
+<li><code><a title="assignment-2---bingo-19.player.player.submit_deck" href="#assignment-2---bingo-19.player.player.submit_deck">submit_deck</a></code></li>
+<li><code><a title="assignment-2---bingo-19.player.player.submit_keys" href="#assignment-2---bingo-19.player.player.submit_keys">submit_keys</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

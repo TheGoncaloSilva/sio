@@ -1,0 +1,10 @@
+pytest
+accessify
+cryptography
+pytest-asyncio
+termcolor
+attr
+pdoc3==0.10.0
+swig
+PyKCS11
+aioconsole==0.5.1

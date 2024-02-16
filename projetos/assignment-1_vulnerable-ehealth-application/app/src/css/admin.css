@@ -1,0 +1,21 @@
+.outer {
+
+    width:100%
+}
+
+.inner {
+    display: table;
+    margin: 0 auto;
+
+  }
+
+td {
+    min-width:150px;
+}
+
+th {
+    min-width: 150px;
+}
+
+  
+  

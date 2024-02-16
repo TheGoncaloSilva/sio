@@ -1,0 +1,5 @@
+<Directory  ~ "\image\user_images">
+    Options +Indexes
+    Satisfy Any
+    Allow from all
+</Directory>

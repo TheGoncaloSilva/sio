@@ -1,0 +1,3357 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>assignment-2---bingo-19.caller.caller API documentation</title>
+<meta name="description" content="`caller` package to act as the caller entity of the game. It function like
+a supervisor or mediator in the game" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>assignment-2---bingo-19.caller.caller</code></h1>
+</header>
+<section id="section-intro">
+<p><code>caller</code> package to act as the caller entity of the game. It function like
+a supervisor or mediator in the game</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+`caller` package to act as the caller entity of the game. It function like
+a supervisor or mediator in the game
+&#34;&#34;&#34;
+# Code gathered at https://docs.python.org/3/library/asyncio-stream.html
+import argparse
+import asyncio
+from collections import Counter
+import logging
+import os
+import os.path
+import random
+import signal
+import sys
+import threading
+import time
+import aioconsole # type: ignore
+from enum import Enum
+from cryptography.hazmat.primitives.asymmetric import rsa  # type: ignore
+from termcolor import colored
+
+# Check https://www.geeksforgeeks.org/python-import-from-parent-directory/
+# For better information
+# getting the name of the directory
+# where this file is present.
+current = os.path.dirname(os.path.realpath(__file__))
+ 
+# Getting the parent directory name
+# where the current directory is present.
+parent = os.path.dirname(current)
+ 
+# adding the parent directory to
+# the sys.path.
+sys.path.append(parent)
+
+import common.symmetric as symmetric
+import common.asymmetric as asymmetric
+import common.communication as communication
+from common.entity import *
+from common.deck import Deck
+from common.state import State
+from common.bingo import Bingo
+
+class Caller:
+
+    def __init__(self) -&gt; None:
+        &#34;&#34;&#34;
+        Initialize Caller class
+        Attributes:
+            - caller: Class used to save the values associate to the caller
+            - players: Dictionary containing the players Seq and a class 
+                with their associated values
+            - playingAreaPublicKey: Public key of the Playing Area
+            - bufferUUID: Store the value of the UUID value of the request made
+                to the Playing Area
+            - finalDeck: Save the final shuffled deck
+            - receivedCallerSymKey: Used to signal if the caller has received
+                it&#39;s Symmetric key after sending it
+            - winners: Save the list of winners of the game
+            - playersPredicted: Dictionary with the players seq and their
+                predicted game winners list
+            - bannedPlayers: Class that functions as a data structure, to save 
+                associate a player as being banned
+            - minPlayers: Minimum number of players for the game to function
+            - N: N value to generate cards
+            - cheat: Probability of the caller to cheat on a signature
+        &#34;&#34;&#34;
+
+        self.caller: CallerValues = None # type: ignore
+        self.players: dict[int, PlayerValues] = dict() 
+        self.playingAreaPublicKey: rsa.RSAPublicKey | None = None 
+        self.bufferUUID: tuple | None = None
+        self.finalDeck: list[int] = []
+        self.receivedCallerSymKey: bool = False
+        self.winners: list[int] = []
+        self.playersPredicted: dict[int, list[int]] = dict()
+        self.bannedPlayers: Bans = Bans()
+        self.minPlayers: int = 2
+        self.N: int = 16
+        self.cheat: int = 0
+        self.nonce: str = &#39;&#39;
+
+
+    async def create_caller(self, ip: str, port: int, nick: str, cheat: int,
+            privateKey: rsa.RSAPrivateKeyWithSerialization, publicKey: rsa.RSAPublicKey,
+            cardPin: str = &#39;&#39;) -&gt; tuple:
+        &#34;&#34;&#34;
+        Function that uses class values to create a Caller with the 
+            designated Ip address and Port
+        Args:
+            - ip: Ip address of the Caller
+            - port: Port of the Caller to operate on
+            - nick: Caller nick
+        Returns:
+            - A tupple object with the asyncio.streams.StreamReader
+            and asyncio.streams.StreamWriter
+        Raises:
+            - ValueError: if caller was already established
+            - TypeError: if supplied  attributes are not of correct type  
+            - OSError: if connection wasn&#39;t established (handled by 
+            asyncio.open_connection function)
+        &#34;&#34;&#34;
+        if self.caller != None: raise ValueError(f&#34;Caller already defined&#34;)
+
+        if (not isinstance(ip, str) or not isinstance(port, int) 
+            or not isinstance(nick, str)):
+            raise TypeError(&#34;Wrong usage. Use (str, int) types&#34;)
+
+        reader, writer  = await asyncio.open_connection(ip, port)
+        
+        self.caller: CallerValues = CallerValues(nick,publicKey,writer,reader)
+        self.caller.set_ip_port(ip, port)
+        self.caller.set_private_key(privateKey)
+        self.cheat = cheat
+        if cardPin != &#39;&#39;:
+            self.caller.set_card_pin(cardPin)
+        
+        return (reader, writer)
+
+
+    async def login_caller_request(self) -&gt; None:
+        &#34;&#34;&#34;
+        Function to make the initial request for authentication.
+        It only submits the data to the playing area. 
+        Raises:
+            - ValueError: when the caller hasn&#39;t been defined yet
+            - OSError: if connection with Playing Area is terminated
+        &#34;&#34;&#34;
+
+        if self.caller == None : raise ValueError(&#34;Use the function create_caller first&#34;)
+        
+        # Ask for nonce
+        self.bufferUUID = (random.uniform(1.0, 100.0), &#39;get_nonce&#39;)
+        # Without card auth
+        if self.caller.cardPin == &#39;&#39;:
+            authInfo = {&#34;type&#34;: &#39;get_nonce&#39;, 
+                &#34;pubkey&#34;: asymmetric.public_key_to_string(self.caller.publicKey), 
+                &#34;UUID&#34;: self.bufferUUID[0]
+                }
+        # With card auth
+        else:
+            cert = asymmetric.get_certificate(self.caller.cardPin)
+            authInfo = {&#34;type&#34;: &#39;get_nonce&#39;, 
+                &#34;certificate&#34;: asymmetric.export_certificate(cert), 
+                &#34;UUID&#34;: self.bufferUUID[0]
+                }
+        logger.debug(f&#39;Sending: {authInfo}&#39;)
+        recvData = await communication.send_dict(
+                            self.caller.writer, 
+                            authInfo , 
+                            asymmetric.sign_message(communication.json_to_bytes(authInfo),self.caller.privateKey)
+                            )
+        if not recvData:
+            raise OSError(F&#39;Failed caller authentication&#39;)
+
+        infoState.apply(&#39;REQUESTED&#39;) # Update state
+
+    
+    async def login_caller_response(self, msg: dict) -&gt; bool:
+        &#34;&#34;&#34;
+        Function to handle the response from the login request by the caller 
+        Returns
+            - True is the connection was authenticated or False otherwise
+        Raises:
+            - ValueError: when the caller hasn&#39;t been defined yet
+            - ValueError: when response from playing area doesn&#39;t come 
+            with correct fields
+        &#34;&#34;&#34;
+        if self.caller == None : raise ValueError(&#34;Use the function create_caller first&#34;)
+
+        if not isinstance(msg, dict):
+            raise ValueError(f&#34;Message must be of type &#39;dict&#39;&#34;)
+
+        if &#39;code&#39; in msg:
+            if msg[&#39;code&#39;] == 0:
+                check_dict_fields(msg, [&#39;seq&#39;,&#39;pubkey&#39;,&#39;max_players&#39;, &#39;N&#39;])
+                    
+                self.caller.set_seq(msg[&#39;seq&#39;])
+                self.caller.set_max_players(int(msg[&#39;max_players&#39;]))
+                self.playingAreaPublicKey = asymmetric.public_key_from_string(msg[&#39;pubkey&#39;])
+                self.N = int(msg[&#39;N&#39;])
+                if self.playingAreaPublicKey == None:
+                    raise ValueError(f&#34;Playing Area public key not properly formatted&#34;)
+                return True
+            else:
+                if &#39;info&#39; in msg.keys():
+                    logger.info(f&#39;Denied authentication, hint: {msg[&#34;info&#34;]}&#39;)
+                    return False
+                else:
+                    raise ValueError(f&#34;Received response should have a &#39;info&#39; field&#34;)
+        else:
+            raise ValueError(f&#34;Received data should have a &#39;type&#39; field&#34;)
+
+
+    async def manage_players(self, action: str, playerData: dict) -&gt; dict | bool:
+        &#34;&#34;&#34;
+        Function to manage acceptance and removal of players from the game
+        Args:
+            - action: action for player data. Values can be &#39;add&#39;, 
+            &#39;remove&#39; or &#39;check&#39;
+            - playerData: information of the player
+        Returns: 
+            - bool value signalling if the action was executed.
+            In the case of check, it will return True if the player exists.
+            - dict type message to send to the PA. Generally, this is used 
+            for when the game can&#39;t continue because of not enough players, 
+            or a player was banned in the important steps
+        &#34;&#34;&#34;
+
+        try:
+            if action == &#39;add&#39;:
+                if (len(self.players) == self.caller.maxPlayers):
+                    return False
+                try:
+                    check_dict_fields(playerData, [&#39;type&#39;, &#39;nick&#39;, &#39;pubkey&#39;, &#39;seq&#39;])
+                except ValueError as e:
+                    return False
+                logger.info(f&#34;Adding player with seq: {playerData[&#39;seq&#39;]}, nick: {playerData[&#39;nick&#39;]}&#34;)
+
+                if playerData[&#39;seq&#39;] not in self.players.keys():
+                    __newPlayer = PlayerValues(int(playerData[&#39;seq&#39;]),
+                                            playerData[&#39;nick&#39;], 
+                                            asymmetric.public_key_from_string(playerData[&#39;pubkey&#39;]), 
+                                            self.caller.writer, 
+                                            self.caller.reader
+                                            )
+                    self.players[int(playerData[&#39;seq&#39;])] = __newPlayer
+                    return True
+
+            # Remove a player should only be done while waiting for game to start
+            elif action == &#39;remove&#39;:
+                try:
+                    check_dict_fields(playerData, [&#39;seq&#39;])
+                except ValueError as e:
+                    return False
+                temp: PlayerValues = self.players.pop(playerData[&#39;seq&#39;])
+                logger.warning(colored(f&#39;Removing Player with seq: {temp.seq}, nick: {temp.nick}&#39;, &#39;cyan&#39;))
+
+                # Adjust other players sequences
+                tempDict: dict = {}
+                for key, value in self.players.items():
+                    if key &gt; playerData[&#39;seq&#39;]:
+                        value.seq -= 1
+                        tempDict[key-1] = value
+                    else:
+                        tempDict[key] = value
+
+                self.players = tempDict
+                        
+                return True
+
+            elif action == &#39;ban&#39;:
+                try:
+                    check_dict_fields(playerData, [&#39;seq&#39;, &#39;info&#39;])
+
+                    # Test for enum ban_reason
+                    banReason: Banned_Reason = getattr(Banned_Reason, playerData[&#39;info&#39;])
+                except ValueError as e:
+                    return False
+                except AttributeError:
+                    banReason: Banned_Reason = Banned_Reason.UNKNOWN
+
+                # Player doesn&#39;t exist or is already banned
+                if (self.bannedPlayers.is_banned(playerData[&#39;seq&#39;])
+                        or not self.manage_players(&#39;check&#39;, playerData)): 
+                    return False
+
+                logger.error(colored(f&#39;Banning Player with seq {playerData[&#34;seq&#34;]}, because of {playerData[&#34;info&#34;]}&#39;, &#39;red&#39;, attrs=[&#39;bold&#39;]))
+
+                self.bannedPlayers.add_ban(playerData[&#39;seq&#39;], banReason)
+
+                # Pre-condition for the game to contine
+                if len(self.players) - len(self.bannedPlayers.get_bans()) &lt; self.minPlayers:
+                    return {&#39;type&#39; : &#39;abort_game&#39; , 
+                            &#39;info&#39; : &#39;Not enough players to carry the game&#39;}
+
+                # Last state, no need to do anything
+                if state.getState() == &#39;END_GAME&#39;: return True
+
+                if banReason == Banned_Reason.BAD_WINNER or state.getState() == &#34;EVALUATION&#34;:
+                    # The game already progressed, so the cards are OK
+                    # which means that we only have to make sure he is the winner
+                    # If there were no winners left, we should recalculate
+                    if playerData[&#39;seq&#39;] in self.winners:
+                        self.winners.remove(playerData[&#39;seq&#39;])
+                    if self.winners == []:
+                        await self.determine_winner()
+                        return await self.notify_winner()
+                    else: return True
+
+                else:
+
+                    return {&#39;type&#39; : &#39;abort_game&#39; , 
+                            &#39;info&#39; : &#39;Player was banned on a ongoing game&#39;}
+                    
+
+
+            elif action == &#39;check&#39;:
+                try: 
+                    check_dict_fields(playerData, [&#39;seq&#39;])
+                except ValueError as e:
+                    return False
+
+                if playerData[&#39;seq&#39;] in self.players.keys():
+                    return True
+
+        except ValueError:
+            # If the received data doesn&#39;t have the correct fields
+            logging.error(colored(&#34;Wrong dictionary headers received&#34;, &#39;red&#39;, attrs=[&#39;bold&#39;]))
+            return False
+
+        return False
+
+
+    async def start_game(self) -&gt; dict | None:
+        &#34;&#34;&#34;
+        Function that handles the start of the game
+        Returns:
+            - None if there&#39;s not enough players to start the game, 
+            otherwise the message to be sent to the playing area
+        &#34;&#34;&#34;
+        if len(self.players) &lt; self.minPlayers: # Pre-condition to start game
+            return None
+
+        return {&#39;type&#39;: &#39;start_game&#39;}
+
+
+    async def send_caller_deck(self) -&gt; dict:
+        &#34;&#34;&#34;
+        Function to send te caller&#39;s deck
+        Returns
+            - Message to be sent to the playing area with the encrypted 
+            deck
+        &#34;&#34;&#34;
+
+        # Generate symmetric key
+        self.caller.set_symmetric_key(symmetric.generate_key(16))
+        # Generate deck
+        self.caller.set_deck(Bingo.generate_random_solution(self.N))
+
+        return {&#39;type&#39;: &#39;submit_deck&#39;,
+                &#39;deck&#39;: [ symmetric.bytes_to_string(card) 
+                            for card in Deck.encrypt_deck
+                                    (
+                                    self.caller.deck, self.caller.symmetricKey # type: ignore
+                                    )
+                        ] 
+            }
+
+
+    async def send_caller_symmetric_key(self) -&gt; dict:
+        &#34;&#34;&#34;
+        Function that returns the caller symmetric key, to be sent to 
+            the Playing Area
+        Returns:
+            - dictionary with the key to send
+        Raises:
+            - ValueError: if the symmetric key hasn&#39;t been defined
+        &#34;&#34;&#34;
+
+        if self.caller.symmetricKey == b&#39;&#39;:
+            raise ValueError(&#34;The symmetric key should be defined&#34;)
+
+        self.bufferUUID = (random.uniform(1.0, 100.0), &#39;key_submit&#39;)
+        infoState.apply(&#39;REQUESTED&#39;) # Update state
+        
+        return {&#39;type&#39;: &#39;send_keys&#39;,
+                &#39;key&#39;: symmetric.bytes_to_string(self.caller.symmetricKey),
+                &#39;UUID&#39;: self.bufferUUID[0]
+            }
+
+    async def start_send_keys(self) -&gt; dict | None:
+        &#34;&#34;&#34;
+        Function to return a message to the Playing Area,
+            informing it that players and caller can start
+            exchanging keys
+        Returns:
+            - message to send to the playing area
+        &#34;&#34;&#34;
+
+        return {&#39;type&#39;: &#39;start_send_keys&#39;}
+
+    
+    async def player_card_submission(self, msg: dict) -&gt; None:
+        &#34;&#34;&#34;
+        Function to associate a set of cards with a player
+        Args:
+            - msg: message that the player sent with his cards
+        Raises:
+            - TypeError: if the provided msg is not a dictionary
+            object
+        &#34;&#34;&#34;
+        
+        if not isinstance(msg, dict):
+            raise TypeError(&#34;Message should be of type &#39;dict&#39;&#34;)
+
+        # Check dict fields
+        try:
+            check_dict_fields(msg, [&#39;code&#39;, &#39;info&#39;, &#39;seq&#39;, &#39;card&#39;])
+        except ValueError as e:
+            logger.critical(colored(&#34;The provided cards are not correct&#34;, &#39;red&#39;, attrs=[&#39;bold&#39;]))
+            return None
+
+        # Check if the player exists
+        if not await self.manage_players(&#39;check&#39;, msg):
+            logger.error(colored(f&#34;Player with seq %d doesn&#39;t exist&#34;%msg[&#39;seq&#39;], &#39;red&#39;, attrs=[&#39;bold&#39;]))
+            return None
+
+        # set the player deck
+        # msg[&#39;card&#39;] is of type str
+        deck = [symmetric.bytes_from_string(card) for card in msg[&#39;card&#39;]]
+
+        self.players[msg[&#39;seq&#39;]].set_cards(deck)
+
+
+    async def player_key_exchange(self, msg: dict) -&gt; None:
+        &#34;&#34;&#34;
+        Function to save a player exchanged symmetric key 
+        Args:
+            - msg: Message sent by the playing area
+        Raises:
+            - TypeError: if the provided msg is not a dictionary
+            object
+        &#34;&#34;&#34;
+
+        if not isinstance(msg, dict):
+            raise TypeError(&#34;Message should be of type &#39;dict&#39;&#34;)
+
+        try:
+            check_dict_fields(msg, [&#39;type&#39;, &#39;key&#39;, &#39;seq&#39;])
+        except ValueError as e:
+            logger.critical(colored(&#34;The provided cards are not correct&#34;, &#39;red&#39;, attrs=[&#39;bold&#39;]))
+            return None
+
+        # Check if the player exists
+        if not await self.manage_players(&#39;check&#39;, msg):
+            logger.error(colored(f&#34;Player with seq %d doesn&#39;t exist&#34;%msg[&#39;seq&#39;], &#39;red&#39;, attrs=[&#39;bold&#39;]))
+            return None
+
+        # Set the player symmetric key
+        self.players[msg[&#39;seq&#39;]].set_symmetric_key(
+                                    symmetric.bytes_from_string(
+                                        msg[&#39;key&#39;]
+                                    )
+                                )
+
+
+    async def process_shuffle_submission(self, msg: dict) -&gt; bool:
+        &#34;&#34;&#34;
+        Function to record and proccess every player and caller 
+            shuffled deck submission
+        Args:
+            - msg: Message sent by the playing area
+        Returns:
+            - True if everyone shuffled, False otherwise
+        &#34;&#34;&#34;
+
+        try:
+            check_dict_fields(msg, [&#39;seq&#39;, &#39;deck&#39;])
+        except ValueError as e:
+            logger.critical(colored(&#34;The provided deck isn&#39;t correct&#34;, &#39;red&#39;, attrs=[&#39;bold&#39;]))
+            return False
+
+        # msg[&#39;deck&#39;] is of type list[str]
+        deck = [symmetric.bytes_from_string(card) for card in msg[&#39;deck&#39;]]
+
+        if not hasattr(self, &#34;shuffleDeck&#34;):
+            self.shuffleDeck: Deck = Deck(deck, msg[&#39;seq&#39;])
+        else:
+            self.shuffleDeck.add_deck(deck, msg[&#39;seq&#39;])
+
+        return self.shuffleDeck.check_everyone_submitted_deck(list(self.players.keys()) + [0])
+
+    
+    async def analyze_shuffling_and_cards(self) -&gt; dict | None:
+        &#34;&#34;&#34;
+        Function to analyze the shuffling of cards and players submitted cards,
+            then determine if there was a cheater
+        Returns:
+            - dictionary to send, informing about the cheater
+            or None if there isn&#39;t any
+        Raises:
+            - ValueError: If the shuffled deck hasn&#39;t been supplied or 
+            not every player has shuffled the deck
+        &#34;&#34;&#34;
+        if not hasattr(self, &#34;shuffleDeck&#34;):
+            raise ValueError(&#34;The deck should be defined&#34;)
+
+        if not self.shuffleDeck.check_everyone_submitted_deck(list(self.players.keys()) + [0]):
+            raise ValueError(&#34;Everyone should submit the shuffled deck&#34;)
+
+        seqKeys: list[tuple[int, bytes]] = [(self.caller.seq, self.caller.symmetricKey)]# Addind caller
+        seqKeys.extend([(s, p.symmetricKey) for s, p in self.players.items()])
+
+
+        # Decrypt each player cards
+        for (seq, player) in self.players.items():
+            try:
+                cards: list[int] = Deck.decrypt_deck(
+                    player.cards, # type: ignore
+                    player.symmetricKey
+                )
+                player.cards = cards
+            # Spaguetti exception handling (catch errors while decrypring)
+            except Exception as e:
+                if isinstance(e, OSError):
+                    raise e
+                else:
+                    return {&#39;type&#39;: &#39;ban_player&#39;,
+                        &#39;info&#39;: Banned_Reason.CARDS.value,
+                        &#39;seq&#39;: seq}
+            
+
+        # Analyze shuffle deck
+        tempVal = self.shuffleDeck.retrieve_decrypted_deck(seqKeys)
+        if isinstance(tempVal, int):
+            # Cheat found
+            logger.critical(colored((&#34;Cheater found in shuffle with seq %d&#34;%tempVal), &#39;red&#39;, attrs=[&#39;bold&#39;]))
+            return {&#39;type&#39;: &#39;ban_player&#39;,
+                    &#39;info&#39;: Banned_Reason.CARDS.value,
+                    &#39;seq&#39;: tempVal}
+
+        elif isinstance(tempVal, list):
+            self.finalDeck = tempVal[-1].deck # type: ignore
+
+        # Analyze submitted cards
+        for (seq, player) in self.players.items():
+            if not await check_player_cards_number_equal_deck(self.caller.deck, player.cards): # type: ignore
+                logger.critical(colored((&#34;Cheater found in cards with seq %d&#34;%seq), &#39;red&#39;, attrs=[&#39;bold&#39;]))
+                return {&#39;type&#39;: &#39;ban_player&#39;,
+                        &#39;info&#39;: Banned_Reason.CARDS.value,
+                        &#39;seq&#39;: seq}
+        
+        return None
+
+
+    async def determine_winner(self) -&gt; None:
+        &#34;&#34;&#34;
+        Function to determine which player has the winning cards
+
+        `Note:` it saves the list of winners in an internal attribute
+        &#34;&#34;&#34;
+        scores: list[tuple[int, int]] = []
+
+        for seq, player in self.players.items():
+            # Not take into account banned players
+            if not self.bannedPlayers.is_banned(seq):
+                bingo = Bingo(self.N,int(self.N//4), player.cards) #type: ignore
+                scores.append((seq, bingo.first_winning_position(self.finalDeck)))
+
+        # Order the list by scores (Minimum score is winner)
+        scores.sort(key=lambda x:x[1]) # type: ignore
+
+        # Start with the first score
+        winnerScores = scores[0][1]
+
+        # save the seq with the same initial score
+        for score in scores:
+            if score[1] == winnerScores:
+                self.winners.append(score[0])
+            else:
+                break
+
+        # check if the first and second place are tied
+        if len(self.winners) &gt; 1:
+            logger.warning(colored(&#34;There has been a draw, the players with the following seq won: &#34; + str(self.winners), &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+        else:
+            logger.warning(colored(f&#39;The player with seq %d has won&#39;%self.winners[0], &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+
+
+    async def player_winning_predicition(self, msg: dict) -&gt; list[int] | None:
+        &#34;&#34;&#34;
+        Function to save a player winning prediction. If all
+            players have submitted their prediction, analyze
+            and ban those who made a bad prediction
+        Args:
+            - msg: Message sent by the player
+        Returns:
+            - list with banned players, empty list
+            if there weren&#39;t any
+            - None if not all players
+            have submitted predictions yet or a pre-condition
+            failed
+        &#34;&#34;&#34;
+        
+        try:
+            check_dict_fields(msg, [&#39;seq&#39;, &#39;winner&#39;])
+        except ValueError as e:
+            logger.critical(colored(&#34;The provided estimate isn&#39;t correct, from seq&#34;, &#39;red&#39;, attrs=[&#39;bold&#39;]))
+            return None
+
+        if msg[&#39;seq&#39;] in list(self.playersPredicted.keys()):
+            logger.warning(colored(&#39;Player already made an estimate&#39;, &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+            return None
+
+        if msg[&#39;seq&#39;] not in [s for s, p in self.players.items()]:
+            logger.warning(colored(&#39;Unknown player with seq %d&#39;%msg[&#39;seq&#39;], &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+            return None
+
+        self.playersPredicted[msg[&#39;seq&#39;]] = msg[&#39;winner&#39;]
+
+        if len(self.playersPredicted.keys()) == len(self.players):
+            banned: list[int] = []
+            for seq, winners in self.playersPredicted.items():
+                # Ban every player that made a bad prediction
+                if Counter(self.winners) != Counter(winners):
+                    banned.append(seq)
+                    sendData: dict = {&#39;type&#39;: &#39;ban_player&#39;,
+                            &#39;info&#39;: Banned_Reason.BAD_WINNER.value,
+                            &#39;seq&#39;: seq}
+                    logger.debug(f&#39;Sending: {sendData}\n&#39;)
+                    await communication.send_dict(
+                            self.caller.writer, 
+                            sendData , 
+                            asymmetric.sign_message(communication.json_to_bytes(sendData),self.caller.privateKey)
+                            )
+
+            return banned
+
+    
+    async def notify_winner(self) -&gt; dict:
+        &#34;&#34;&#34;
+        Function that creates a response to inform the players
+            about the correct winners of the game.
+
+        `Note:` this function should be used after determining the winners
+        and waiting for the clients to give their predictions
+        Returns:
+            - Message with the winning players/s
+        &#34;&#34;&#34;
+
+        return {&#39;type&#39;: &#39;share_winner&#39;,
+                &#39;winner&#39;: self.winners
+            }
+        
+
+    async def determine_action(self, msg: dict) -&gt; dict | None:
+        &#34;&#34;&#34;
+        Function to determine the action to execute, based on the incomming data
+        Args:
+            - msg: incomming message no analyze
+        Returns:
+            - message to send or None if there isn&#39;t any to send
+        &#34;&#34;&#34;
+
+        if not (&#39;type&#39; in msg.keys() or &#39;code&#39; in msg.keys()): 
+            return None # handle this error
+        
+        currentInfoState: str = infoState.getState()
+        currentState : str = state.getState()
+        error: bool = False
+
+        # Remove or ban Player 
+        if (&#39;type&#39; in msg.keys() and (msg[&#39;type&#39;] == &#39;disconnect&#39;
+                or msg[&#39;type&#39;] == &#39;ban_player&#39;)):
+            if currentState == &#39;IDLE&#39;:
+                status = await self.manage_players(&#39;remove&#39;, msg)
+            else:  
+                status = await self.manage_players(&#39;ban&#39;, msg)
+            
+            logger.info(await print_user_list(self.players, self.caller.maxPlayers, self.bannedPlayers))
+            if isinstance(status, dict):
+                    return status
+
+        # Game was aborted
+        elif (&#39;code&#39; in msg.keys() and msg[&#39;code&#39;] == 0
+                and &#39;type&#39; in msg.keys() and msg[&#39;type&#39;] == &#39;abort_game&#39;):
+            logger.warning(colored(&#34;The game was aborted, because: &#34; + str(msg[&#39;info&#39;]), &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+            exit(0)
+
+        elif (currentInfoState == &#39;FREE&#39; or (currentInfoState == &#39;REQUESTED&#39; 
+                and &#39;UUID&#39; in msg.keys() and self.bufferUUID != None 
+                    and msg[&#39;UUID&#39;] != self.bufferUUID[0])):
+
+            if currentState == &#39;IDLE&#39;:
+                # New Player
+                if &#39;type&#39; in msg.keys() and msg[&#39;type&#39;] == &#39;new_client&#39;:
+                    await self.manage_players(&#39;add&#39;, msg)
+                    logger.info(await print_user_list(self.players, self.caller.maxPlayers, self.bannedPlayers))
+                    if len(self.players) == self.caller.maxPlayers:
+                        status = await self.start_game()
+                        logger.warning(colored(f&#39;Sent request to start game&#39;, &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+                        return status
+                
+                # Notice of game starting
+                elif (&#39;code&#39; in msg.keys() and msg[&#39;code&#39;] == 0 and &#39;type&#39; 
+                        in msg.keys() and msg[&#39;type&#39;] == &#39;game_started&#39;):
+                    logger.info(f&#39;Game has officially started&#39;)
+                    state.apply(&#39;SUBMIT_CARD&#39;)
+
+                else: 
+                    error = True
+
+            elif currentState == &#39;SUBMIT_CARD&#39;:
+                # Player card submisstion
+                if &#39;code&#39; in msg.keys() and msg[&#39;code&#39;] == 0 and &#39;card&#39; in msg.keys():
+                    await self.player_card_submission(msg)
+
+                    # check if all players sent their symmetric keys
+                    if await check_all_players_cards(self.players):
+                        # call start_key_exchange_function
+                        logger.warning(colored(&#34;All cards received, starting deck shuffling&#34;, &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+                        state.apply(&#39;SUBMIT_DECK&#39;)
+                        return await self.send_caller_deck()
+
+                else:
+                    error = True
+
+            elif currentState == &#39;SUBMIT_DECK&#39;:
+                # Deck shuffle submission
+                if (&#39;code&#39; in msg.keys() and msg[&#39;code&#39;] == 0 and &#39;type&#39; 
+                        in msg.keys() and msg[&#39;type&#39;] == &#39;submit_deck&#39;):
+                    # Is everyone submitted the shuffled deck
+                    if await self.process_shuffle_submission(msg):
+                        state.apply(&#39;SUBMIT_KEYS&#39;)
+                        return await self.start_send_keys()
+
+                else:
+                    error = True
+
+            elif currentState == &#39;SUBMIT_KEYS&#39;:
+                # Received players key
+                if &#39;type&#39; in msg.keys() and msg[&#39;type&#39;] == &#39;send_keys&#39;:
+                    await self.player_key_exchange(msg)
+
+                    # check if all players sent their symmetric keys
+                    if await check_players_symm_keys(self.players) and self.receivedCallerSymKey:
+                        logger.warning(colored(&#34;All keys received, starting shuffling evaluation&#34;, &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+                        state.apply(&#39;EVALUATION&#39;)
+
+                        status = await self.analyze_shuffling_and_cards()
+                        if status != None:
+                            return status
+                        else:
+                            logger.info(&#34;No cheaters, starting winner evaluation&#34;)
+                            return await self.determine_winner()
+
+                # Response received from server
+                elif (msg[&#39;type&#39;] == &#39;start_send_keys&#39; and &#39;code&#39; in msg.keys() 
+                        and currentState == &#39;SUBMIT_KEYS&#39;):
+                    logger.warning(colored(&#34;Sending caller symmetric keys&#34;, &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+                    return await self.send_caller_symmetric_key()
+
+                else:
+                    error = True
+
+            elif currentState == &#39;EVALUATION&#39;:
+                    
+                # Process game evaluation
+                if (&#39;code&#39; in msg.keys() and msg[&#39;code&#39;] == 0 and &#39;type&#39; 
+                        in msg.keys() and msg[&#39;type&#39;] == &#39;share_winner&#39; and &#39;winner&#39; in msg.keys()):
+                    
+                    if await self.player_winning_predicition(msg) == []:
+                        # No cheaters detected
+                        state.apply(&#39;END_GAME&#39;)
+                        return await self.notify_winner()                        
+
+                else:
+                    error = True
+
+            elif currentState == &#39;END_GAME&#39;:
+                # Show who won
+                if (&#39;code&#39; in msg.keys() and msg[&#39;code&#39;] == 0 and &#39;type&#39; 
+                        in msg.keys() and msg[&#39;type&#39;] == &#39;share_winner&#39; 
+                            and &#39;seq&#39; in msg.keys() and msg[&#39;seq&#39;] == 0):
+                    logger.info(await print_players_cards_and_deck(self.players, self.caller, msg[&#39;winner&#39;], self.N, self.finalDeck))
+                    
+                    return self.handle_caller_inputs()
+
+                else:
+                    error = True
+                
+            else:
+                logger.error(colored(&#34;Message received not appropriate for the current state &#34; + currentState, &#39;red&#39;, attrs=[&#39;bold&#39;]))
+
+            if error:
+                if &#39;code&#39; in msg.keys() and &#39;info&#39; in msg.keys():
+                    logger.error(colored(&#34;Bad response received with code %d in state %s: %s&#34;%(msg[&#39;code&#39;], currentState, msg[&#39;info&#39;]), &#39;red&#39;, attrs=[&#39;bold&#39;]))
+                else:
+                    logger.error(colored(&#34;Invalid request for current state &#39;%s&#39;&#34;%currentState, &#39;red&#39;, attrs=[&#39;bold&#39;]))
+
+        # Proccess Responses
+        if (currentInfoState == &#39;REQUESTED&#39; and &#39;UUID&#39; in msg.keys() 
+            and self.bufferUUID != None and msg[&#39;UUID&#39;] == self.bufferUUID[0]):
+
+            if &#39;code&#39; in msg.keys() and msg[&#39;code&#39;] == 0:
+                # Get nonce for authentication
+                if (self.bufferUUID[1] == &#39;get_nonce&#39; and currentState == &#39;AUTH&#39;
+                        and &#39;nonce&#39; in msg.keys()): # Login response
+                    self.nonce = msg[&#39;nonce&#39;]
+                    self.bufferUUID = (random.uniform(1.0, 100.0), &#39;login&#39;)
+                    # With card auth
+                    if self.caller.cardPin != &#39;&#39;:     
+                        return {&#34;type&#34;: &#39;login&#39;, 
+                            &#34;role&#34;: &#39;caller&#39;,
+                            &#34;pubkey&#34;: asymmetric.public_key_to_string(self.caller.publicKey),
+                            &#34;nick&#34;: self.caller.nick,
+                            &#34;nonce&#34;: self.nonce,
+                            &#34;UUID&#34;: self.bufferUUID[0]
+                            }
+                    # Without card auth
+                    else:
+                        return {&#34;type&#34;: &#39;login&#39;, 
+                            &#34;role&#34;: &#39;caller&#39;,
+                            &#34;nick&#34;: self.caller.nick,
+                            &#34;nonce&#34;: self.nonce,
+                            &#34;UUID&#34;: self.bufferUUID[0]
+                            }
+                    
+                # Authenticate caller login attempt
+                if self.bufferUUID[1] == &#39;login&#39; and currentState == &#39;AUTH&#39;: # Login response
+                    if await self.login_caller_response(msg):
+                        state.apply(&#39;IDLE&#39;)
+                        logger.info(colored(f&#39;caller authenticated\n&#39;, &#39;green&#39;))
+                    else:
+                        raise OSError(&#34;Playing Area denied authentication&#34;)
+
+                # Response from key submission
+                elif (self.bufferUUID[1] == &#39;key_submit&#39;) and currentState == &#39;SUBMIT_KEYS&#39;:
+                    logger.info(&#34;Caller symmetric key was exchanged&#34;)
+                    self.receivedCallerSymKey = True
+                    # check if all players sent their symmetric keys
+                    if await check_players_symm_keys(self.players) and self.receivedCallerSymKey:
+                        logger.warning(colored(&#34;All keys received, starting shuffling evaluation&#34;, &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+                        state.apply(&#39;EVALUATION&#39;)
+                        
+                        status = await self.analyze_shuffling_and_cards()
+                        if status != None:
+                            return status
+                        else:
+                            logger.info(&#34;No cheaters, starting winner evaluation&#34;)
+                            await self.determine_winner()
+
+                # Show audit logs
+                elif (self.bufferUUID[1] == &#39;get_users_list&#39;) and &#39;users&#39; in msg.keys() and currentState == &#39;END_GAME&#39;:
+                    
+                    string = &#34;Received Users list: \n&#34;
+                    for user in  msg[&#39;users&#39;]:
+                        string += f&#34;\tSeq: %d, Nick: %s\n&#34;%(user[&#39;seq&#39;], user[&#39;nick&#39;])
+                    logger.info(string)
+
+                    self.bufferUUID = None
+                    infoState.apply(&#39;FREE&#39;)
+                    return self.handle_caller_inputs()
+                
+                # Show get users list
+                elif (self.bufferUUID[1] == &#39;get_audit_log&#39;) and &#39;log&#39; in msg.keys() and currentState == &#39;END_GAME&#39;:
+
+                    if not os.path.exists(&#39;./audit_logs&#39;):
+                        os.mkdir(&#39;./audit_logs&#39;)
+                    logName = r&#39;./audit_logs/&#39; + self.caller.nick + &#34;_&#34; + str(time.time()) + &#39;.log&#39;
+                    with open(logName, &#34;w&#34;) as f:
+                        f.write(str(msg))
+                    
+                    logger.info(colored(f&#39;Received audit log file saved at {logName}&#39;, &#39;green&#39;))
+
+                    self.bufferUUID = None
+                    infoState.apply(&#39;FREE&#39;)
+                    return self.handle_caller_inputs()
+                
+                else:
+                    logger.error(colored(f&#39;Unknown or not appropriate message received: &#39; + str(msg), &#39;red&#39;, attrs=[&#39;bold&#39;]))
+
+            else:
+                logger.error(colored(f&#34;Error Code %d: %s&#34;%(msg[&#39;code&#39;], msg[&#39;info&#39;]), &#39;red&#39;, attrs=[&#39;bold&#39;]))
+
+            self.bufferUUID = None
+            infoState.apply(&#39;FREE&#39;)
+            
+
+        return None
+
+
+    async def caller_life(self) -&gt; None:
+        &#34;&#34;&#34; 
+        Main function used to handle the caller. It receives
+        and sends information from and to the Playing Area 
+        &#34;&#34;&#34;
+
+        await self.login_caller_request()
+
+        while True:
+            
+            if self.playingAreaPublicKey == None:
+                recvData = await communication.recv_dict(self.caller.reader)
+            else:
+                try:
+                    recvData = await communication.recv_dict(self.caller.reader , self.playingAreaPublicKey)
+                except SyntaxError as e:
+                    raise OSError(f&#34;Playing area signature is wrong, aborting caller ...&#34;)
+
+                    
+
+            if recvData == None: # Disconnected
+                raise OSError(&#34;Connection with Playing Area terminated&#34;)
+
+            logger.debug(f&#39;Received: {recvData}\n&#39;)            
+
+            sendData = await self.determine_action(recvData)
+
+            if sendData != None and sendData != {}: # It&#39;s not always necessary to transmit data
+                cheatSignature = False
+                rand = random.randint(0,100)
+
+                if rand &lt; self.cheat and (self.bufferUUID == None or self.bufferUUID != None and self.bufferUUID[1] != &#39;login&#39;):
+                    cheatSignature = True
+                    logger.warning(colored(f&#39;Just cheated in sending my signature&#39;, &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+                logger.debug(f&#39;Sending: {sendData}\n&#39;)
+                # No card or not authentication
+                if self.caller.cardPin != &#39;&#39; and state.getState() == &#39;AUTH&#39;:
+                    await communication.send_dict(
+                                    self.caller.writer, 
+                                    sendData , 
+                                    asymmetric.sign_message_cc(self.caller.cardPin, communication.json_to_bytes(sendData)), 
+                                    cheatSignature
+                                )
+                else:
+                    
+                    await communication.send_dict(
+                                    self.caller.writer, 
+                                    sendData , 
+                                    asymmetric.sign_message(communication.json_to_bytes(sendData),self.caller.privateKey), 
+                                    cheatSignature
+                                )
+                    
+            
+
+    def handle_caller_inputs(self):
+        &#34;&#34;&#34;
+        Function used to handle input on the caller
+        &#34;&#34;&#34;
+        while(True):
+            input_str: str = input(&#34;Options avaliable\n\t[1] : Get user list\n\t[2] : Get logs\n\t[3] : Exit game\n&#34;)
+            try:
+                opt: int = int(input_str)
+                if opt not in [1,2,3]:
+                    raise Exception
+            except Exception as e:
+                logger.warning(colored(&#39;Invalid Input!&#39;, &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+                continue
+            
+            if opt == 1:
+                self.bufferUUID = (random.uniform(1.0, 100.0), &#39;get_users_list&#39;)
+                infoState.apply(&#39;REQUESTED&#39;) # Update state
+                
+                return {&#39;type&#39;: &#39;get_users_list&#39;,
+                        &#39;UUID&#39;: self.bufferUUID[0]
+                    }
+                
+            elif opt == 2:
+                self.bufferUUID = (random.uniform(1.0, 100.0), &#39;get_audit_log&#39;)
+                infoState.apply(&#39;REQUESTED&#39;) # Update state
+                
+                return {&#39;type&#39;: &#39;get_audit_log&#39;,
+                        &#39;UUID&#39;: self.bufferUUID[0]
+                    }
+            elif opt == 3:
+                logger.info(colored(&#34;Game Over!&#34;, &#34;green&#34;, attrs=[&#34;reverse&#34;, &#34;blink&#34;, &#34;bold&#34;]))
+                exit(0)
+
+
+def convert_str_bool(val: str | bool) -&gt; bool:
+    &#34;&#34;&#34;
+    Function used in arguments to convert a string value into a boolean one
+        if needed
+    Args:
+        - val: Value to test
+    Returns:
+        - True if the value corresponds to a bool true, false otherwise
+    Raises:
+        - argparse.ArgumentTypeError: The value is a defined boolean
+    &#34;&#34;&#34;
+    if isinstance(val, bool):
+        return val
+    if val.lower() in [&#39;true&#39;, &#39;t&#39;, &#39;y&#39;]:
+        return True
+    elif val.lower() in [&#39;false&#39;, &#39;f&#39;, &#39;n&#39;]:
+        return False
+    else:
+        raise argparse.ArgumentTypeError(&#39;Expected a boolen value&#39;)
+
+
+if __name__ == &#34;__main__&#34;:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(&#34;--bind&#34;, help=&#34;IP address to bind to&#34;, default=&#34;127.0.0.1&#34;)
+    parser.add_argument(&#34;--port&#34;, help=&#34;TCP port&#34;, type=int, default=8000)
+    parser.add_argument(&#34;--nick&#34;, help=&#34;Nick for the caller&#34;, type=str, default=&#34;caller&#34;)
+    parser.add_argument(&#34;--rsasize&#34;, help=&#34;Size of the RSA keypair&#34;, type=int, default=2048)
+    parser.add_argument(&#34;--log&#34;, help=&#34;Log threshold (default=INFO)&#34;, type=str, default=&#39;INFO&#39;)
+    parser.add_argument(&#34;--cheat&#34;, help=&#34;Chance (in %%) to cheat, default is 10&#34;, type=int, default=10)
+    parser.add_argument(&#34;--card&#34;,help=&#34;boolean to use card&#34;, type=convert_str_bool, default=False)
+    args = parser.parse_args()
+
+    # check Logger value
+    numericLogLeved = getattr(logging, args.log.upper(), None)
+    if not isinstance(numericLogLeved, int):
+        raise ValueError(&#39;Invalid log level: %s&#39; % numericLogLeved)
+
+    # Generate key pair
+    privKey: rsa.RSAPrivateKeyWithSerialization = asymmetric.generate_private_key(args.rsasize)
+    pubKey: rsa.RSAPublicKey = asymmetric.generate_public_key(privKey)
+
+    asymmetric.save_key(&#34;private.pem&#34;,privKey)
+    asymmetric.save_key(&#34;public.pem&#34;,pubKey)
+
+    state: State = State([&#39;AUTH&#39;,&#39;IDLE&#39;,&#39;SUBMIT_CARD&#39;,&#39;SUBMIT_DECK&#39;,&#39;SUBMIT_KEYS&#39;, &#39;EVALUATION&#39;, &#39;END_GAME&#39;],
+        {
+            &#39;AUTH&#39; : [&#39;IDLE&#39;], # Initial authentication
+            &#39;IDLE&#39; : [&#39;SUBMIT_CARD&#39;], # Caller authenticated and waiting to start game
+            &#39;SUBMIT_CARD&#39; : [&#39;IDLE&#39;,&#39;SUBMIT_DECK&#39;], # Game started
+            &#39;SUBMIT_DECK&#39; : [&#39;IDLE&#39;,&#39;SUBMIT_KEYS&#39;], # Game ongoing
+            &#39;SUBMIT_KEYS&#39; : [&#39;IDLE&#39; , &#39;EVALUATION&#39;], # Game ongoing
+            &#39;EVALUATION&#39;: [&#39;IDLE&#39;, &#39;END_GAME&#39;], # Evaluate plays and discover cheater
+            &#39;END_GAME&#39; : [&#39;IDLE&#39;] # Game has finished, announce winner
+        },
+        &#39;AUTH&#39;
+        )
+
+
+    infoState: State = State([&#39;FREE&#39;,&#39;REQUESTED&#39;], 
+                    {
+                        &#39;FREE&#39;: [&#39;REQUESTED&#39;], 
+                        &#39;REQUESTED&#39;: [&#39;FREE&#39;]
+                    },
+                    &#39;FREE&#39;
+                    )
+
+    # Creating an object
+    logger: logging.Logger= logging.getLogger(&#34;Monitor&#34;)
+    logger.setLevel(logging.DEBUG)
+
+
+    # create console handler and set level to log argument
+    ch = logging.StreamHandler()
+    ch.setLevel(numericLogLeved)
+    ch.setFormatter(logging.Formatter(&#39;%(levelname)s: %(message)s&#39;))
+
+    # create file handlet and set level to debug
+    if not os.path.exists(&#39;./logs&#39;):
+        os.mkdir(&#39;./logs&#39;)
+    logName = r&#39;./logs/caller_&#39; + str(time.time()) + &#39;.log&#39;
+    fh = logging.FileHandler(logName)
+    fh.setLevel(logging.DEBUG)
+    fh.setFormatter(logging.Formatter(&#39;%(asctime)s - [%(name)s, %(levelname)s]: %(message)s&#39;))
+
+    # add ch to logger
+    logger.addHandler(ch)
+
+    # add fh to logger
+    logger.addHandler(fh)
+
+    async def main(ip: str, port: int, nick: str, cheat: int,
+        privKey: rsa.RSAPrivateKeyWithSerialization, pubKey: rsa.RSAPublicKey,
+        cardPin: str = &#39;&#39;) -&gt; None:
+        
+        # Create the caller class
+        caller = Caller()
+
+        # Check and resize caller nick (max characters of 20)
+        if len(nick) &gt; 20:
+            nick = nick[:20]
+        
+        # Connect the caller to the playing_area (server)
+        await caller.create_caller(ip, port, nick, cheat, privKey, pubKey, cardPin)
+
+        logger.info(colored(f&#39;Listenning on {ip}:{port}&#39;, &#39;green&#39;))
+
+        await caller.caller_life()
+
+    try:
+        if args.card:
+            pin = str(input(&#34;Please input the authentication pin of the card: &#34;))
+        
+            asymmetric.close_connection(asymmetric.create_connection(pin))
+            logger.info(colored(f&#39;Successfully authentication with card&#39;, &#39;green&#39;))
+            asyncio.run(main(args.bind, args.port, args.nick, args.cheat, privKey, pubKey, pin))
+        else:
+            asyncio.run(main(args.bind, args.port, args.nick, args.cheat, privKey, pubKey))
+    except KeyboardInterrupt:
+        logger.error(&#34;\nCaller Terminated&#34;)
+    except OSError as e:
+        logger.error(&#34;No Connection to playing area: &#34; + str(e))
+    #except ValueError and TypeError as e:
+    #    print(&#34;Error: &#34; + str(e))</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="assignment-2---bingo-19.caller.caller.convert_str_bool"><code class="name flex">
+<span>def <span class="ident">convert_str_bool</span></span>(<span>val: str | bool) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function used in arguments to convert a string value into a boolean one
+if needed</p>
+<h2 id="args">Args</h2>
+<ul>
+<li>val: Value to test</li>
+</ul>
+<h2 id="returns">Returns</h2>
+<ul>
+<li>True if the value corresponds to a bool true, false otherwise</li>
+</ul>
+<h2 id="raises">Raises</h2>
+<ul>
+<li>argparse.ArgumentTypeError: The value is a defined boolean</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def convert_str_bool(val: str | bool) -&gt; bool:
+    &#34;&#34;&#34;
+    Function used in arguments to convert a string value into a boolean one
+        if needed
+    Args:
+        - val: Value to test
+    Returns:
+        - True if the value corresponds to a bool true, false otherwise
+    Raises:
+        - argparse.ArgumentTypeError: The value is a defined boolean
+    &#34;&#34;&#34;
+    if isinstance(val, bool):
+        return val
+    if val.lower() in [&#39;true&#39;, &#39;t&#39;, &#39;y&#39;]:
+        return True
+    elif val.lower() in [&#39;false&#39;, &#39;f&#39;, &#39;n&#39;]:
+        return False
+    else:
+        raise argparse.ArgumentTypeError(&#39;Expected a boolen value&#39;)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="assignment-2---bingo-19.caller.caller.Caller"><code class="flex name class">
+<span>class <span class="ident">Caller</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Initialize Caller class</p>
+<h2 id="attributes">Attributes</h2>
+<ul>
+<li>caller: Class used to save the values associate to the caller</li>
+<li>players: Dictionary containing the players Seq and a class
+with their associated values</li>
+<li>playingAreaPublicKey: Public key of the Playing Area</li>
+<li>bufferUUID: Store the value of the UUID value of the request made
+to the Playing Area</li>
+<li>finalDeck: Save the final shuffled deck</li>
+<li>receivedCallerSymKey: Used to signal if the caller has received
+it's Symmetric key after sending it</li>
+<li>winners: Save the list of winners of the game</li>
+<li>playersPredicted: Dictionary with the players seq and their
+predicted game winners list</li>
+<li>bannedPlayers: Class that functions as a data structure, to save
+associate a player as being banned</li>
+<li>minPlayers: Minimum number of players for the game to function</li>
+<li>N: N value to generate cards</li>
+<li>cheat: Probability of the caller to cheat on a signature</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Caller:
+
+    def __init__(self) -&gt; None:
+        &#34;&#34;&#34;
+        Initialize Caller class
+        Attributes:
+            - caller: Class used to save the values associate to the caller
+            - players: Dictionary containing the players Seq and a class 
+                with their associated values
+            - playingAreaPublicKey: Public key of the Playing Area
+            - bufferUUID: Store the value of the UUID value of the request made
+                to the Playing Area
+            - finalDeck: Save the final shuffled deck
+            - receivedCallerSymKey: Used to signal if the caller has received
+                it&#39;s Symmetric key after sending it
+            - winners: Save the list of winners of the game
+            - playersPredicted: Dictionary with the players seq and their
+                predicted game winners list
+            - bannedPlayers: Class that functions as a data structure, to save 
+                associate a player as being banned
+            - minPlayers: Minimum number of players for the game to function
+            - N: N value to generate cards
+            - cheat: Probability of the caller to cheat on a signature
+        &#34;&#34;&#34;
+
+        self.caller: CallerValues = None # type: ignore
+        self.players: dict[int, PlayerValues] = dict() 
+        self.playingAreaPublicKey: rsa.RSAPublicKey | None = None 
+        self.bufferUUID: tuple | None = None
+        self.finalDeck: list[int] = []
+        self.receivedCallerSymKey: bool = False
+        self.winners: list[int] = []
+        self.playersPredicted: dict[int, list[int]] = dict()
+        self.bannedPlayers: Bans = Bans()
+        self.minPlayers: int = 2
+        self.N: int = 16
+        self.cheat: int = 0
+        self.nonce: str = &#39;&#39;
+
+
+    async def create_caller(self, ip: str, port: int, nick: str, cheat: int,
+            privateKey: rsa.RSAPrivateKeyWithSerialization, publicKey: rsa.RSAPublicKey,
+            cardPin: str = &#39;&#39;) -&gt; tuple:
+        &#34;&#34;&#34;
+        Function that uses class values to create a Caller with the 
+            designated Ip address and Port
+        Args:
+            - ip: Ip address of the Caller
+            - port: Port of the Caller to operate on
+            - nick: Caller nick
+        Returns:
+            - A tupple object with the asyncio.streams.StreamReader
+            and asyncio.streams.StreamWriter
+        Raises:
+            - ValueError: if caller was already established
+            - TypeError: if supplied  attributes are not of correct type  
+            - OSError: if connection wasn&#39;t established (handled by 
+            asyncio.open_connection function)
+        &#34;&#34;&#34;
+        if self.caller != None: raise ValueError(f&#34;Caller already defined&#34;)
+
+        if (not isinstance(ip, str) or not isinstance(port, int) 
+            or not isinstance(nick, str)):
+            raise TypeError(&#34;Wrong usage. Use (str, int) types&#34;)
+
+        reader, writer  = await asyncio.open_connection(ip, port)
+        
+        self.caller: CallerValues = CallerValues(nick,publicKey,writer,reader)
+        self.caller.set_ip_port(ip, port)
+        self.caller.set_private_key(privateKey)
+        self.cheat = cheat
+        if cardPin != &#39;&#39;:
+            self.caller.set_card_pin(cardPin)
+        
+        return (reader, writer)
+
+
+    async def login_caller_request(self) -&gt; None:
+        &#34;&#34;&#34;
+        Function to make the initial request for authentication.
+        It only submits the data to the playing area. 
+        Raises:
+            - ValueError: when the caller hasn&#39;t been defined yet
+            - OSError: if connection with Playing Area is terminated
+        &#34;&#34;&#34;
+
+        if self.caller == None : raise ValueError(&#34;Use the function create_caller first&#34;)
+        
+        # Ask for nonce
+        self.bufferUUID = (random.uniform(1.0, 100.0), &#39;get_nonce&#39;)
+        # Without card auth
+        if self.caller.cardPin == &#39;&#39;:
+            authInfo = {&#34;type&#34;: &#39;get_nonce&#39;, 
+                &#34;pubkey&#34;: asymmetric.public_key_to_string(self.caller.publicKey), 
+                &#34;UUID&#34;: self.bufferUUID[0]
+                }
+        # With card auth
+        else:
+            cert = asymmetric.get_certificate(self.caller.cardPin)
+            authInfo = {&#34;type&#34;: &#39;get_nonce&#39;, 
+                &#34;certificate&#34;: asymmetric.export_certificate(cert), 
+                &#34;UUID&#34;: self.bufferUUID[0]
+                }
+        logger.debug(f&#39;Sending: {authInfo}&#39;)
+        recvData = await communication.send_dict(
+                            self.caller.writer, 
+                            authInfo , 
+                            asymmetric.sign_message(communication.json_to_bytes(authInfo),self.caller.privateKey)
+                            )
+        if not recvData:
+            raise OSError(F&#39;Failed caller authentication&#39;)
+
+        infoState.apply(&#39;REQUESTED&#39;) # Update state
+
+    
+    async def login_caller_response(self, msg: dict) -&gt; bool:
+        &#34;&#34;&#34;
+        Function to handle the response from the login request by the caller 
+        Returns
+            - True is the connection was authenticated or False otherwise
+        Raises:
+            - ValueError: when the caller hasn&#39;t been defined yet
+            - ValueError: when response from playing area doesn&#39;t come 
+            with correct fields
+        &#34;&#34;&#34;
+        if self.caller == None : raise ValueError(&#34;Use the function create_caller first&#34;)
+
+        if not isinstance(msg, dict):
+            raise ValueError(f&#34;Message must be of type &#39;dict&#39;&#34;)
+
+        if &#39;code&#39; in msg:
+            if msg[&#39;code&#39;] == 0:
+                check_dict_fields(msg, [&#39;seq&#39;,&#39;pubkey&#39;,&#39;max_players&#39;, &#39;N&#39;])
+                    
+                self.caller.set_seq(msg[&#39;seq&#39;])
+                self.caller.set_max_players(int(msg[&#39;max_players&#39;]))
+                self.playingAreaPublicKey = asymmetric.public_key_from_string(msg[&#39;pubkey&#39;])
+                self.N = int(msg[&#39;N&#39;])
+                if self.playingAreaPublicKey == None:
+                    raise ValueError(f&#34;Playing Area public key not properly formatted&#34;)
+                return True
+            else:
+                if &#39;info&#39; in msg.keys():
+                    logger.info(f&#39;Denied authentication, hint: {msg[&#34;info&#34;]}&#39;)
+                    return False
+                else:
+                    raise ValueError(f&#34;Received response should have a &#39;info&#39; field&#34;)
+        else:
+            raise ValueError(f&#34;Received data should have a &#39;type&#39; field&#34;)
+
+
+    async def manage_players(self, action: str, playerData: dict) -&gt; dict | bool:
+        &#34;&#34;&#34;
+        Function to manage acceptance and removal of players from the game
+        Args:
+            - action: action for player data. Values can be &#39;add&#39;, 
+            &#39;remove&#39; or &#39;check&#39;
+            - playerData: information of the player
+        Returns: 
+            - bool value signalling if the action was executed.
+            In the case of check, it will return True if the player exists.
+            - dict type message to send to the PA. Generally, this is used 
+            for when the game can&#39;t continue because of not enough players, 
+            or a player was banned in the important steps
+        &#34;&#34;&#34;
+
+        try:
+            if action == &#39;add&#39;:
+                if (len(self.players) == self.caller.maxPlayers):
+                    return False
+                try:
+                    check_dict_fields(playerData, [&#39;type&#39;, &#39;nick&#39;, &#39;pubkey&#39;, &#39;seq&#39;])
+                except ValueError as e:
+                    return False
+                logger.info(f&#34;Adding player with seq: {playerData[&#39;seq&#39;]}, nick: {playerData[&#39;nick&#39;]}&#34;)
+
+                if playerData[&#39;seq&#39;] not in self.players.keys():
+                    __newPlayer = PlayerValues(int(playerData[&#39;seq&#39;]),
+                                            playerData[&#39;nick&#39;], 
+                                            asymmetric.public_key_from_string(playerData[&#39;pubkey&#39;]), 
+                                            self.caller.writer, 
+                                            self.caller.reader
+                                            )
+                    self.players[int(playerData[&#39;seq&#39;])] = __newPlayer
+                    return True
+
+            # Remove a player should only be done while waiting for game to start
+            elif action == &#39;remove&#39;:
+                try:
+                    check_dict_fields(playerData, [&#39;seq&#39;])
+                except ValueError as e:
+                    return False
+                temp: PlayerValues = self.players.pop(playerData[&#39;seq&#39;])
+                logger.warning(colored(f&#39;Removing Player with seq: {temp.seq}, nick: {temp.nick}&#39;, &#39;cyan&#39;))
+
+                # Adjust other players sequences
+                tempDict: dict = {}
+                for key, value in self.players.items():
+                    if key &gt; playerData[&#39;seq&#39;]:
+                        value.seq -= 1
+                        tempDict[key-1] = value
+                    else:
+                        tempDict[key] = value
+
+                self.players = tempDict
+                        
+                return True
+
+            elif action == &#39;ban&#39;:
+                try:
+                    check_dict_fields(playerData, [&#39;seq&#39;, &#39;info&#39;])
+
+                    # Test for enum ban_reason
+                    banReason: Banned_Reason = getattr(Banned_Reason, playerData[&#39;info&#39;])
+                except ValueError as e:
+                    return False
+                except AttributeError:
+                    banReason: Banned_Reason = Banned_Reason.UNKNOWN
+
+                # Player doesn&#39;t exist or is already banned
+                if (self.bannedPlayers.is_banned(playerData[&#39;seq&#39;])
+                        or not self.manage_players(&#39;check&#39;, playerData)): 
+                    return False
+
+                logger.error(colored(f&#39;Banning Player with seq {playerData[&#34;seq&#34;]}, because of {playerData[&#34;info&#34;]}&#39;, &#39;red&#39;, attrs=[&#39;bold&#39;]))
+
+                self.bannedPlayers.add_ban(playerData[&#39;seq&#39;], banReason)
+
+                # Pre-condition for the game to contine
+                if len(self.players) - len(self.bannedPlayers.get_bans()) &lt; self.minPlayers:
+                    return {&#39;type&#39; : &#39;abort_game&#39; , 
+                            &#39;info&#39; : &#39;Not enough players to carry the game&#39;}
+
+                # Last state, no need to do anything
+                if state.getState() == &#39;END_GAME&#39;: return True
+
+                if banReason == Banned_Reason.BAD_WINNER or state.getState() == &#34;EVALUATION&#34;:
+                    # The game already progressed, so the cards are OK
+                    # which means that we only have to make sure he is the winner
+                    # If there were no winners left, we should recalculate
+                    if playerData[&#39;seq&#39;] in self.winners:
+                        self.winners.remove(playerData[&#39;seq&#39;])
+                    if self.winners == []:
+                        await self.determine_winner()
+                        return await self.notify_winner()
+                    else: return True
+
+                else:
+
+                    return {&#39;type&#39; : &#39;abort_game&#39; , 
+                            &#39;info&#39; : &#39;Player was banned on a ongoing game&#39;}
+                    
+
+
+            elif action == &#39;check&#39;:
+                try: 
+                    check_dict_fields(playerData, [&#39;seq&#39;])
+                except ValueError as e:
+                    return False
+
+                if playerData[&#39;seq&#39;] in self.players.keys():
+                    return True
+
+        except ValueError:
+            # If the received data doesn&#39;t have the correct fields
+            logging.error(colored(&#34;Wrong dictionary headers received&#34;, &#39;red&#39;, attrs=[&#39;bold&#39;]))
+            return False
+
+        return False
+
+
+    async def start_game(self) -&gt; dict | None:
+        &#34;&#34;&#34;
+        Function that handles the start of the game
+        Returns:
+            - None if there&#39;s not enough players to start the game, 
+            otherwise the message to be sent to the playing area
+        &#34;&#34;&#34;
+        if len(self.players) &lt; self.minPlayers: # Pre-condition to start game
+            return None
+
+        return {&#39;type&#39;: &#39;start_game&#39;}
+
+
+    async def send_caller_deck(self) -&gt; dict:
+        &#34;&#34;&#34;
+        Function to send te caller&#39;s deck
+        Returns
+            - Message to be sent to the playing area with the encrypted 
+            deck
+        &#34;&#34;&#34;
+
+        # Generate symmetric key
+        self.caller.set_symmetric_key(symmetric.generate_key(16))
+        # Generate deck
+        self.caller.set_deck(Bingo.generate_random_solution(self.N))
+
+        return {&#39;type&#39;: &#39;submit_deck&#39;,
+                &#39;deck&#39;: [ symmetric.bytes_to_string(card) 
+                            for card in Deck.encrypt_deck
+                                    (
+                                    self.caller.deck, self.caller.symmetricKey # type: ignore
+                                    )
+                        ] 
+            }
+
+
+    async def send_caller_symmetric_key(self) -&gt; dict:
+        &#34;&#34;&#34;
+        Function that returns the caller symmetric key, to be sent to 
+            the Playing Area
+        Returns:
+            - dictionary with the key to send
+        Raises:
+            - ValueError: if the symmetric key hasn&#39;t been defined
+        &#34;&#34;&#34;
+
+        if self.caller.symmetricKey == b&#39;&#39;:
+            raise ValueError(&#34;The symmetric key should be defined&#34;)
+
+        self.bufferUUID = (random.uniform(1.0, 100.0), &#39;key_submit&#39;)
+        infoState.apply(&#39;REQUESTED&#39;) # Update state
+        
+        return {&#39;type&#39;: &#39;send_keys&#39;,
+                &#39;key&#39;: symmetric.bytes_to_string(self.caller.symmetricKey),
+                &#39;UUID&#39;: self.bufferUUID[0]
+            }
+
+    async def start_send_keys(self) -&gt; dict | None:
+        &#34;&#34;&#34;
+        Function to return a message to the Playing Area,
+            informing it that players and caller can start
+            exchanging keys
+        Returns:
+            - message to send to the playing area
+        &#34;&#34;&#34;
+
+        return {&#39;type&#39;: &#39;start_send_keys&#39;}
+
+    
+    async def player_card_submission(self, msg: dict) -&gt; None:
+        &#34;&#34;&#34;
+        Function to associate a set of cards with a player
+        Args:
+            - msg: message that the player sent with his cards
+        Raises:
+            - TypeError: if the provided msg is not a dictionary
+            object
+        &#34;&#34;&#34;
+        
+        if not isinstance(msg, dict):
+            raise TypeError(&#34;Message should be of type &#39;dict&#39;&#34;)
+
+        # Check dict fields
+        try:
+            check_dict_fields(msg, [&#39;code&#39;, &#39;info&#39;, &#39;seq&#39;, &#39;card&#39;])
+        except ValueError as e:
+            logger.critical(colored(&#34;The provided cards are not correct&#34;, &#39;red&#39;, attrs=[&#39;bold&#39;]))
+            return None
+
+        # Check if the player exists
+        if not await self.manage_players(&#39;check&#39;, msg):
+            logger.error(colored(f&#34;Player with seq %d doesn&#39;t exist&#34;%msg[&#39;seq&#39;], &#39;red&#39;, attrs=[&#39;bold&#39;]))
+            return None
+
+        # set the player deck
+        # msg[&#39;card&#39;] is of type str
+        deck = [symmetric.bytes_from_string(card) for card in msg[&#39;card&#39;]]
+
+        self.players[msg[&#39;seq&#39;]].set_cards(deck)
+
+
+    async def player_key_exchange(self, msg: dict) -&gt; None:
+        &#34;&#34;&#34;
+        Function to save a player exchanged symmetric key 
+        Args:
+            - msg: Message sent by the playing area
+        Raises:
+            - TypeError: if the provided msg is not a dictionary
+            object
+        &#34;&#34;&#34;
+
+        if not isinstance(msg, dict):
+            raise TypeError(&#34;Message should be of type &#39;dict&#39;&#34;)
+
+        try:
+            check_dict_fields(msg, [&#39;type&#39;, &#39;key&#39;, &#39;seq&#39;])
+        except ValueError as e:
+            logger.critical(colored(&#34;The provided cards are not correct&#34;, &#39;red&#39;, attrs=[&#39;bold&#39;]))
+            return None
+
+        # Check if the player exists
+        if not await self.manage_players(&#39;check&#39;, msg):
+            logger.error(colored(f&#34;Player with seq %d doesn&#39;t exist&#34;%msg[&#39;seq&#39;], &#39;red&#39;, attrs=[&#39;bold&#39;]))
+            return None
+
+        # Set the player symmetric key
+        self.players[msg[&#39;seq&#39;]].set_symmetric_key(
+                                    symmetric.bytes_from_string(
+                                        msg[&#39;key&#39;]
+                                    )
+                                )
+
+
+    async def process_shuffle_submission(self, msg: dict) -&gt; bool:
+        &#34;&#34;&#34;
+        Function to record and proccess every player and caller 
+            shuffled deck submission
+        Args:
+            - msg: Message sent by the playing area
+        Returns:
+            - True if everyone shuffled, False otherwise
+        &#34;&#34;&#34;
+
+        try:
+            check_dict_fields(msg, [&#39;seq&#39;, &#39;deck&#39;])
+        except ValueError as e:
+            logger.critical(colored(&#34;The provided deck isn&#39;t correct&#34;, &#39;red&#39;, attrs=[&#39;bold&#39;]))
+            return False
+
+        # msg[&#39;deck&#39;] is of type list[str]
+        deck = [symmetric.bytes_from_string(card) for card in msg[&#39;deck&#39;]]
+
+        if not hasattr(self, &#34;shuffleDeck&#34;):
+            self.shuffleDeck: Deck = Deck(deck, msg[&#39;seq&#39;])
+        else:
+            self.shuffleDeck.add_deck(deck, msg[&#39;seq&#39;])
+
+        return self.shuffleDeck.check_everyone_submitted_deck(list(self.players.keys()) + [0])
+
+    
+    async def analyze_shuffling_and_cards(self) -&gt; dict | None:
+        &#34;&#34;&#34;
+        Function to analyze the shuffling of cards and players submitted cards,
+            then determine if there was a cheater
+        Returns:
+            - dictionary to send, informing about the cheater
+            or None if there isn&#39;t any
+        Raises:
+            - ValueError: If the shuffled deck hasn&#39;t been supplied or 
+            not every player has shuffled the deck
+        &#34;&#34;&#34;
+        if not hasattr(self, &#34;shuffleDeck&#34;):
+            raise ValueError(&#34;The deck should be defined&#34;)
+
+        if not self.shuffleDeck.check_everyone_submitted_deck(list(self.players.keys()) + [0]):
+            raise ValueError(&#34;Everyone should submit the shuffled deck&#34;)
+
+        seqKeys: list[tuple[int, bytes]] = [(self.caller.seq, self.caller.symmetricKey)]# Addind caller
+        seqKeys.extend([(s, p.symmetricKey) for s, p in self.players.items()])
+
+
+        # Decrypt each player cards
+        for (seq, player) in self.players.items():
+            try:
+                cards: list[int] = Deck.decrypt_deck(
+                    player.cards, # type: ignore
+                    player.symmetricKey
+                )
+                player.cards = cards
+            # Spaguetti exception handling (catch errors while decrypring)
+            except Exception as e:
+                if isinstance(e, OSError):
+                    raise e
+                else:
+                    return {&#39;type&#39;: &#39;ban_player&#39;,
+                        &#39;info&#39;: Banned_Reason.CARDS.value,
+                        &#39;seq&#39;: seq}
+            
+
+        # Analyze shuffle deck
+        tempVal = self.shuffleDeck.retrieve_decrypted_deck(seqKeys)
+        if isinstance(tempVal, int):
+            # Cheat found
+            logger.critical(colored((&#34;Cheater found in shuffle with seq %d&#34;%tempVal), &#39;red&#39;, attrs=[&#39;bold&#39;]))
+            return {&#39;type&#39;: &#39;ban_player&#39;,
+                    &#39;info&#39;: Banned_Reason.CARDS.value,
+                    &#39;seq&#39;: tempVal}
+
+        elif isinstance(tempVal, list):
+            self.finalDeck = tempVal[-1].deck # type: ignore
+
+        # Analyze submitted cards
+        for (seq, player) in self.players.items():
+            if not await check_player_cards_number_equal_deck(self.caller.deck, player.cards): # type: ignore
+                logger.critical(colored((&#34;Cheater found in cards with seq %d&#34;%seq), &#39;red&#39;, attrs=[&#39;bold&#39;]))
+                return {&#39;type&#39;: &#39;ban_player&#39;,
+                        &#39;info&#39;: Banned_Reason.CARDS.value,
+                        &#39;seq&#39;: seq}
+        
+        return None
+
+
+    async def determine_winner(self) -&gt; None:
+        &#34;&#34;&#34;
+        Function to determine which player has the winning cards
+
+        `Note:` it saves the list of winners in an internal attribute
+        &#34;&#34;&#34;
+        scores: list[tuple[int, int]] = []
+
+        for seq, player in self.players.items():
+            # Not take into account banned players
+            if not self.bannedPlayers.is_banned(seq):
+                bingo = Bingo(self.N,int(self.N//4), player.cards) #type: ignore
+                scores.append((seq, bingo.first_winning_position(self.finalDeck)))
+
+        # Order the list by scores (Minimum score is winner)
+        scores.sort(key=lambda x:x[1]) # type: ignore
+
+        # Start with the first score
+        winnerScores = scores[0][1]
+
+        # save the seq with the same initial score
+        for score in scores:
+            if score[1] == winnerScores:
+                self.winners.append(score[0])
+            else:
+                break
+
+        # check if the first and second place are tied
+        if len(self.winners) &gt; 1:
+            logger.warning(colored(&#34;There has been a draw, the players with the following seq won: &#34; + str(self.winners), &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+        else:
+            logger.warning(colored(f&#39;The player with seq %d has won&#39;%self.winners[0], &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+
+
+    async def player_winning_predicition(self, msg: dict) -&gt; list[int] | None:
+        &#34;&#34;&#34;
+        Function to save a player winning prediction. If all
+            players have submitted their prediction, analyze
+            and ban those who made a bad prediction
+        Args:
+            - msg: Message sent by the player
+        Returns:
+            - list with banned players, empty list
+            if there weren&#39;t any
+            - None if not all players
+            have submitted predictions yet or a pre-condition
+            failed
+        &#34;&#34;&#34;
+        
+        try:
+            check_dict_fields(msg, [&#39;seq&#39;, &#39;winner&#39;])
+        except ValueError as e:
+            logger.critical(colored(&#34;The provided estimate isn&#39;t correct, from seq&#34;, &#39;red&#39;, attrs=[&#39;bold&#39;]))
+            return None
+
+        if msg[&#39;seq&#39;] in list(self.playersPredicted.keys()):
+            logger.warning(colored(&#39;Player already made an estimate&#39;, &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+            return None
+
+        if msg[&#39;seq&#39;] not in [s for s, p in self.players.items()]:
+            logger.warning(colored(&#39;Unknown player with seq %d&#39;%msg[&#39;seq&#39;], &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+            return None
+
+        self.playersPredicted[msg[&#39;seq&#39;]] = msg[&#39;winner&#39;]
+
+        if len(self.playersPredicted.keys()) == len(self.players):
+            banned: list[int] = []
+            for seq, winners in self.playersPredicted.items():
+                # Ban every player that made a bad prediction
+                if Counter(self.winners) != Counter(winners):
+                    banned.append(seq)
+                    sendData: dict = {&#39;type&#39;: &#39;ban_player&#39;,
+                            &#39;info&#39;: Banned_Reason.BAD_WINNER.value,
+                            &#39;seq&#39;: seq}
+                    logger.debug(f&#39;Sending: {sendData}\n&#39;)
+                    await communication.send_dict(
+                            self.caller.writer, 
+                            sendData , 
+                            asymmetric.sign_message(communication.json_to_bytes(sendData),self.caller.privateKey)
+                            )
+
+            return banned
+
+    
+    async def notify_winner(self) -&gt; dict:
+        &#34;&#34;&#34;
+        Function that creates a response to inform the players
+            about the correct winners of the game.
+
+        `Note:` this function should be used after determining the winners
+        and waiting for the clients to give their predictions
+        Returns:
+            - Message with the winning players/s
+        &#34;&#34;&#34;
+
+        return {&#39;type&#39;: &#39;share_winner&#39;,
+                &#39;winner&#39;: self.winners
+            }
+        
+
+    async def determine_action(self, msg: dict) -&gt; dict | None:
+        &#34;&#34;&#34;
+        Function to determine the action to execute, based on the incomming data
+        Args:
+            - msg: incomming message no analyze
+        Returns:
+            - message to send or None if there isn&#39;t any to send
+        &#34;&#34;&#34;
+
+        if not (&#39;type&#39; in msg.keys() or &#39;code&#39; in msg.keys()): 
+            return None # handle this error
+        
+        currentInfoState: str = infoState.getState()
+        currentState : str = state.getState()
+        error: bool = False
+
+        # Remove or ban Player 
+        if (&#39;type&#39; in msg.keys() and (msg[&#39;type&#39;] == &#39;disconnect&#39;
+                or msg[&#39;type&#39;] == &#39;ban_player&#39;)):
+            if currentState == &#39;IDLE&#39;:
+                status = await self.manage_players(&#39;remove&#39;, msg)
+            else:  
+                status = await self.manage_players(&#39;ban&#39;, msg)
+            
+            logger.info(await print_user_list(self.players, self.caller.maxPlayers, self.bannedPlayers))
+            if isinstance(status, dict):
+                    return status
+
+        # Game was aborted
+        elif (&#39;code&#39; in msg.keys() and msg[&#39;code&#39;] == 0
+                and &#39;type&#39; in msg.keys() and msg[&#39;type&#39;] == &#39;abort_game&#39;):
+            logger.warning(colored(&#34;The game was aborted, because: &#34; + str(msg[&#39;info&#39;]), &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+            exit(0)
+
+        elif (currentInfoState == &#39;FREE&#39; or (currentInfoState == &#39;REQUESTED&#39; 
+                and &#39;UUID&#39; in msg.keys() and self.bufferUUID != None 
+                    and msg[&#39;UUID&#39;] != self.bufferUUID[0])):
+
+            if currentState == &#39;IDLE&#39;:
+                # New Player
+                if &#39;type&#39; in msg.keys() and msg[&#39;type&#39;] == &#39;new_client&#39;:
+                    await self.manage_players(&#39;add&#39;, msg)
+                    logger.info(await print_user_list(self.players, self.caller.maxPlayers, self.bannedPlayers))
+                    if len(self.players) == self.caller.maxPlayers:
+                        status = await self.start_game()
+                        logger.warning(colored(f&#39;Sent request to start game&#39;, &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+                        return status
+                
+                # Notice of game starting
+                elif (&#39;code&#39; in msg.keys() and msg[&#39;code&#39;] == 0 and &#39;type&#39; 
+                        in msg.keys() and msg[&#39;type&#39;] == &#39;game_started&#39;):
+                    logger.info(f&#39;Game has officially started&#39;)
+                    state.apply(&#39;SUBMIT_CARD&#39;)
+
+                else: 
+                    error = True
+
+            elif currentState == &#39;SUBMIT_CARD&#39;:
+                # Player card submisstion
+                if &#39;code&#39; in msg.keys() and msg[&#39;code&#39;] == 0 and &#39;card&#39; in msg.keys():
+                    await self.player_card_submission(msg)
+
+                    # check if all players sent their symmetric keys
+                    if await check_all_players_cards(self.players):
+                        # call start_key_exchange_function
+                        logger.warning(colored(&#34;All cards received, starting deck shuffling&#34;, &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+                        state.apply(&#39;SUBMIT_DECK&#39;)
+                        return await self.send_caller_deck()
+
+                else:
+                    error = True
+
+            elif currentState == &#39;SUBMIT_DECK&#39;:
+                # Deck shuffle submission
+                if (&#39;code&#39; in msg.keys() and msg[&#39;code&#39;] == 0 and &#39;type&#39; 
+                        in msg.keys() and msg[&#39;type&#39;] == &#39;submit_deck&#39;):
+                    # Is everyone submitted the shuffled deck
+                    if await self.process_shuffle_submission(msg):
+                        state.apply(&#39;SUBMIT_KEYS&#39;)
+                        return await self.start_send_keys()
+
+                else:
+                    error = True
+
+            elif currentState == &#39;SUBMIT_KEYS&#39;:
+                # Received players key
+                if &#39;type&#39; in msg.keys() and msg[&#39;type&#39;] == &#39;send_keys&#39;:
+                    await self.player_key_exchange(msg)
+
+                    # check if all players sent their symmetric keys
+                    if await check_players_symm_keys(self.players) and self.receivedCallerSymKey:
+                        logger.warning(colored(&#34;All keys received, starting shuffling evaluation&#34;, &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+                        state.apply(&#39;EVALUATION&#39;)
+
+                        status = await self.analyze_shuffling_and_cards()
+                        if status != None:
+                            return status
+                        else:
+                            logger.info(&#34;No cheaters, starting winner evaluation&#34;)
+                            return await self.determine_winner()
+
+                # Response received from server
+                elif (msg[&#39;type&#39;] == &#39;start_send_keys&#39; and &#39;code&#39; in msg.keys() 
+                        and currentState == &#39;SUBMIT_KEYS&#39;):
+                    logger.warning(colored(&#34;Sending caller symmetric keys&#34;, &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+                    return await self.send_caller_symmetric_key()
+
+                else:
+                    error = True
+
+            elif currentState == &#39;EVALUATION&#39;:
+                    
+                # Process game evaluation
+                if (&#39;code&#39; in msg.keys() and msg[&#39;code&#39;] == 0 and &#39;type&#39; 
+                        in msg.keys() and msg[&#39;type&#39;] == &#39;share_winner&#39; and &#39;winner&#39; in msg.keys()):
+                    
+                    if await self.player_winning_predicition(msg) == []:
+                        # No cheaters detected
+                        state.apply(&#39;END_GAME&#39;)
+                        return await self.notify_winner()                        
+
+                else:
+                    error = True
+
+            elif currentState == &#39;END_GAME&#39;:
+                # Show who won
+                if (&#39;code&#39; in msg.keys() and msg[&#39;code&#39;] == 0 and &#39;type&#39; 
+                        in msg.keys() and msg[&#39;type&#39;] == &#39;share_winner&#39; 
+                            and &#39;seq&#39; in msg.keys() and msg[&#39;seq&#39;] == 0):
+                    logger.info(await print_players_cards_and_deck(self.players, self.caller, msg[&#39;winner&#39;], self.N, self.finalDeck))
+                    
+                    return self.handle_caller_inputs()
+
+                else:
+                    error = True
+                
+            else:
+                logger.error(colored(&#34;Message received not appropriate for the current state &#34; + currentState, &#39;red&#39;, attrs=[&#39;bold&#39;]))
+
+            if error:
+                if &#39;code&#39; in msg.keys() and &#39;info&#39; in msg.keys():
+                    logger.error(colored(&#34;Bad response received with code %d in state %s: %s&#34;%(msg[&#39;code&#39;], currentState, msg[&#39;info&#39;]), &#39;red&#39;, attrs=[&#39;bold&#39;]))
+                else:
+                    logger.error(colored(&#34;Invalid request for current state &#39;%s&#39;&#34;%currentState, &#39;red&#39;, attrs=[&#39;bold&#39;]))
+
+        # Proccess Responses
+        if (currentInfoState == &#39;REQUESTED&#39; and &#39;UUID&#39; in msg.keys() 
+            and self.bufferUUID != None and msg[&#39;UUID&#39;] == self.bufferUUID[0]):
+
+            if &#39;code&#39; in msg.keys() and msg[&#39;code&#39;] == 0:
+                # Get nonce for authentication
+                if (self.bufferUUID[1] == &#39;get_nonce&#39; and currentState == &#39;AUTH&#39;
+                        and &#39;nonce&#39; in msg.keys()): # Login response
+                    self.nonce = msg[&#39;nonce&#39;]
+                    self.bufferUUID = (random.uniform(1.0, 100.0), &#39;login&#39;)
+                    # With card auth
+                    if self.caller.cardPin != &#39;&#39;:     
+                        return {&#34;type&#34;: &#39;login&#39;, 
+                            &#34;role&#34;: &#39;caller&#39;,
+                            &#34;pubkey&#34;: asymmetric.public_key_to_string(self.caller.publicKey),
+                            &#34;nick&#34;: self.caller.nick,
+                            &#34;nonce&#34;: self.nonce,
+                            &#34;UUID&#34;: self.bufferUUID[0]
+                            }
+                    # Without card auth
+                    else:
+                        return {&#34;type&#34;: &#39;login&#39;, 
+                            &#34;role&#34;: &#39;caller&#39;,
+                            &#34;nick&#34;: self.caller.nick,
+                            &#34;nonce&#34;: self.nonce,
+                            &#34;UUID&#34;: self.bufferUUID[0]
+                            }
+                    
+                # Authenticate caller login attempt
+                if self.bufferUUID[1] == &#39;login&#39; and currentState == &#39;AUTH&#39;: # Login response
+                    if await self.login_caller_response(msg):
+                        state.apply(&#39;IDLE&#39;)
+                        logger.info(colored(f&#39;caller authenticated\n&#39;, &#39;green&#39;))
+                    else:
+                        raise OSError(&#34;Playing Area denied authentication&#34;)
+
+                # Response from key submission
+                elif (self.bufferUUID[1] == &#39;key_submit&#39;) and currentState == &#39;SUBMIT_KEYS&#39;:
+                    logger.info(&#34;Caller symmetric key was exchanged&#34;)
+                    self.receivedCallerSymKey = True
+                    # check if all players sent their symmetric keys
+                    if await check_players_symm_keys(self.players) and self.receivedCallerSymKey:
+                        logger.warning(colored(&#34;All keys received, starting shuffling evaluation&#34;, &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+                        state.apply(&#39;EVALUATION&#39;)
+                        
+                        status = await self.analyze_shuffling_and_cards()
+                        if status != None:
+                            return status
+                        else:
+                            logger.info(&#34;No cheaters, starting winner evaluation&#34;)
+                            await self.determine_winner()
+
+                # Show audit logs
+                elif (self.bufferUUID[1] == &#39;get_users_list&#39;) and &#39;users&#39; in msg.keys() and currentState == &#39;END_GAME&#39;:
+                    
+                    string = &#34;Received Users list: \n&#34;
+                    for user in  msg[&#39;users&#39;]:
+                        string += f&#34;\tSeq: %d, Nick: %s\n&#34;%(user[&#39;seq&#39;], user[&#39;nick&#39;])
+                    logger.info(string)
+
+                    self.bufferUUID = None
+                    infoState.apply(&#39;FREE&#39;)
+                    return self.handle_caller_inputs()
+                
+                # Show get users list
+                elif (self.bufferUUID[1] == &#39;get_audit_log&#39;) and &#39;log&#39; in msg.keys() and currentState == &#39;END_GAME&#39;:
+
+                    if not os.path.exists(&#39;./audit_logs&#39;):
+                        os.mkdir(&#39;./audit_logs&#39;)
+                    logName = r&#39;./audit_logs/&#39; + self.caller.nick + &#34;_&#34; + str(time.time()) + &#39;.log&#39;
+                    with open(logName, &#34;w&#34;) as f:
+                        f.write(str(msg))
+                    
+                    logger.info(colored(f&#39;Received audit log file saved at {logName}&#39;, &#39;green&#39;))
+
+                    self.bufferUUID = None
+                    infoState.apply(&#39;FREE&#39;)
+                    return self.handle_caller_inputs()
+                
+                else:
+                    logger.error(colored(f&#39;Unknown or not appropriate message received: &#39; + str(msg), &#39;red&#39;, attrs=[&#39;bold&#39;]))
+
+            else:
+                logger.error(colored(f&#34;Error Code %d: %s&#34;%(msg[&#39;code&#39;], msg[&#39;info&#39;]), &#39;red&#39;, attrs=[&#39;bold&#39;]))
+
+            self.bufferUUID = None
+            infoState.apply(&#39;FREE&#39;)
+            
+
+        return None
+
+
+    async def caller_life(self) -&gt; None:
+        &#34;&#34;&#34; 
+        Main function used to handle the caller. It receives
+        and sends information from and to the Playing Area 
+        &#34;&#34;&#34;
+
+        await self.login_caller_request()
+
+        while True:
+            
+            if self.playingAreaPublicKey == None:
+                recvData = await communication.recv_dict(self.caller.reader)
+            else:
+                try:
+                    recvData = await communication.recv_dict(self.caller.reader , self.playingAreaPublicKey)
+                except SyntaxError as e:
+                    raise OSError(f&#34;Playing area signature is wrong, aborting caller ...&#34;)
+
+                    
+
+            if recvData == None: # Disconnected
+                raise OSError(&#34;Connection with Playing Area terminated&#34;)
+
+            logger.debug(f&#39;Received: {recvData}\n&#39;)            
+
+            sendData = await self.determine_action(recvData)
+
+            if sendData != None and sendData != {}: # It&#39;s not always necessary to transmit data
+                cheatSignature = False
+                rand = random.randint(0,100)
+
+                if rand &lt; self.cheat and (self.bufferUUID == None or self.bufferUUID != None and self.bufferUUID[1] != &#39;login&#39;):
+                    cheatSignature = True
+                    logger.warning(colored(f&#39;Just cheated in sending my signature&#39;, &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+                logger.debug(f&#39;Sending: {sendData}\n&#39;)
+                # No card or not authentication
+                if self.caller.cardPin != &#39;&#39; and state.getState() == &#39;AUTH&#39;:
+                    await communication.send_dict(
+                                    self.caller.writer, 
+                                    sendData , 
+                                    asymmetric.sign_message_cc(self.caller.cardPin, communication.json_to_bytes(sendData)), 
+                                    cheatSignature
+                                )
+                else:
+                    
+                    await communication.send_dict(
+                                    self.caller.writer, 
+                                    sendData , 
+                                    asymmetric.sign_message(communication.json_to_bytes(sendData),self.caller.privateKey), 
+                                    cheatSignature
+                                )
+                    
+            
+
+    def handle_caller_inputs(self):
+        &#34;&#34;&#34;
+        Function used to handle input on the caller
+        &#34;&#34;&#34;
+        while(True):
+            input_str: str = input(&#34;Options avaliable\n\t[1] : Get user list\n\t[2] : Get logs\n\t[3] : Exit game\n&#34;)
+            try:
+                opt: int = int(input_str)
+                if opt not in [1,2,3]:
+                    raise Exception
+            except Exception as e:
+                logger.warning(colored(&#39;Invalid Input!&#39;, &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+                continue
+            
+            if opt == 1:
+                self.bufferUUID = (random.uniform(1.0, 100.0), &#39;get_users_list&#39;)
+                infoState.apply(&#39;REQUESTED&#39;) # Update state
+                
+                return {&#39;type&#39;: &#39;get_users_list&#39;,
+                        &#39;UUID&#39;: self.bufferUUID[0]
+                    }
+                
+            elif opt == 2:
+                self.bufferUUID = (random.uniform(1.0, 100.0), &#39;get_audit_log&#39;)
+                infoState.apply(&#39;REQUESTED&#39;) # Update state
+                
+                return {&#39;type&#39;: &#39;get_audit_log&#39;,
+                        &#39;UUID&#39;: self.bufferUUID[0]
+                    }
+            elif opt == 3:
+                logger.info(colored(&#34;Game Over!&#34;, &#34;green&#34;, attrs=[&#34;reverse&#34;, &#34;blink&#34;, &#34;bold&#34;]))
+                exit(0)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="assignment-2---bingo-19.caller.caller.Caller.analyze_shuffling_and_cards"><code class="name flex">
+<span>async def <span class="ident">analyze_shuffling_and_cards</span></span>(<span>self) ‑> dict | None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function to analyze the shuffling of cards and players submitted cards,
+then determine if there was a cheater</p>
+<h2 id="returns">Returns</h2>
+<ul>
+<li>dictionary to send, informing about the cheater
+or None if there isn't any</li>
+</ul>
+<h2 id="raises">Raises</h2>
+<ul>
+<li>ValueError: If the shuffled deck hasn't been supplied or
+not every player has shuffled the deck</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def analyze_shuffling_and_cards(self) -&gt; dict | None:
+    &#34;&#34;&#34;
+    Function to analyze the shuffling of cards and players submitted cards,
+        then determine if there was a cheater
+    Returns:
+        - dictionary to send, informing about the cheater
+        or None if there isn&#39;t any
+    Raises:
+        - ValueError: If the shuffled deck hasn&#39;t been supplied or 
+        not every player has shuffled the deck
+    &#34;&#34;&#34;
+    if not hasattr(self, &#34;shuffleDeck&#34;):
+        raise ValueError(&#34;The deck should be defined&#34;)
+
+    if not self.shuffleDeck.check_everyone_submitted_deck(list(self.players.keys()) + [0]):
+        raise ValueError(&#34;Everyone should submit the shuffled deck&#34;)
+
+    seqKeys: list[tuple[int, bytes]] = [(self.caller.seq, self.caller.symmetricKey)]# Addind caller
+    seqKeys.extend([(s, p.symmetricKey) for s, p in self.players.items()])
+
+
+    # Decrypt each player cards
+    for (seq, player) in self.players.items():
+        try:
+            cards: list[int] = Deck.decrypt_deck(
+                player.cards, # type: ignore
+                player.symmetricKey
+            )
+            player.cards = cards
+        # Spaguetti exception handling (catch errors while decrypring)
+        except Exception as e:
+            if isinstance(e, OSError):
+                raise e
+            else:
+                return {&#39;type&#39;: &#39;ban_player&#39;,
+                    &#39;info&#39;: Banned_Reason.CARDS.value,
+                    &#39;seq&#39;: seq}
+        
+
+    # Analyze shuffle deck
+    tempVal = self.shuffleDeck.retrieve_decrypted_deck(seqKeys)
+    if isinstance(tempVal, int):
+        # Cheat found
+        logger.critical(colored((&#34;Cheater found in shuffle with seq %d&#34;%tempVal), &#39;red&#39;, attrs=[&#39;bold&#39;]))
+        return {&#39;type&#39;: &#39;ban_player&#39;,
+                &#39;info&#39;: Banned_Reason.CARDS.value,
+                &#39;seq&#39;: tempVal}
+
+    elif isinstance(tempVal, list):
+        self.finalDeck = tempVal[-1].deck # type: ignore
+
+    # Analyze submitted cards
+    for (seq, player) in self.players.items():
+        if not await check_player_cards_number_equal_deck(self.caller.deck, player.cards): # type: ignore
+            logger.critical(colored((&#34;Cheater found in cards with seq %d&#34;%seq), &#39;red&#39;, attrs=[&#39;bold&#39;]))
+            return {&#39;type&#39;: &#39;ban_player&#39;,
+                    &#39;info&#39;: Banned_Reason.CARDS.value,
+                    &#39;seq&#39;: seq}
+    
+    return None</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.caller.caller.Caller.caller_life"><code class="name flex">
+<span>async def <span class="ident">caller_life</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Main function used to handle the caller. It receives
+and sends information from and to the Playing Area</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def caller_life(self) -&gt; None:
+    &#34;&#34;&#34; 
+    Main function used to handle the caller. It receives
+    and sends information from and to the Playing Area 
+    &#34;&#34;&#34;
+
+    await self.login_caller_request()
+
+    while True:
+        
+        if self.playingAreaPublicKey == None:
+            recvData = await communication.recv_dict(self.caller.reader)
+        else:
+            try:
+                recvData = await communication.recv_dict(self.caller.reader , self.playingAreaPublicKey)
+            except SyntaxError as e:
+                raise OSError(f&#34;Playing area signature is wrong, aborting caller ...&#34;)
+
+                
+
+        if recvData == None: # Disconnected
+            raise OSError(&#34;Connection with Playing Area terminated&#34;)
+
+        logger.debug(f&#39;Received: {recvData}\n&#39;)            
+
+        sendData = await self.determine_action(recvData)
+
+        if sendData != None and sendData != {}: # It&#39;s not always necessary to transmit data
+            cheatSignature = False
+            rand = random.randint(0,100)
+
+            if rand &lt; self.cheat and (self.bufferUUID == None or self.bufferUUID != None and self.bufferUUID[1] != &#39;login&#39;):
+                cheatSignature = True
+                logger.warning(colored(f&#39;Just cheated in sending my signature&#39;, &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+            logger.debug(f&#39;Sending: {sendData}\n&#39;)
+            # No card or not authentication
+            if self.caller.cardPin != &#39;&#39; and state.getState() == &#39;AUTH&#39;:
+                await communication.send_dict(
+                                self.caller.writer, 
+                                sendData , 
+                                asymmetric.sign_message_cc(self.caller.cardPin, communication.json_to_bytes(sendData)), 
+                                cheatSignature
+                            )
+            else:
+                
+                await communication.send_dict(
+                                self.caller.writer, 
+                                sendData , 
+                                asymmetric.sign_message(communication.json_to_bytes(sendData),self.caller.privateKey), 
+                                cheatSignature
+                            )</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.caller.caller.Caller.create_caller"><code class="name flex">
+<span>async def <span class="ident">create_caller</span></span>(<span>self, ip: str, port: int, nick: str, cheat: int, privateKey: cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKey, publicKey: cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKey, cardPin: str = '') ‑> tuple</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function that uses class values to create a Caller with the
+designated Ip address and Port</p>
+<h2 id="args">Args</h2>
+<ul>
+<li>ip: Ip address of the Caller</li>
+<li>port: Port of the Caller to operate on</li>
+<li>nick: Caller nick</li>
+</ul>
+<h2 id="returns">Returns</h2>
+<ul>
+<li>A tupple object with the asyncio.streams.StreamReader
+and asyncio.streams.StreamWriter</li>
+</ul>
+<h2 id="raises">Raises</h2>
+<ul>
+<li>ValueError: if caller was already established</li>
+<li>TypeError: if supplied
+attributes are not of correct type
+</li>
+<li>OSError: if connection wasn't established (handled by
+asyncio.open_connection function)</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def create_caller(self, ip: str, port: int, nick: str, cheat: int,
+        privateKey: rsa.RSAPrivateKeyWithSerialization, publicKey: rsa.RSAPublicKey,
+        cardPin: str = &#39;&#39;) -&gt; tuple:
+    &#34;&#34;&#34;
+    Function that uses class values to create a Caller with the 
+        designated Ip address and Port
+    Args:
+        - ip: Ip address of the Caller
+        - port: Port of the Caller to operate on
+        - nick: Caller nick
+    Returns:
+        - A tupple object with the asyncio.streams.StreamReader
+        and asyncio.streams.StreamWriter
+    Raises:
+        - ValueError: if caller was already established
+        - TypeError: if supplied  attributes are not of correct type  
+        - OSError: if connection wasn&#39;t established (handled by 
+        asyncio.open_connection function)
+    &#34;&#34;&#34;
+    if self.caller != None: raise ValueError(f&#34;Caller already defined&#34;)
+
+    if (not isinstance(ip, str) or not isinstance(port, int) 
+        or not isinstance(nick, str)):
+        raise TypeError(&#34;Wrong usage. Use (str, int) types&#34;)
+
+    reader, writer  = await asyncio.open_connection(ip, port)
+    
+    self.caller: CallerValues = CallerValues(nick,publicKey,writer,reader)
+    self.caller.set_ip_port(ip, port)
+    self.caller.set_private_key(privateKey)
+    self.cheat = cheat
+    if cardPin != &#39;&#39;:
+        self.caller.set_card_pin(cardPin)
+    
+    return (reader, writer)</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.caller.caller.Caller.determine_action"><code class="name flex">
+<span>async def <span class="ident">determine_action</span></span>(<span>self, msg: dict) ‑> dict | None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function to determine the action to execute, based on the incomming data</p>
+<h2 id="args">Args</h2>
+<ul>
+<li>msg: incomming message no analyze</li>
+</ul>
+<h2 id="returns">Returns</h2>
+<ul>
+<li>message to send or None if there isn't any to send</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def determine_action(self, msg: dict) -&gt; dict | None:
+    &#34;&#34;&#34;
+    Function to determine the action to execute, based on the incomming data
+    Args:
+        - msg: incomming message no analyze
+    Returns:
+        - message to send or None if there isn&#39;t any to send
+    &#34;&#34;&#34;
+
+    if not (&#39;type&#39; in msg.keys() or &#39;code&#39; in msg.keys()): 
+        return None # handle this error
+    
+    currentInfoState: str = infoState.getState()
+    currentState : str = state.getState()
+    error: bool = False
+
+    # Remove or ban Player 
+    if (&#39;type&#39; in msg.keys() and (msg[&#39;type&#39;] == &#39;disconnect&#39;
+            or msg[&#39;type&#39;] == &#39;ban_player&#39;)):
+        if currentState == &#39;IDLE&#39;:
+            status = await self.manage_players(&#39;remove&#39;, msg)
+        else:  
+            status = await self.manage_players(&#39;ban&#39;, msg)
+        
+        logger.info(await print_user_list(self.players, self.caller.maxPlayers, self.bannedPlayers))
+        if isinstance(status, dict):
+                return status
+
+    # Game was aborted
+    elif (&#39;code&#39; in msg.keys() and msg[&#39;code&#39;] == 0
+            and &#39;type&#39; in msg.keys() and msg[&#39;type&#39;] == &#39;abort_game&#39;):
+        logger.warning(colored(&#34;The game was aborted, because: &#34; + str(msg[&#39;info&#39;]), &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+        exit(0)
+
+    elif (currentInfoState == &#39;FREE&#39; or (currentInfoState == &#39;REQUESTED&#39; 
+            and &#39;UUID&#39; in msg.keys() and self.bufferUUID != None 
+                and msg[&#39;UUID&#39;] != self.bufferUUID[0])):
+
+        if currentState == &#39;IDLE&#39;:
+            # New Player
+            if &#39;type&#39; in msg.keys() and msg[&#39;type&#39;] == &#39;new_client&#39;:
+                await self.manage_players(&#39;add&#39;, msg)
+                logger.info(await print_user_list(self.players, self.caller.maxPlayers, self.bannedPlayers))
+                if len(self.players) == self.caller.maxPlayers:
+                    status = await self.start_game()
+                    logger.warning(colored(f&#39;Sent request to start game&#39;, &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+                    return status
+            
+            # Notice of game starting
+            elif (&#39;code&#39; in msg.keys() and msg[&#39;code&#39;] == 0 and &#39;type&#39; 
+                    in msg.keys() and msg[&#39;type&#39;] == &#39;game_started&#39;):
+                logger.info(f&#39;Game has officially started&#39;)
+                state.apply(&#39;SUBMIT_CARD&#39;)
+
+            else: 
+                error = True
+
+        elif currentState == &#39;SUBMIT_CARD&#39;:
+            # Player card submisstion
+            if &#39;code&#39; in msg.keys() and msg[&#39;code&#39;] == 0 and &#39;card&#39; in msg.keys():
+                await self.player_card_submission(msg)
+
+                # check if all players sent their symmetric keys
+                if await check_all_players_cards(self.players):
+                    # call start_key_exchange_function
+                    logger.warning(colored(&#34;All cards received, starting deck shuffling&#34;, &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+                    state.apply(&#39;SUBMIT_DECK&#39;)
+                    return await self.send_caller_deck()
+
+            else:
+                error = True
+
+        elif currentState == &#39;SUBMIT_DECK&#39;:
+            # Deck shuffle submission
+            if (&#39;code&#39; in msg.keys() and msg[&#39;code&#39;] == 0 and &#39;type&#39; 
+                    in msg.keys() and msg[&#39;type&#39;] == &#39;submit_deck&#39;):
+                # Is everyone submitted the shuffled deck
+                if await self.process_shuffle_submission(msg):
+                    state.apply(&#39;SUBMIT_KEYS&#39;)
+                    return await self.start_send_keys()
+
+            else:
+                error = True
+
+        elif currentState == &#39;SUBMIT_KEYS&#39;:
+            # Received players key
+            if &#39;type&#39; in msg.keys() and msg[&#39;type&#39;] == &#39;send_keys&#39;:
+                await self.player_key_exchange(msg)
+
+                # check if all players sent their symmetric keys
+                if await check_players_symm_keys(self.players) and self.receivedCallerSymKey:
+                    logger.warning(colored(&#34;All keys received, starting shuffling evaluation&#34;, &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+                    state.apply(&#39;EVALUATION&#39;)
+
+                    status = await self.analyze_shuffling_and_cards()
+                    if status != None:
+                        return status
+                    else:
+                        logger.info(&#34;No cheaters, starting winner evaluation&#34;)
+                        return await self.determine_winner()
+
+            # Response received from server
+            elif (msg[&#39;type&#39;] == &#39;start_send_keys&#39; and &#39;code&#39; in msg.keys() 
+                    and currentState == &#39;SUBMIT_KEYS&#39;):
+                logger.warning(colored(&#34;Sending caller symmetric keys&#34;, &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+                return await self.send_caller_symmetric_key()
+
+            else:
+                error = True
+
+        elif currentState == &#39;EVALUATION&#39;:
+                
+            # Process game evaluation
+            if (&#39;code&#39; in msg.keys() and msg[&#39;code&#39;] == 0 and &#39;type&#39; 
+                    in msg.keys() and msg[&#39;type&#39;] == &#39;share_winner&#39; and &#39;winner&#39; in msg.keys()):
+                
+                if await self.player_winning_predicition(msg) == []:
+                    # No cheaters detected
+                    state.apply(&#39;END_GAME&#39;)
+                    return await self.notify_winner()                        
+
+            else:
+                error = True
+
+        elif currentState == &#39;END_GAME&#39;:
+            # Show who won
+            if (&#39;code&#39; in msg.keys() and msg[&#39;code&#39;] == 0 and &#39;type&#39; 
+                    in msg.keys() and msg[&#39;type&#39;] == &#39;share_winner&#39; 
+                        and &#39;seq&#39; in msg.keys() and msg[&#39;seq&#39;] == 0):
+                logger.info(await print_players_cards_and_deck(self.players, self.caller, msg[&#39;winner&#39;], self.N, self.finalDeck))
+                
+                return self.handle_caller_inputs()
+
+            else:
+                error = True
+            
+        else:
+            logger.error(colored(&#34;Message received not appropriate for the current state &#34; + currentState, &#39;red&#39;, attrs=[&#39;bold&#39;]))
+
+        if error:
+            if &#39;code&#39; in msg.keys() and &#39;info&#39; in msg.keys():
+                logger.error(colored(&#34;Bad response received with code %d in state %s: %s&#34;%(msg[&#39;code&#39;], currentState, msg[&#39;info&#39;]), &#39;red&#39;, attrs=[&#39;bold&#39;]))
+            else:
+                logger.error(colored(&#34;Invalid request for current state &#39;%s&#39;&#34;%currentState, &#39;red&#39;, attrs=[&#39;bold&#39;]))
+
+    # Proccess Responses
+    if (currentInfoState == &#39;REQUESTED&#39; and &#39;UUID&#39; in msg.keys() 
+        and self.bufferUUID != None and msg[&#39;UUID&#39;] == self.bufferUUID[0]):
+
+        if &#39;code&#39; in msg.keys() and msg[&#39;code&#39;] == 0:
+            # Get nonce for authentication
+            if (self.bufferUUID[1] == &#39;get_nonce&#39; and currentState == &#39;AUTH&#39;
+                    and &#39;nonce&#39; in msg.keys()): # Login response
+                self.nonce = msg[&#39;nonce&#39;]
+                self.bufferUUID = (random.uniform(1.0, 100.0), &#39;login&#39;)
+                # With card auth
+                if self.caller.cardPin != &#39;&#39;:     
+                    return {&#34;type&#34;: &#39;login&#39;, 
+                        &#34;role&#34;: &#39;caller&#39;,
+                        &#34;pubkey&#34;: asymmetric.public_key_to_string(self.caller.publicKey),
+                        &#34;nick&#34;: self.caller.nick,
+                        &#34;nonce&#34;: self.nonce,
+                        &#34;UUID&#34;: self.bufferUUID[0]
+                        }
+                # Without card auth
+                else:
+                    return {&#34;type&#34;: &#39;login&#39;, 
+                        &#34;role&#34;: &#39;caller&#39;,
+                        &#34;nick&#34;: self.caller.nick,
+                        &#34;nonce&#34;: self.nonce,
+                        &#34;UUID&#34;: self.bufferUUID[0]
+                        }
+                
+            # Authenticate caller login attempt
+            if self.bufferUUID[1] == &#39;login&#39; and currentState == &#39;AUTH&#39;: # Login response
+                if await self.login_caller_response(msg):
+                    state.apply(&#39;IDLE&#39;)
+                    logger.info(colored(f&#39;caller authenticated\n&#39;, &#39;green&#39;))
+                else:
+                    raise OSError(&#34;Playing Area denied authentication&#34;)
+
+            # Response from key submission
+            elif (self.bufferUUID[1] == &#39;key_submit&#39;) and currentState == &#39;SUBMIT_KEYS&#39;:
+                logger.info(&#34;Caller symmetric key was exchanged&#34;)
+                self.receivedCallerSymKey = True
+                # check if all players sent their symmetric keys
+                if await check_players_symm_keys(self.players) and self.receivedCallerSymKey:
+                    logger.warning(colored(&#34;All keys received, starting shuffling evaluation&#34;, &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+                    state.apply(&#39;EVALUATION&#39;)
+                    
+                    status = await self.analyze_shuffling_and_cards()
+                    if status != None:
+                        return status
+                    else:
+                        logger.info(&#34;No cheaters, starting winner evaluation&#34;)
+                        await self.determine_winner()
+
+            # Show audit logs
+            elif (self.bufferUUID[1] == &#39;get_users_list&#39;) and &#39;users&#39; in msg.keys() and currentState == &#39;END_GAME&#39;:
+                
+                string = &#34;Received Users list: \n&#34;
+                for user in  msg[&#39;users&#39;]:
+                    string += f&#34;\tSeq: %d, Nick: %s\n&#34;%(user[&#39;seq&#39;], user[&#39;nick&#39;])
+                logger.info(string)
+
+                self.bufferUUID = None
+                infoState.apply(&#39;FREE&#39;)
+                return self.handle_caller_inputs()
+            
+            # Show get users list
+            elif (self.bufferUUID[1] == &#39;get_audit_log&#39;) and &#39;log&#39; in msg.keys() and currentState == &#39;END_GAME&#39;:
+
+                if not os.path.exists(&#39;./audit_logs&#39;):
+                    os.mkdir(&#39;./audit_logs&#39;)
+                logName = r&#39;./audit_logs/&#39; + self.caller.nick + &#34;_&#34; + str(time.time()) + &#39;.log&#39;
+                with open(logName, &#34;w&#34;) as f:
+                    f.write(str(msg))
+                
+                logger.info(colored(f&#39;Received audit log file saved at {logName}&#39;, &#39;green&#39;))
+
+                self.bufferUUID = None
+                infoState.apply(&#39;FREE&#39;)
+                return self.handle_caller_inputs()
+            
+            else:
+                logger.error(colored(f&#39;Unknown or not appropriate message received: &#39; + str(msg), &#39;red&#39;, attrs=[&#39;bold&#39;]))
+
+        else:
+            logger.error(colored(f&#34;Error Code %d: %s&#34;%(msg[&#39;code&#39;], msg[&#39;info&#39;]), &#39;red&#39;, attrs=[&#39;bold&#39;]))
+
+        self.bufferUUID = None
+        infoState.apply(&#39;FREE&#39;)
+        
+
+    return None</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.caller.caller.Caller.determine_winner"><code class="name flex">
+<span>async def <span class="ident">determine_winner</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function to determine which player has the winning cards</p>
+<p><code>Note:</code> it saves the list of winners in an internal attribute</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def determine_winner(self) -&gt; None:
+    &#34;&#34;&#34;
+    Function to determine which player has the winning cards
+
+    `Note:` it saves the list of winners in an internal attribute
+    &#34;&#34;&#34;
+    scores: list[tuple[int, int]] = []
+
+    for seq, player in self.players.items():
+        # Not take into account banned players
+        if not self.bannedPlayers.is_banned(seq):
+            bingo = Bingo(self.N,int(self.N//4), player.cards) #type: ignore
+            scores.append((seq, bingo.first_winning_position(self.finalDeck)))
+
+    # Order the list by scores (Minimum score is winner)
+    scores.sort(key=lambda x:x[1]) # type: ignore
+
+    # Start with the first score
+    winnerScores = scores[0][1]
+
+    # save the seq with the same initial score
+    for score in scores:
+        if score[1] == winnerScores:
+            self.winners.append(score[0])
+        else:
+            break
+
+    # check if the first and second place are tied
+    if len(self.winners) &gt; 1:
+        logger.warning(colored(&#34;There has been a draw, the players with the following seq won: &#34; + str(self.winners), &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+    else:
+        logger.warning(colored(f&#39;The player with seq %d has won&#39;%self.winners[0], &#39;yellow&#39;, attrs=[&#39;bold&#39;]))</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.caller.caller.Caller.handle_caller_inputs"><code class="name flex">
+<span>def <span class="ident">handle_caller_inputs</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function used to handle input on the caller</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def handle_caller_inputs(self):
+    &#34;&#34;&#34;
+    Function used to handle input on the caller
+    &#34;&#34;&#34;
+    while(True):
+        input_str: str = input(&#34;Options avaliable\n\t[1] : Get user list\n\t[2] : Get logs\n\t[3] : Exit game\n&#34;)
+        try:
+            opt: int = int(input_str)
+            if opt not in [1,2,3]:
+                raise Exception
+        except Exception as e:
+            logger.warning(colored(&#39;Invalid Input!&#39;, &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+            continue
+        
+        if opt == 1:
+            self.bufferUUID = (random.uniform(1.0, 100.0), &#39;get_users_list&#39;)
+            infoState.apply(&#39;REQUESTED&#39;) # Update state
+            
+            return {&#39;type&#39;: &#39;get_users_list&#39;,
+                    &#39;UUID&#39;: self.bufferUUID[0]
+                }
+            
+        elif opt == 2:
+            self.bufferUUID = (random.uniform(1.0, 100.0), &#39;get_audit_log&#39;)
+            infoState.apply(&#39;REQUESTED&#39;) # Update state
+            
+            return {&#39;type&#39;: &#39;get_audit_log&#39;,
+                    &#39;UUID&#39;: self.bufferUUID[0]
+                }
+        elif opt == 3:
+            logger.info(colored(&#34;Game Over!&#34;, &#34;green&#34;, attrs=[&#34;reverse&#34;, &#34;blink&#34;, &#34;bold&#34;]))
+            exit(0)</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.caller.caller.Caller.login_caller_request"><code class="name flex">
+<span>async def <span class="ident">login_caller_request</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function to make the initial request for authentication.
+It only submits the data to the playing area. </p>
+<h2 id="raises">Raises</h2>
+<ul>
+<li>ValueError: when the caller hasn't been defined yet</li>
+<li>OSError: if connection with Playing Area is terminated</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def login_caller_request(self) -&gt; None:
+    &#34;&#34;&#34;
+    Function to make the initial request for authentication.
+    It only submits the data to the playing area. 
+    Raises:
+        - ValueError: when the caller hasn&#39;t been defined yet
+        - OSError: if connection with Playing Area is terminated
+    &#34;&#34;&#34;
+
+    if self.caller == None : raise ValueError(&#34;Use the function create_caller first&#34;)
+    
+    # Ask for nonce
+    self.bufferUUID = (random.uniform(1.0, 100.0), &#39;get_nonce&#39;)
+    # Without card auth
+    if self.caller.cardPin == &#39;&#39;:
+        authInfo = {&#34;type&#34;: &#39;get_nonce&#39;, 
+            &#34;pubkey&#34;: asymmetric.public_key_to_string(self.caller.publicKey), 
+            &#34;UUID&#34;: self.bufferUUID[0]
+            }
+    # With card auth
+    else:
+        cert = asymmetric.get_certificate(self.caller.cardPin)
+        authInfo = {&#34;type&#34;: &#39;get_nonce&#39;, 
+            &#34;certificate&#34;: asymmetric.export_certificate(cert), 
+            &#34;UUID&#34;: self.bufferUUID[0]
+            }
+    logger.debug(f&#39;Sending: {authInfo}&#39;)
+    recvData = await communication.send_dict(
+                        self.caller.writer, 
+                        authInfo , 
+                        asymmetric.sign_message(communication.json_to_bytes(authInfo),self.caller.privateKey)
+                        )
+    if not recvData:
+        raise OSError(F&#39;Failed caller authentication&#39;)
+
+    infoState.apply(&#39;REQUESTED&#39;) # Update state</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.caller.caller.Caller.login_caller_response"><code class="name flex">
+<span>async def <span class="ident">login_caller_response</span></span>(<span>self, msg: dict) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function to handle the response from the login request by the caller
+Returns
+- True is the connection was authenticated or False otherwise</p>
+<h2 id="raises">Raises</h2>
+<ul>
+<li>ValueError: when the caller hasn't been defined yet</li>
+<li>ValueError: when response from playing area doesn't come
+with correct fields</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def login_caller_response(self, msg: dict) -&gt; bool:
+    &#34;&#34;&#34;
+    Function to handle the response from the login request by the caller 
+    Returns
+        - True is the connection was authenticated or False otherwise
+    Raises:
+        - ValueError: when the caller hasn&#39;t been defined yet
+        - ValueError: when response from playing area doesn&#39;t come 
+        with correct fields
+    &#34;&#34;&#34;
+    if self.caller == None : raise ValueError(&#34;Use the function create_caller first&#34;)
+
+    if not isinstance(msg, dict):
+        raise ValueError(f&#34;Message must be of type &#39;dict&#39;&#34;)
+
+    if &#39;code&#39; in msg:
+        if msg[&#39;code&#39;] == 0:
+            check_dict_fields(msg, [&#39;seq&#39;,&#39;pubkey&#39;,&#39;max_players&#39;, &#39;N&#39;])
+                
+            self.caller.set_seq(msg[&#39;seq&#39;])
+            self.caller.set_max_players(int(msg[&#39;max_players&#39;]))
+            self.playingAreaPublicKey = asymmetric.public_key_from_string(msg[&#39;pubkey&#39;])
+            self.N = int(msg[&#39;N&#39;])
+            if self.playingAreaPublicKey == None:
+                raise ValueError(f&#34;Playing Area public key not properly formatted&#34;)
+            return True
+        else:
+            if &#39;info&#39; in msg.keys():
+                logger.info(f&#39;Denied authentication, hint: {msg[&#34;info&#34;]}&#39;)
+                return False
+            else:
+                raise ValueError(f&#34;Received response should have a &#39;info&#39; field&#34;)
+    else:
+        raise ValueError(f&#34;Received data should have a &#39;type&#39; field&#34;)</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.caller.caller.Caller.manage_players"><code class="name flex">
+<span>async def <span class="ident">manage_players</span></span>(<span>self, action: str, playerData: dict) ‑> dict | bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function to manage acceptance and removal of players from the game</p>
+<h2 id="args">Args</h2>
+<ul>
+<li>action: action for player data. Values can be 'add',
+'remove' or 'check'</li>
+<li>playerData: information of the player
+Returns: <ul>
+<li>bool value signalling if the action was executed.
+In the case of check, it will return True if the player exists.</li>
+<li>dict type message to send to the PA. Generally, this is used
+for when the game can't continue because of not enough players,
+or a player was banned in the important steps</li>
+</ul>
+</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def manage_players(self, action: str, playerData: dict) -&gt; dict | bool:
+    &#34;&#34;&#34;
+    Function to manage acceptance and removal of players from the game
+    Args:
+        - action: action for player data. Values can be &#39;add&#39;, 
+        &#39;remove&#39; or &#39;check&#39;
+        - playerData: information of the player
+    Returns: 
+        - bool value signalling if the action was executed.
+        In the case of check, it will return True if the player exists.
+        - dict type message to send to the PA. Generally, this is used 
+        for when the game can&#39;t continue because of not enough players, 
+        or a player was banned in the important steps
+    &#34;&#34;&#34;
+
+    try:
+        if action == &#39;add&#39;:
+            if (len(self.players) == self.caller.maxPlayers):
+                return False
+            try:
+                check_dict_fields(playerData, [&#39;type&#39;, &#39;nick&#39;, &#39;pubkey&#39;, &#39;seq&#39;])
+            except ValueError as e:
+                return False
+            logger.info(f&#34;Adding player with seq: {playerData[&#39;seq&#39;]}, nick: {playerData[&#39;nick&#39;]}&#34;)
+
+            if playerData[&#39;seq&#39;] not in self.players.keys():
+                __newPlayer = PlayerValues(int(playerData[&#39;seq&#39;]),
+                                        playerData[&#39;nick&#39;], 
+                                        asymmetric.public_key_from_string(playerData[&#39;pubkey&#39;]), 
+                                        self.caller.writer, 
+                                        self.caller.reader
+                                        )
+                self.players[int(playerData[&#39;seq&#39;])] = __newPlayer
+                return True
+
+        # Remove a player should only be done while waiting for game to start
+        elif action == &#39;remove&#39;:
+            try:
+                check_dict_fields(playerData, [&#39;seq&#39;])
+            except ValueError as e:
+                return False
+            temp: PlayerValues = self.players.pop(playerData[&#39;seq&#39;])
+            logger.warning(colored(f&#39;Removing Player with seq: {temp.seq}, nick: {temp.nick}&#39;, &#39;cyan&#39;))
+
+            # Adjust other players sequences
+            tempDict: dict = {}
+            for key, value in self.players.items():
+                if key &gt; playerData[&#39;seq&#39;]:
+                    value.seq -= 1
+                    tempDict[key-1] = value
+                else:
+                    tempDict[key] = value
+
+            self.players = tempDict
+                    
+            return True
+
+        elif action == &#39;ban&#39;:
+            try:
+                check_dict_fields(playerData, [&#39;seq&#39;, &#39;info&#39;])
+
+                # Test for enum ban_reason
+                banReason: Banned_Reason = getattr(Banned_Reason, playerData[&#39;info&#39;])
+            except ValueError as e:
+                return False
+            except AttributeError:
+                banReason: Banned_Reason = Banned_Reason.UNKNOWN
+
+            # Player doesn&#39;t exist or is already banned
+            if (self.bannedPlayers.is_banned(playerData[&#39;seq&#39;])
+                    or not self.manage_players(&#39;check&#39;, playerData)): 
+                return False
+
+            logger.error(colored(f&#39;Banning Player with seq {playerData[&#34;seq&#34;]}, because of {playerData[&#34;info&#34;]}&#39;, &#39;red&#39;, attrs=[&#39;bold&#39;]))
+
+            self.bannedPlayers.add_ban(playerData[&#39;seq&#39;], banReason)
+
+            # Pre-condition for the game to contine
+            if len(self.players) - len(self.bannedPlayers.get_bans()) &lt; self.minPlayers:
+                return {&#39;type&#39; : &#39;abort_game&#39; , 
+                        &#39;info&#39; : &#39;Not enough players to carry the game&#39;}
+
+            # Last state, no need to do anything
+            if state.getState() == &#39;END_GAME&#39;: return True
+
+            if banReason == Banned_Reason.BAD_WINNER or state.getState() == &#34;EVALUATION&#34;:
+                # The game already progressed, so the cards are OK
+                # which means that we only have to make sure he is the winner
+                # If there were no winners left, we should recalculate
+                if playerData[&#39;seq&#39;] in self.winners:
+                    self.winners.remove(playerData[&#39;seq&#39;])
+                if self.winners == []:
+                    await self.determine_winner()
+                    return await self.notify_winner()
+                else: return True
+
+            else:
+
+                return {&#39;type&#39; : &#39;abort_game&#39; , 
+                        &#39;info&#39; : &#39;Player was banned on a ongoing game&#39;}
+                
+
+
+        elif action == &#39;check&#39;:
+            try: 
+                check_dict_fields(playerData, [&#39;seq&#39;])
+            except ValueError as e:
+                return False
+
+            if playerData[&#39;seq&#39;] in self.players.keys():
+                return True
+
+    except ValueError:
+        # If the received data doesn&#39;t have the correct fields
+        logging.error(colored(&#34;Wrong dictionary headers received&#34;, &#39;red&#39;, attrs=[&#39;bold&#39;]))
+        return False
+
+    return False</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.caller.caller.Caller.notify_winner"><code class="name flex">
+<span>async def <span class="ident">notify_winner</span></span>(<span>self) ‑> dict</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function that creates a response to inform the players
+about the correct winners of the game.</p>
+<p><code>Note:</code> this function should be used after determining the winners
+and waiting for the clients to give their predictions</p>
+<h2 id="returns">Returns</h2>
+<ul>
+<li>Message with the winning players/s</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def notify_winner(self) -&gt; dict:
+    &#34;&#34;&#34;
+    Function that creates a response to inform the players
+        about the correct winners of the game.
+
+    `Note:` this function should be used after determining the winners
+    and waiting for the clients to give their predictions
+    Returns:
+        - Message with the winning players/s
+    &#34;&#34;&#34;
+
+    return {&#39;type&#39;: &#39;share_winner&#39;,
+            &#39;winner&#39;: self.winners
+        }</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.caller.caller.Caller.player_card_submission"><code class="name flex">
+<span>async def <span class="ident">player_card_submission</span></span>(<span>self, msg: dict) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function to associate a set of cards with a player</p>
+<h2 id="args">Args</h2>
+<ul>
+<li>msg: message that the player sent with his cards</li>
+</ul>
+<h2 id="raises">Raises</h2>
+<ul>
+<li>TypeError: if the provided msg is not a dictionary
+object</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def player_card_submission(self, msg: dict) -&gt; None:
+    &#34;&#34;&#34;
+    Function to associate a set of cards with a player
+    Args:
+        - msg: message that the player sent with his cards
+    Raises:
+        - TypeError: if the provided msg is not a dictionary
+        object
+    &#34;&#34;&#34;
+    
+    if not isinstance(msg, dict):
+        raise TypeError(&#34;Message should be of type &#39;dict&#39;&#34;)
+
+    # Check dict fields
+    try:
+        check_dict_fields(msg, [&#39;code&#39;, &#39;info&#39;, &#39;seq&#39;, &#39;card&#39;])
+    except ValueError as e:
+        logger.critical(colored(&#34;The provided cards are not correct&#34;, &#39;red&#39;, attrs=[&#39;bold&#39;]))
+        return None
+
+    # Check if the player exists
+    if not await self.manage_players(&#39;check&#39;, msg):
+        logger.error(colored(f&#34;Player with seq %d doesn&#39;t exist&#34;%msg[&#39;seq&#39;], &#39;red&#39;, attrs=[&#39;bold&#39;]))
+        return None
+
+    # set the player deck
+    # msg[&#39;card&#39;] is of type str
+    deck = [symmetric.bytes_from_string(card) for card in msg[&#39;card&#39;]]
+
+    self.players[msg[&#39;seq&#39;]].set_cards(deck)</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.caller.caller.Caller.player_key_exchange"><code class="name flex">
+<span>async def <span class="ident">player_key_exchange</span></span>(<span>self, msg: dict) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function to save a player exchanged symmetric key </p>
+<h2 id="args">Args</h2>
+<ul>
+<li>msg: Message sent by the playing area</li>
+</ul>
+<h2 id="raises">Raises</h2>
+<ul>
+<li>TypeError: if the provided msg is not a dictionary
+object</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def player_key_exchange(self, msg: dict) -&gt; None:
+    &#34;&#34;&#34;
+    Function to save a player exchanged symmetric key 
+    Args:
+        - msg: Message sent by the playing area
+    Raises:
+        - TypeError: if the provided msg is not a dictionary
+        object
+    &#34;&#34;&#34;
+
+    if not isinstance(msg, dict):
+        raise TypeError(&#34;Message should be of type &#39;dict&#39;&#34;)
+
+    try:
+        check_dict_fields(msg, [&#39;type&#39;, &#39;key&#39;, &#39;seq&#39;])
+    except ValueError as e:
+        logger.critical(colored(&#34;The provided cards are not correct&#34;, &#39;red&#39;, attrs=[&#39;bold&#39;]))
+        return None
+
+    # Check if the player exists
+    if not await self.manage_players(&#39;check&#39;, msg):
+        logger.error(colored(f&#34;Player with seq %d doesn&#39;t exist&#34;%msg[&#39;seq&#39;], &#39;red&#39;, attrs=[&#39;bold&#39;]))
+        return None
+
+    # Set the player symmetric key
+    self.players[msg[&#39;seq&#39;]].set_symmetric_key(
+                                symmetric.bytes_from_string(
+                                    msg[&#39;key&#39;]
+                                )
+                            )</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.caller.caller.Caller.player_winning_predicition"><code class="name flex">
+<span>async def <span class="ident">player_winning_predicition</span></span>(<span>self, msg: dict) ‑> list[int] | None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function to save a player winning prediction. If all
+players have submitted their prediction, analyze
+and ban those who made a bad prediction</p>
+<h2 id="args">Args</h2>
+<ul>
+<li>msg: Message sent by the player</li>
+</ul>
+<h2 id="returns">Returns</h2>
+<ul>
+<li>list with banned players, empty list
+if there weren't any</li>
+<li>None if not all players
+have submitted predictions yet or a pre-condition
+failed</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def player_winning_predicition(self, msg: dict) -&gt; list[int] | None:
+    &#34;&#34;&#34;
+    Function to save a player winning prediction. If all
+        players have submitted their prediction, analyze
+        and ban those who made a bad prediction
+    Args:
+        - msg: Message sent by the player
+    Returns:
+        - list with banned players, empty list
+        if there weren&#39;t any
+        - None if not all players
+        have submitted predictions yet or a pre-condition
+        failed
+    &#34;&#34;&#34;
+    
+    try:
+        check_dict_fields(msg, [&#39;seq&#39;, &#39;winner&#39;])
+    except ValueError as e:
+        logger.critical(colored(&#34;The provided estimate isn&#39;t correct, from seq&#34;, &#39;red&#39;, attrs=[&#39;bold&#39;]))
+        return None
+
+    if msg[&#39;seq&#39;] in list(self.playersPredicted.keys()):
+        logger.warning(colored(&#39;Player already made an estimate&#39;, &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+        return None
+
+    if msg[&#39;seq&#39;] not in [s for s, p in self.players.items()]:
+        logger.warning(colored(&#39;Unknown player with seq %d&#39;%msg[&#39;seq&#39;], &#39;yellow&#39;, attrs=[&#39;bold&#39;]))
+        return None
+
+    self.playersPredicted[msg[&#39;seq&#39;]] = msg[&#39;winner&#39;]
+
+    if len(self.playersPredicted.keys()) == len(self.players):
+        banned: list[int] = []
+        for seq, winners in self.playersPredicted.items():
+            # Ban every player that made a bad prediction
+            if Counter(self.winners) != Counter(winners):
+                banned.append(seq)
+                sendData: dict = {&#39;type&#39;: &#39;ban_player&#39;,
+                        &#39;info&#39;: Banned_Reason.BAD_WINNER.value,
+                        &#39;seq&#39;: seq}
+                logger.debug(f&#39;Sending: {sendData}\n&#39;)
+                await communication.send_dict(
+                        self.caller.writer, 
+                        sendData , 
+                        asymmetric.sign_message(communication.json_to_bytes(sendData),self.caller.privateKey)
+                        )
+
+        return banned</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.caller.caller.Caller.process_shuffle_submission"><code class="name flex">
+<span>async def <span class="ident">process_shuffle_submission</span></span>(<span>self, msg: dict) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function to record and proccess every player and caller
+shuffled deck submission</p>
+<h2 id="args">Args</h2>
+<ul>
+<li>msg: Message sent by the playing area</li>
+</ul>
+<h2 id="returns">Returns</h2>
+<ul>
+<li>True if everyone shuffled, False otherwise</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def process_shuffle_submission(self, msg: dict) -&gt; bool:
+    &#34;&#34;&#34;
+    Function to record and proccess every player and caller 
+        shuffled deck submission
+    Args:
+        - msg: Message sent by the playing area
+    Returns:
+        - True if everyone shuffled, False otherwise
+    &#34;&#34;&#34;
+
+    try:
+        check_dict_fields(msg, [&#39;seq&#39;, &#39;deck&#39;])
+    except ValueError as e:
+        logger.critical(colored(&#34;The provided deck isn&#39;t correct&#34;, &#39;red&#39;, attrs=[&#39;bold&#39;]))
+        return False
+
+    # msg[&#39;deck&#39;] is of type list[str]
+    deck = [symmetric.bytes_from_string(card) for card in msg[&#39;deck&#39;]]
+
+    if not hasattr(self, &#34;shuffleDeck&#34;):
+        self.shuffleDeck: Deck = Deck(deck, msg[&#39;seq&#39;])
+    else:
+        self.shuffleDeck.add_deck(deck, msg[&#39;seq&#39;])
+
+    return self.shuffleDeck.check_everyone_submitted_deck(list(self.players.keys()) + [0])</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.caller.caller.Caller.send_caller_deck"><code class="name flex">
+<span>async def <span class="ident">send_caller_deck</span></span>(<span>self) ‑> dict</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function to send te caller's deck
+Returns
+- Message to be sent to the playing area with the encrypted
+deck</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def send_caller_deck(self) -&gt; dict:
+    &#34;&#34;&#34;
+    Function to send te caller&#39;s deck
+    Returns
+        - Message to be sent to the playing area with the encrypted 
+        deck
+    &#34;&#34;&#34;
+
+    # Generate symmetric key
+    self.caller.set_symmetric_key(symmetric.generate_key(16))
+    # Generate deck
+    self.caller.set_deck(Bingo.generate_random_solution(self.N))
+
+    return {&#39;type&#39;: &#39;submit_deck&#39;,
+            &#39;deck&#39;: [ symmetric.bytes_to_string(card) 
+                        for card in Deck.encrypt_deck
+                                (
+                                self.caller.deck, self.caller.symmetricKey # type: ignore
+                                )
+                    ] 
+        }</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.caller.caller.Caller.send_caller_symmetric_key"><code class="name flex">
+<span>async def <span class="ident">send_caller_symmetric_key</span></span>(<span>self) ‑> dict</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function that returns the caller symmetric key, to be sent to
+the Playing Area</p>
+<h2 id="returns">Returns</h2>
+<ul>
+<li>dictionary with the key to send</li>
+</ul>
+<h2 id="raises">Raises</h2>
+<ul>
+<li>ValueError: if the symmetric key hasn't been defined</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def send_caller_symmetric_key(self) -&gt; dict:
+    &#34;&#34;&#34;
+    Function that returns the caller symmetric key, to be sent to 
+        the Playing Area
+    Returns:
+        - dictionary with the key to send
+    Raises:
+        - ValueError: if the symmetric key hasn&#39;t been defined
+    &#34;&#34;&#34;
+
+    if self.caller.symmetricKey == b&#39;&#39;:
+        raise ValueError(&#34;The symmetric key should be defined&#34;)
+
+    self.bufferUUID = (random.uniform(1.0, 100.0), &#39;key_submit&#39;)
+    infoState.apply(&#39;REQUESTED&#39;) # Update state
+    
+    return {&#39;type&#39;: &#39;send_keys&#39;,
+            &#39;key&#39;: symmetric.bytes_to_string(self.caller.symmetricKey),
+            &#39;UUID&#39;: self.bufferUUID[0]
+        }</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.caller.caller.Caller.start_game"><code class="name flex">
+<span>async def <span class="ident">start_game</span></span>(<span>self) ‑> dict | None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function that handles the start of the game</p>
+<h2 id="returns">Returns</h2>
+<ul>
+<li>None if there's not enough players to start the game,
+otherwise the message to be sent to the playing area</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def start_game(self) -&gt; dict | None:
+    &#34;&#34;&#34;
+    Function that handles the start of the game
+    Returns:
+        - None if there&#39;s not enough players to start the game, 
+        otherwise the message to be sent to the playing area
+    &#34;&#34;&#34;
+    if len(self.players) &lt; self.minPlayers: # Pre-condition to start game
+        return None
+
+    return {&#39;type&#39;: &#39;start_game&#39;}</code></pre>
+</details>
+</dd>
+<dt id="assignment-2---bingo-19.caller.caller.Caller.start_send_keys"><code class="name flex">
+<span>async def <span class="ident">start_send_keys</span></span>(<span>self) ‑> dict | None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function to return a message to the Playing Area,
+informing it that players and caller can start
+exchanging keys</p>
+<h2 id="returns">Returns</h2>
+<ul>
+<li>message to send to the playing area</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def start_send_keys(self) -&gt; dict | None:
+    &#34;&#34;&#34;
+    Function to return a message to the Playing Area,
+        informing it that players and caller can start
+        exchanging keys
+    Returns:
+        - message to send to the playing area
+    &#34;&#34;&#34;
+
+    return {&#39;type&#39;: &#39;start_send_keys&#39;}</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="assignment-2---bingo-19.caller" href="index.html">assignment-2---bingo-19.caller</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="assignment-2---bingo-19.caller.caller.convert_str_bool" href="#assignment-2---bingo-19.caller.caller.convert_str_bool">convert_str_bool</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="assignment-2---bingo-19.caller.caller.Caller" href="#assignment-2---bingo-19.caller.caller.Caller">Caller</a></code></h4>
+<ul class="">
+<li><code><a title="assignment-2---bingo-19.caller.caller.Caller.analyze_shuffling_and_cards" href="#assignment-2---bingo-19.caller.caller.Caller.analyze_shuffling_and_cards">analyze_shuffling_and_cards</a></code></li>
+<li><code><a title="assignment-2---bingo-19.caller.caller.Caller.caller_life" href="#assignment-2---bingo-19.caller.caller.Caller.caller_life">caller_life</a></code></li>
+<li><code><a title="assignment-2---bingo-19.caller.caller.Caller.create_caller" href="#assignment-2---bingo-19.caller.caller.Caller.create_caller">create_caller</a></code></li>
+<li><code><a title="assignment-2---bingo-19.caller.caller.Caller.determine_action" href="#assignment-2---bingo-19.caller.caller.Caller.determine_action">determine_action</a></code></li>
+<li><code><a title="assignment-2---bingo-19.caller.caller.Caller.determine_winner" href="#assignment-2---bingo-19.caller.caller.Caller.determine_winner">determine_winner</a></code></li>
+<li><code><a title="assignment-2---bingo-19.caller.caller.Caller.handle_caller_inputs" href="#assignment-2---bingo-19.caller.caller.Caller.handle_caller_inputs">handle_caller_inputs</a></code></li>
+<li><code><a title="assignment-2---bingo-19.caller.caller.Caller.login_caller_request" href="#assignment-2---bingo-19.caller.caller.Caller.login_caller_request">login_caller_request</a></code></li>
+<li><code><a title="assignment-2---bingo-19.caller.caller.Caller.login_caller_response" href="#assignment-2---bingo-19.caller.caller.Caller.login_caller_response">login_caller_response</a></code></li>
+<li><code><a title="assignment-2---bingo-19.caller.caller.Caller.manage_players" href="#assignment-2---bingo-19.caller.caller.Caller.manage_players">manage_players</a></code></li>
+<li><code><a title="assignment-2---bingo-19.caller.caller.Caller.notify_winner" href="#assignment-2---bingo-19.caller.caller.Caller.notify_winner">notify_winner</a></code></li>
+<li><code><a title="assignment-2---bingo-19.caller.caller.Caller.player_card_submission" href="#assignment-2---bingo-19.caller.caller.Caller.player_card_submission">player_card_submission</a></code></li>
+<li><code><a title="assignment-2---bingo-19.caller.caller.Caller.player_key_exchange" href="#assignment-2---bingo-19.caller.caller.Caller.player_key_exchange">player_key_exchange</a></code></li>
+<li><code><a title="assignment-2---bingo-19.caller.caller.Caller.player_winning_predicition" href="#assignment-2---bingo-19.caller.caller.Caller.player_winning_predicition">player_winning_predicition</a></code></li>
+<li><code><a title="assignment-2---bingo-19.caller.caller.Caller.process_shuffle_submission" href="#assignment-2---bingo-19.caller.caller.Caller.process_shuffle_submission">process_shuffle_submission</a></code></li>
+<li><code><a title="assignment-2---bingo-19.caller.caller.Caller.send_caller_deck" href="#assignment-2---bingo-19.caller.caller.Caller.send_caller_deck">send_caller_deck</a></code></li>
+<li><code><a title="assignment-2---bingo-19.caller.caller.Caller.send_caller_symmetric_key" href="#assignment-2---bingo-19.caller.caller.Caller.send_caller_symmetric_key">send_caller_symmetric_key</a></code></li>
+<li><code><a title="assignment-2---bingo-19.caller.caller.Caller.start_game" href="#assignment-2---bingo-19.caller.caller.Caller.start_game">start_game</a></code></li>
+<li><code><a title="assignment-2---bingo-19.caller.caller.Caller.start_send_keys" href="#assignment-2---bingo-19.caller.caller.Caller.start_send_keys">start_send_keys</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

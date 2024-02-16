@@ -1,0 +1,32 @@
+html {
+    height:100%;
+}
+
+body {
+    background-image: linear-gradient(to right, rgba(86, 188, 164, 0.55), rgba(86, 188, 164, 0.55)), url(../images/medical.jpg);
+    background-repeat: no-repeat;
+
+    font-family: Tahoma, sans-serif;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    overflow-y: hidden;
+    height: 100%;
+}
+
+.layout-color {
+    background-color: #35806e;
+}
+
+.dot{
+    display: inline-block;
+    background-color: #4bc5b8;
+    border-radius: 100%;
+    width: 15px;
+    height: 15px;
+}
+
+#error{
+    width: 350px;
+    height: 30px;
+}
